@@ -8,7 +8,7 @@ if __name__ == '__main__':
     )
 
     mycursor = mydb.cursor()
-
+    #INITIALISATION OF TABLES (FIRST METHOD)
     #after running this code for the first time, uncomment this line:
     mycursor.execute("DROP DATABASE Library")
 
@@ -38,7 +38,7 @@ if __name__ == '__main__':
                      first_name VARCHAR(255) NOT NULL,
                      last_name VARCHAR(255) NOT NULL,
                      age INTEGER NOT NULL,
-                     number CHAR(6) NOT NULL,
+                     number CHAR(4) NOT NULL,
                      street VARCHAR(250) NOT NULL,
                      FOREIGN KEY(number, street) REFERENCES Adresses(number, street)
                      ON UPDATE CASCADE
@@ -49,17 +49,16 @@ if __name__ == '__main__':
                      id INTEGER AUTO_INCREMENT PRIMARY KEY,
                      first_name VARCHAR(255) NOT NULL,
                      last_name VARCHAR(255) NOT NULL,
-                     image_id VARCHAR(255) UNIQUE,
-                     nationality VARCHAR(255) NOT NULL,
+                     image_id CHAR(3) UNIQUE,
                      birth DATE NOT NULL,
-                     death DATE)''')
+                     death DATE,
+                     nationality VARCHAR(255) NOT NULL)''')
     print("created table Authors")
 
     mycursor.execute('''CREATE TABLE Texts (
                      id INTEGER AUTO_INCREMENT PRIMARY KEY,
                      name VARCHAR(255) NOT NULL,
-                     image_id VARCHAR(255) UNIQUE,
-                     description VARCHAR(500),
+                     image_id VARCHAR(255),
                      type VARCHAR(50) NOT NULL)''')
     print("created table Texts")
 
@@ -106,8 +105,8 @@ if __name__ == '__main__':
                      ON UPDATE CASCADE
                      ON DELETE CASCADE)''')
     print("created table Magasines")
-
-    #someone needs to be at least 10 to rent a book
+    #TRIGGERS (SECOND METHOD)
+    #someone needs to be at least 10 to rent a book and cant be older than 117 years old
     mycursor.execute('''CREATE TRIGGER ageLimits
                         BEFORE INSERT ON Users
                         FOR EACH ROW
@@ -115,8 +114,8 @@ if __name__ == '__main__':
                             IF (NEW.age) < 10
                             THEN
                                 SIGNAL SQLSTATE '45000'
-                                SET MESSAGE_TEXT = 'Vous êtes trop jeune pour utiliser nos services';
-                            ELSEIF (NEW.age) > 117
+                                SET MESSAGE_TEXT = NEW.age;
+                            ELSEIF (NEW.age) > 117000
                             THEN
                                 SIGNAL SQLSTATE '45000'
                                 SET MESSAGE_TEXT = 'Vous êtes trop vieux pour utiliser nos services';
@@ -136,4 +135,33 @@ if __name__ == '__main__':
                        END IF;
                     END''')
 
+
+    #FILLING DATABASE (THIRD METHOD)
+
+    #fills adresses
+    mycursor.execute('''LOAD DATA LOCAL INFILE "data/adresses.txt" INTO TABLE adresses
+        COLUMNS TERMINATED BY ";"
+       LINES TERMINATED BY "\r\n" ''')
+    print("Filled Adresses")
+
+    #fills users
+    mycursor.execute('''LOAD DATA LOCAL INFILE "data/users.txt" INTO TABLE users
+        COLUMNS TERMINATED BY ";"
+       LINES TERMINATED BY "\r\n" ''')
+    print("Filled Users")
+
+    # fills authors
+    mycursor.execute('''LOAD DATA LOCAL INFILE "data/authors.txt" INTO TABLE authors
+            COLUMNS TERMINATED BY ";"
+           LINES TERMINATED BY "\r\n" ''')
+    print("Filled Authors")
+
+    # fills texts
+    mycursor.execute('''LOAD DATA LOCAL INFILE "data/texts.txt" INTO TABLE texts
+            COLUMNS TERMINATED BY ";"
+           LINES TERMINATED BY "\r\n" ''')
+    print("Filled Texts")
+    mydb.commit()
+    mycursor.close()
+    mydb.close()
 
