@@ -25,34 +25,48 @@ def page_joindre():
 @app.route("/page-login", methods=['GET'])
 def page_de_login():
     return render_template('Se-connecter.html')
+## Create cursor
 
+       # cur = mysql.connection.cursor()
+
+        #Get user by username
+
+       # result = cur.execute("SELECT * FROM users WHERE username = %s" ,[username])
+#
 
 #traitement de login page
-@app.route("/login", methods=['POST','GET'])
+@app.route("/login", methods=['POST'])
 def login():
-    courriel = '"' + request.form.get('courriel') + '"'
-    passe = request.form.get('motpasse')
+    if request.method == 'POST':
+        courriel = request.form['courriel']
+        passe = request.form['password']
+        conn = pymysql.connect(host='localhost', user='root', password='tomato', db='mydb')
 
-    conn = pymysql.connect(host='localhost', user='root', password='tomato', db='mydb')
-    cmd = 'SELECT motpasse FROM utilisateurs WHERE courriel=' + courriel + ';'
-    cur = conn.cursor()
-    cur.execute(cmd)
-    passeVrai = cur.fetchone()
-    if (passeVrai != None) and (passe == passeVrai[0]):
-        cmd = 'SELECT * FROM utilisateurs WHERE courriel=' + courriel + ';'
+        cmd = "SELECT motpasse FROM utilisateurs WHERE courriel= %s"['courriel']
         cur = conn.cursor()
         cur.execute(cmd)
-        info = cur.fetchone()
-        global ProfileUtilisateur
-        ProfileUtilisateur["courriel"] = courriel
-        ProfileUtilisateur["nom"] = info[2]
-        ProfileUtilisateur["avatar"] = info[3]
-        return render_template('bienvenu.html', profile=ProfileUtilisateur)
+        passeVrai = cur.fetchone()
 
+        if (passeVrai != None) and (passe == passeVrai[0]):
+            cmd = "SELECT * FROM utilisateurs WHERE courriel= %s"['courriel']
+            cur = conn.cursor()
+            cur.execute(cmd)
+            info = cur.fetchone()
+            global ProfileUtilisateur
+            ProfileUtilisateur["courriel"] = courriel
+            ProfileUtilisateur["nom"] = info[2]
+            #ProfileUtilisateur["avatar"] = info[3]
+            return render_template('Profil-utilisateur.html', profile=ProfileUtilisateur)#crée la page profil utilisateurs
     return render_template('login.html', message="Informations invalides!")
+
+
 @app.route('/resultats-recherches')
 def resultat_recherches():
     return render_template('Resultats-recherches.html')
+
+@app.route('/Abonnement')
+def Abonnement():
+    return render_template('Abonnement.html')
 
 @app.route('/Recherche-avancee', methods=['GET'])
 def recherche_avancee():
