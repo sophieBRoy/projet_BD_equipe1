@@ -25,14 +25,7 @@ def page_joindre():
 @app.route("/page-login", methods=['GET'])
 def page_de_login():
     return render_template('Se-connecter.html')
-## Create cursor
 
-       # cur = mysql.connection.cursor()
-
-        #Get user by username
-
-       # result = cur.execute("SELECT * FROM users WHERE username = %s" ,[username])
-#
 
 #traitement de login page
 @app.route("/login", methods=['POST'])
