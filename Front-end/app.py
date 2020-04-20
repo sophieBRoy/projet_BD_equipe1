@@ -50,7 +50,13 @@ def login():
         return render_template('bienvenu.html', profile=ProfileUtilisateur)
 
     return render_template('login.html', message="Informations invalides!")
+@app.route('/resultats-recherches')
+def resultat_recherches():
+    return render_template('Resultats-recherches.html')
 
+@app.route('/Recherche-avancee', methods=['GET'])
+def recherche_avancee():
+    return render_template('Recherche-avancee.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
