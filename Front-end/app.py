@@ -8,28 +8,41 @@ ProfileUtilisateur = {}
 
 # the main URL of the application mapping page d'acceuil
 @app.route("/")
-def main():
-    return render_template('login.html')
+def Accueil():
+    return render_template('Accueil.html')
 
 
-# 2eme URL mapping
-@app.route("/login", methods=['POST'])
+@app.route("/recherche",methods=['GET'])
+def Recherche():
+    return render_template('Recherche.html')
+
+@app.route("/nous-joindre",methods=['GET'])
+def page_joindre():
+    return render_template('Nous-joindre.html')
+
+
+#load login page
+@app.route("/page-login", methods=['GET'])
+def page_de_login():
+    return render_template('Se-connecter.html')
+
+
+#traitement de login page
+@app.route("/login", methods=['POST','GET'])
 def login():
     courriel = '"' + request.form.get('courriel') + '"'
     passe = request.form.get('motpasse')
 
-    conn = pymysql.connect(host='localhost', user='root', password='sirius3', db='testdb')
+    conn = pymysql.connect(host='localhost', user='root', password='tomato', db='mydb')
     cmd = 'SELECT motpasse FROM utilisateurs WHERE courriel=' + courriel + ';'
     cur = conn.cursor()
     cur.execute(cmd)
     passeVrai = cur.fetchone()
-
     if (passeVrai != None) and (passe == passeVrai[0]):
         cmd = 'SELECT * FROM utilisateurs WHERE courriel=' + courriel + ';'
         cur = conn.cursor()
         cur.execute(cmd)
         info = cur.fetchone()
-
         global ProfileUtilisateur
         ProfileUtilisateur["courriel"] = courriel
         ProfileUtilisateur["nom"] = info[2]
@@ -40,4 +53,4 @@ def login():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
