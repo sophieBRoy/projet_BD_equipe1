@@ -1,0 +1,14 @@
+
+.content {
+    width: 60%;
+    flex-grow: 0.5;
+}
+
+form {
+    display: flex;
+    width: 50%;
+}
+
+.search-bar {
+    width:  100%;
+}
