@@ -57,7 +57,7 @@ if __name__ == '__main__':
 
     mycursor.execute('''CREATE TABLE Texts (
                      id INTEGER AUTO_INCREMENT PRIMARY KEY,
-                     name VARCHAR(255) NOT NULL,
+                     name VARCHAR(255) NOT NULL FULLTEXT,
                      image_id VARCHAR(255),
                      type VARCHAR(50) NOT NULL)''')
     print("created table Texts")
