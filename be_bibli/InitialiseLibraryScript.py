@@ -27,10 +27,10 @@ if __name__ == '__main__':
 
     #create the table for the adresses
     mycursor.execute('''CREATE TABLE Adresses (
+                     id INTEGER AUTO_INCREMENT PRIMARY KEY,
                      number VARCHAR(4),
                      street VARCHAR(255),
-                     postal_code CHAR(6) NOT NULL,
-                     PRIMARY KEY (number, street))''')
+                     postal_code CHAR(6) NOT NULL''')
     print("created table Adresses")
 
     mycursor.execute('''CREATE TABLE Users (
@@ -38,9 +38,8 @@ if __name__ == '__main__':
                      first_name VARCHAR(255) NOT NULL,
                      last_name VARCHAR(255) NOT NULL,
                      age INTEGER NOT NULL,
-                     number CHAR(4) NOT NULL,
-                     street VARCHAR(250) NOT NULL,
-                     FOREIGN KEY(number, street) REFERENCES Adresses(number, street)
+                     adress_id INTEGER NOT NULL,
+                     FOREIGN KEY(adress_id) REFERENCES Adresses(id)
                      ON UPDATE CASCADE
                      ON DELETE RESTRICT)''')
     print("created table Users")
