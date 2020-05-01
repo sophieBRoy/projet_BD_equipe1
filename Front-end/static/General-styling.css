@@ -17,7 +17,7 @@ body {
     align-items: center;
     justify-content: flex-end;
     grid-area: header;
-    background-image: url(../ressources/li.png), linear-gradient(to right, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0));
+    background-image: url(../static/li.png), linear-gradient(to right, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0));
     background-repeat: no-repeat, no-repeat;
     background-position: left, right;
     height: 200px;
@@ -71,7 +71,7 @@ body {
 
 .footer {
     font-size:40px;
-    background-image: url(../ressources/li.png), linear-gradient(to right, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0));
+    background-image: url(../static/li.png), linear-gradient(to right, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0));
     background-repeat: no-repeat, no-repeat;
     background-position: left, right;
     opacity:.8;
@@ -96,4 +96,5 @@ p, a{
     height: 30px;
     border-radius: 10px;
     margin-left: 10px;
+
 }

@@ -1,8 +1,8 @@
 <html>
 <head>
 <title>Login</title>
-<link rel="stylesheet" type="text/css" href="Se-connecter.css">
-<link rel="stylesheet" type="text/css" href="../General-styling.css">
+<link rel="stylesheet" type="text/css" href="../static/Se-connecter.css">
+<link rel="stylesheet" type="text/css" href="../static/General-styling.css">
 <script type="text/javascript"></script>
  <meta charset="utf-8" />
      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -16,23 +16,26 @@
         <p>Bibliothèque en ligne</p>
     </div>
     <div class="navigation-bar">
-        <a class="header-button" href="../Accueil/Accueil.html"><div >Accueil</div></a>
-        <a class="header-button" href="../Recherche/Recherche.html"><div >Recherche</div></a>
-        <a class="header-button" href="../Se-connecter/Se-connecter.html"><div>Se connecter</div></a>
-        <a class="header-button" href="../Nous-joindre/Nous-joindre.html"><div >Nous joindre</div></a>
-    </div>
+        <a class="header-button" href="/"><div >Accueil</div></a>
+        <a class="header-button" href="/recherche"><div >Recherche</div></a>
+        <a class="header-button" href="/page-login"><div>Se connecter</div></a>
+        <a class="header-button" href="/nous-joindre"><div >Nous joindre</div></a>
+     </div>
 </div>
 <div class="content-container">
     <div class="content">
-        <form>
+        <form method="post">
             <p class="title"> Connexion </p>
             <label><b> Courriel </b></label>
             <input class="search-bar" type="text" placeholder="Entrer le courriel" name="courriel">
             <label><b> Mot de passe</b></label>
-            <input class="search-bar" placeholder="Entrer votre mot de passe" type="password" name="motpasse">
+            <input class="search-bar" placeholder="Entrer votre mot de passe" type="password" name="password">
             <input class="submit-button"   type="submit" value="Identification" name="soumettre">
         </form>
-        <P class="no-account">Pas de compte? <a href="../Abonnement/Abonnement.html">Cliquer ici</a></P>
+        <P class="no-account">Pas de compte? <a href="/Abonnement.html">Cliquer ici</a></P>
+        {% if message %}
+        <div >{{ message }}"</div>
+        {% endif %}
     </div>
 </div>
 <div class="footer"></div>
