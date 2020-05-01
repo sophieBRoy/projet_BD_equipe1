@@ -32,13 +32,16 @@ if __name__ == '__main__':
                      street VARCHAR(255),
                      postal_code CHAR(6) NOT NULL)''')
     print("created table Adresses")
-
+#missing email and password in the datas
     mycursor.execute('''CREATE TABLE Users (
                      id INTEGER AUTO_INCREMENT PRIMARY KEY,
                      first_name VARCHAR(255) NOT NULL,
                      last_name VARCHAR(255) NOT NULL,
                      age INTEGER NOT NULL,
                      adress_id INTEGER NOT NULL,
+                     email VARCHAR(255) NOT NULL, 
+                     password (VARCHAR(20) NOT NULL,
+                     admin BOOL NOT NULL,
                      FOREIGN KEY(adress_id) REFERENCES Adresses(id)
                      ON UPDATE CASCADE
                      ON DELETE RESTRICT)''')

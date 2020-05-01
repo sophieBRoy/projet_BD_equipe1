@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title>Bibliothèque</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Abonnement.css') }}">
+    <link rel="stylesheet" type="text/css" href="../General-styling.css">
+</head>
+<body>
+<div class="top-container">
+    <div class="header" >
+        <p>Bibliothèque en ligne</p>
+    </div>
+    <div class="navigation-bar">
+        <a class="header-button" href="#"><div >Accueil</div></a>
+        <a class="header-button" href="../Recherche/Recherche.html"><div >Recherche</div></a>
+        <a class="header-button" href="../Se-connecter/Se-connecter.html"><div>Se connecter</div></a>
+        <a class="header-button" href="../Nous-joindre/Nous-joindre.html"><div >Nous joindre</div></a>
+    </div>
+</div>
+<div class="content-container">
+    <div class="content">
+        <p class="title">Abonnement</p>
+        <p>INSERT POLITIC</p>
+        <form method="POST" action="">
+            <input class="search-bar" type="text" placeholder="Nom" name="nom"> &nbsp;
+            <input class="search-bar" type="text" placeholder="Prenom" name="Prenom"><br>
+            <input class="search-bar" type="text" placeholder="Courriel" name="Couriel"><br>
+            <input class="search-bar" type="text" placeholder="Adresse" name="Adresse"><br>
+            <input class="search-bar" type="text" placeholder="Cellulaire" name="Cellulaire"><br>
+            <input class="submit-button" type="submit" value="Création de compte" name="soumettre">
+        </form>
+    </div>
+</div>
+<div class="footer"></div>
+</body>
+</html>
