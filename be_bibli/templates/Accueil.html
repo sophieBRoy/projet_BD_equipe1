@@ -1,10 +1,10 @@
-<html>
+¸<<html>
 <head>
     <title>Bibliothèque</title>
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/Accueil.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/General-styling.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/General_styling.css') }}">
 </head>
 <body>
 <div class="top-container">
@@ -12,9 +12,9 @@
         <p>Bibliothèque en ligne</p>
     </div>
     <div class="navigation-bar">
-        <a class="header-button" href="#"><div >Accueil</div></a>
-        <a class="header-button" href="{{ url_for('nous_joindre') }}"><div >Recherche</div></a>
-        <a class="header-button" href="{{ url_for('nous_joindre') }}"><div>Se connecter</div></a>
+        <a class="header-button" href="{{ url_for('accueil')}}"><div >Accueil</div></a>
+        <a class="header-button" href="{{ url_for('recherche')}}"><div >Recherche</div></a>
+        <a class="header-button" href="{{ url_for('se_connecter') }}"><div>Se connecter</div></a>
         <a class="header-button" href="{{ url_for('nous_joindre') }}"><div >Nous joindre</div></a>
     </div>
 </div>

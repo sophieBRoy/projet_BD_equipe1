@@ -1,10 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
+<html>
+    <head>
+    <title>Bibliothèque</title>
+     <meta charset="utf-8" />
+         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Recherche.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/General_styling.css') }}">
+    </head>
+    <body>
+        <div class="top-container">
+            <div class="header" >
+                <p>Bibliothèque en ligne</p>
+            </div>
+            <div class="navigation-bar">
+        <a class="header-button" href="{{ url_for('accueil')}}"><div >Accueil</div></a>
+        <a class="header-button" href="{{ url_for('recherche')}}"><div >Recherche</div></a>
+        <a class="header-button" href="{{ url_for('se_connecter') }}"><div>Se connecter</div></a>
+        <a class="header-button" href="{{ url_for('nous_joindre') }}"><div >Nous joindre</div></a>
+      </div>
+        </div>
+        <div class="content-container">
+            <div class="content">
+                <p class="title">Recherche simple</p>
+                <form method="post" action="">
+                    {{ form.research(class_='search-bar') }}
+                    {{form.submit(class_="submit-button")}}
+                </form>
+                <p> Pour une recherche avancée, <a href="{{ url_for('recherche_avancee') }}"> Cliquer ici</a></p>
+            </div>
+        </div>
+        <div class="footer"></div>
+    </body>
 </html>

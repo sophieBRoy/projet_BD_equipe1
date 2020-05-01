@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/Abonnement.css') }}">
-    <link rel="stylesheet" type="text/css" href="../General-styling.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/General_styling.css') }}">
 </head>
 <body>
 <div class="top-container">
@@ -12,10 +12,10 @@
         <p>Bibliothèque en ligne</p>
     </div>
     <div class="navigation-bar">
-        <a class="header-button" href="#"><div >Accueil</div></a>
-        <a class="header-button" href="../Recherche/Recherche.html"><div >Recherche</div></a>
-        <a class="header-button" href="../Se-connecter/Se-connecter.html"><div>Se connecter</div></a>
-        <a class="header-button" href="../Nous-joindre/Nous-joindre.html"><div >Nous joindre</div></a>
+        <a class="header-button" href="{{ url_for('accueil')}}"><div >Accueil</div></a>
+        <a class="header-button" href="{{ url_for('recherche')}}"><div >Recherche</div></a>
+        <a class="header-button" href="{{ url_for('se_connecter') }}"><div>Se connecter</div></a>
+        <a class="header-button" href="{{ url_for('nous_joindre') }}"><div >Nous joindre</div></a>
     </div>
 </div>
 <div class="content-container">

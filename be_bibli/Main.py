@@ -1,13 +1,25 @@
 import mysql.connector
 
-if __name__ == '__main__':
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="tomato"
-    )
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="tomato",
+    database="library"
+)
 
-    mycursor = mydb.cursor()
+mycursor = mydb.cursor()
+
+def research(query):
+    command="SELECT t.name FROM texts t WHERE t.name like '%" + query + "%'"
+    mycursor.execute(command)
+    result = mycursor.fetchall()
+
+    for row in result:
+        print(row)
+
+
+if __name__ == '__main__':
+
     #INITIALISATION OF TABLES (FIRST METHOD)
     #after running this code for the first time, uncomment this line:
     mycursor.execute("DROP DATABASE Library")
@@ -40,7 +52,7 @@ if __name__ == '__main__':
                      age INTEGER NOT NULL,
                      adress_id INTEGER NOT NULL,
                      email VARCHAR(255) NOT NULL, 
-                     password (VARCHAR(20) NOT NULL,
+                     password VARCHAR(20) NOT NULL,
                      admin BOOL NOT NULL,
                      FOREIGN KEY(adress_id) REFERENCES Adresses(id)
                      ON UPDATE CASCADE
@@ -164,6 +176,7 @@ if __name__ == '__main__':
             COLUMNS TERMINATED BY ";"
            LINES TERMINATED BY "\r\n" ''')
     print("Filled Texts")
+
     mydb.commit()
     mycursor.close()
     mydb.close()
