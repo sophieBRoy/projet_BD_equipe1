@@ -1,0 +1,100 @@
+
+body {
+    margin:0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family : "Times New Roman", Times, serif;
+    background-color:#E2E2E2;
+}
+
+.top-container {
+    flex-grow: 0;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    grid-area: header;
+    background-image: url(../static/li.png), linear-gradient(to right, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0));
+    background-repeat: no-repeat, no-repeat;
+    background-position: left, right;
+    height: 200px;
+}
+
+.navigation-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 3px;
+}
+
+.header p {
+    margin: 0;
+    font-weight: bold;
+    font-size: 8vmin;
+    color: black;
+}
+
+.header-button{
+    height:40px;
+    background-color:black;
+    opacity: .9;
+    line-height: 40px;
+    text-align:center;
+    font-size: 20px;
+    width: 24.5%;
+    text-decoration: none;
+}
+
+.header-button:hover {
+    background-color: green;
+}
+
+.content-container {
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
+    background-color:black;
+    opacity:.8;
+    border-radius:10px;
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    font-size:40px;
+    background-image: url(../static/li.png), linear-gradient(to right, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0));
+    background-repeat: no-repeat, no-repeat;
+    background-position: left, right;
+    opacity:.8;
+    flex-grow: 0.5;
+}
+
+p, a{
+    color: white;
+    font-size: 20px;
+}
+
+.title {
+    font-size: 5vmin;
+}
+
+.search-bar{
+    border-radius: 15px;
+    height: 30px;
+}
+
+.submit-button{
+    height: 30px;
+    border-radius: 10px;
+    margin-left: 10px;
+
+}
