@@ -10,12 +10,10 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 def research(query):
-    command="SELECT t.name FROM texts t WHERE t.name like '%" + query + "%'"
+    command="SELECT t.name, t.type, t.image_id FROM texts t WHERE t.name like '%" + query + "%'"
     mycursor.execute(command)
     result = mycursor.fetchall()
-
-    for row in result:
-        print(row)
+    return result
 
 
 if __name__ == '__main__':

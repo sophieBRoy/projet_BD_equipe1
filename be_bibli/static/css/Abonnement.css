@@ -1,4 +1,5 @@
 .content {
     width: 60%;
     flex-grow: 0.5;
+        flex-direction: column;
 }

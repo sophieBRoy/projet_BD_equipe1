@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from Research_form import researchForm
 from Main import research
 
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "password"
 
@@ -17,8 +18,8 @@ def profile(user_id):
 def recherche():
     form = researchForm()
     if form.is_submitted():
-        result = request.form
-        research(request.form.getlist('research')[0])
+        result = research(request.form.getlist('research')[0])
+        print(result)
         return render_template('Resultats-recherche.html', result=result)
     return render_template('Recherche.html', form=form)
 
@@ -34,7 +35,7 @@ def se_connecter():
 
 @app.route('/resultats-recherche')
 def resultats_recherche():
-    return render_template('Resultats-recherche.html')
+    return render_template('Resultats-recherche.css.html')
 
 @app.route('/abonnement')
 def abonnement():
