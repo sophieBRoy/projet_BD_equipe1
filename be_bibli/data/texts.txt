@@ -1,200 +1,200 @@
-1;Harry Potter 1;hr1;Fantaisie
-2;Harry Potter 2;hr2;Fantaisie
-3;Harry Potter 3;hr3;Fantaisie
-4;Harry Potter 4;hr4;Fantaisie
-5;Harry Potter 5;hr5;Fantaisie
-6;Harry Potter 6;hr6;Fantaisie
-7;Harry Potter 7;hr7;Fantaisie
-8;Harry Potter 8;hr8;Fantaisie
-9;Harry Potter 9;hr9;Fantaisie
-10;Harry Potter 10;hr10;Fantaisie
-11;Percy Jackson 1;pj1;Fantaisie
-12;Percy Jackson 2;pj2;Fantaisie
-13;Percy Jackson 3;pj3;Fantaisie
-14;Percy Jackson 4;pj4;Fantaisie
-15;Percy Jackson 5;pj5;Fantaisie
-16;Percy Jackson 6;pj6;Fantaisie
-17;Percy Jackson 7;pj7;Fantaisie
-18;Percy Jackson 8;pj8;Fantaisie
-19;Percy Jackson 9;pj9;Fantaisie
-20;Percy Jackson 10;pj10;Fantaisie
-21;La servante écarlate 1;se1;Science-fiction
-22;La servante écarlate 2;se2;Science-fiction
-23;Le marchand de sable;lk1;Polar
-24;Misericorde;edv1;Polar
-25;Délivrance;edv2;Polar
-26;Profanation;edv3;Polar
-27;Dossier 64;edv4;Polar
-28;L'effet Papillon;edv5;Polar
-29;Promesse ;edv6;Polar
-30;Selfies;edv7;Polar
-31;Victime 2117;edv8;Polar
-32;Lazar;lk2;Polar
-33;Le pacte;lk3;Polar
-34;desaxe;lk4;Polar
-35;le chasseur de lapin;lk5;Polar
-36;l'hypnotiseur;lk6;Polar
-37;incurable;lk7;Polar
-38;Stalker;lk8;Polar
-39;Nightmares;lk9;Polar
-40;Les corps de verre;lk10;Polar
-41;Moby dick 1;NULL;Classique
-42;Moby dick 2;NULL;Classique
-43;Moby dick 3;NULL;Classique
-44;Moby dick 4;NULL;Classique
-45;Moby dick 5;NULL;Classique
-46;Moby dick 6;NULL;Classique
-47;Moby dick 7;NULL;Classique
-48;Moby dick 8;NULL;Classique
-49;Moby dick 9;NULL;Classique
-50;Moby dick 10;NULL;Classique
-51;Le grand Catsby 1;NULL;Classique
-52;Le grand Catsby 2;NULL;Classique
-53;Le grand Catsby 3;NULL;Classique
-54;Le grand Catsby 4;NULL;Classique
-55;Le grand Catsby 5;NULL;Classique
-56;Le grand Catsby 6;NULL;Classique
-57;Le grand Catsby 7;NULL;Classique
-58;Le grand Catsby 8;NULL;Classique
-59;Le grand Catsby 9;NULL;Classique
-60;Le grand Catsby 10;NULL;Classique
-61;Charlie;NULL;Horreur
-62;Misery;sk2;Horreur
-63;The shinning;sk3;Horreur
-64;Ça 1;sk4;Horreur
-65;Ça 2;NULL;Horreur
-66;Dreamcatcher;NULL;Horreur
-67;Pet Semetary;sk7;Horreur
-68;Carrie;sk8;Horreur
-69;Mist;sk9;Horreur
-70;Kujo;sk10;Horreur
-71;The dome 1;NULL;Horreur
-72;The dome 2;NULL;Horreur
-73;Le horla 1;NULL;Horreur
-74;Le horla 2;NULL;Horreur
-75;Le horla 3;NULL;Horreur
-76;Le horla 4;NULL;Horreur
-77;Le horla 5;NULL;Horreur
-78;Lucky luke 1;NULL;BD
-79;Lucky luke 2;NULL;BD
-80;Lucky luke 3;NULL;BD
-81;Lucky luke 4;NULL;BD
-82;Lucky luke 5;NULL;BD
-83;Lucky luke 6;NULL;BD
-84;Lucky luke 7;NULL;BD
-85;Lucky luke 8;NULL;BD
-86;Lucky luke 9;NULL;BD
-87;Lucky luke 10;NULL;BD
-88;The count of montecristo;NULL;Classique
-89;To kill a mockingbird;NULL;Classique
-90;A game of throne 1;NULL;Overrated
-91;A game of throne 2;NULL;Overrated
-92;A game of throne 3;NULL;Overrated
-93;A game of throne 4;NULL;Overrated
-94;A game of throne 5;NULL;Overrated
-95;A game of throne 6;NULL;Overrated
-96;A game of throne 7;NULL;Overrated
-97;A game of throne 8;NULL;Overrated
-98;Candide;NULL;Classique
-99;Le petit prince;NULL;Classique
-100;The girl with the dragon tatoo;NULL;Classique
-101;national geographic 1;ng1;Découvertes
-102;national geographic 2;ng2;Découvertes
-103;national geographic 3;ng3;Découvertes
-104;national geographic 4;ng4;Découvertes
-105;national geographic 5;ng5;Découvertes
-106;national geographic 6;ng6;Découvertes
-107;national geographic 7;ng7;Découvertes
-108;national geographic 8;ng8;Découvertes
-109;national geographic 9;ng9;Découvertes
-110;national geographic 10;ng10;Découvertes
-111;national geographic 11;ng11;Découvertes
-112;national geographic 12;ng12;Découvertes
-113;national geographic 13;ng13;Découvertes
-114;national geographic 14;ng14;Découvertes
-115;national geographic 15;ng15;Découvertes
-116;national geographic 16;ng16;Découvertes
-117;national geographic 17;ng17;Découvertes
-118;national geographic 18;ng18;Découvertes
-119;national geographic 19;ng19;Découvertes
-120;national geographic 20;ng20;Découvertes
-121;Marie Claire 1;mc1;Mode
-122;Marie Claire 2;mc2;Mode
-123;Marie Claire 3;mc3;Mode
-124;Marie Claire 4;mc4;Mode
-125;Marie Claire 5;mc5;Mode
-126;Marie Claire 6;mc6;Mode
-127;Marie Claire 7;mc7;Mode
-128;Marie Claire 8;mc8;Mode
-129;Marie Claire 9;mc9;Mode
-130;Marie Claire 10;mc10;Mode
-131;Vogue 1;v1;Mode
-132;Vogue 2;v2;Mode
-133;Vogue 3;v3;Mode
-134;Vogue 4;v4;Mode
-135;Vogue 5;v5;Mode
-136;Vogue 6;v6;Mode
-137;Vogue 7;v7;Mode
-138;Vogue 8;v8;Mode
-139;Vogue 9;v9;Mode
-140;Vogue 10;v10;Mode
-141;Nature 1;n1;Science
-142;Nature 2;n2;Science
-143;Nature 3;n3;Science
-144;Nature 4;n4;Science
-145;Nature 5;n5;Science
-146;Nature 6;n6;Science
-147;Nature 7;n7;Science
-148;Nature 8;n8;Science
-149;Nature 9;n9;Science
-150;Nature 10;n10;Science
-151;Nature 11;n11;Science
-152;Nature 12;n12;Science
-153;Nature 13;n13;Science
-154;Nature 14;n14;Science
-155;Nature 15;n15;Science
-156;Cooking Light 1;cl1;Cuisine
-157;Cooking Light 2;cl2;Cuisine
-158;Cooking Light 3;cl3;Cuisine
-159;Cooking Light 4;cl4;Cuisine
-160;Cooking Light 5;cl5;Cuisine
-161;Cooking Light 6;cl6;Cuisine
-162;Cooking Light 7;cl7;Cuisine
-163;Cooking Light 8;cl8;Cuisine
-164;Cooking Light 9;cl9;Cuisine
-165;Cooking Light 10;cl10;Cuisine
-166;Cooking Light 11;cl11;Cuisine
-167;Cooking Light 12;cl12;Cuisine
-168;Cooking Light 13;cl13;Cuisine
-169;Cooking Light 14;cl14;Cuisine
-170;Cooking Light 15;cl15;Cuisine
-171;Cooking Light 16;cl16;Cuisine
-172;Cooking Light 17;cl17;Cuisine
-173;Cooking Light 18;cl18;Cuisine
-174;Cooking Light 19;cl19;Cuisine
-175;Cooking Light 20;cl20;Cuisine
-176;Canadian Art 1;ca1;Art
-177;Canadian Art 2;ca2;Art
-178;Canadian Art 3;ca3;Art
-179;Canadian Art 4;ca4;Art
-180;Canadian Art 5;ca5;Art
-181;Canadian Art 6;ca6;Art
-182;Canadian Art 7;ca7;Art
-183;Canadian Art 8;ca8;Art
-184;Canadian Art 9;ca9;Art
-185;Canadian Art 10;ca10;Art
-186;Witch mag 1;wm1;Ado
-187;Witch mag 2;wm2;Ado
-188;Witch mag 3;wm3;Ado
-189;Witch mag 4;wm4;Ado
-190;Witch mag 5;wm5;Ado
-191;Debrouillards 1;d1;Ado
-192;Debrouillards 2;d2;Ado
-193;Debrouillards 3;d3;Ado
-194;Debrouillards 4;d4;Ado
-195;Debrouillards 5;d5;Ado
-196;Debrouillards 6;d6;Ado
-197;Debrouillards 7;d7;Ado
-198;Debrouillards 8;d8;Ado
-199;Debrouillards 9;d9;Ado
-200;Debrouillards 10;d10;Ado
+1;Harry Potter 1;hr1;Fantaisie;book
+2;Harry Potter 2;hr2;Fantaisie;book
+3;Harry Potter 3;hr3;Fantaisie;book
+4;Harry Potter 4;hr4;Fantaisie;book
+5;Harry Potter 5;hr5;Fantaisie;book
+6;Harry Potter 6;hr6;Fantaisie;book
+7;Harry Potter 7;hr7;Fantaisie;book
+8;Harry Potter 8;hr8;Fantaisie;book
+9;Harry Potter 9;hr9;Fantaisie;book
+10;Harry Potter 10;hr10;Fantaisie;book
+11;Percy Jackson 1;pj1;Fantaisie;book
+12;Percy Jackson 2;pj2;Fantaisie;book
+13;Percy Jackson 3;pj3;Fantaisie;book
+14;Percy Jackson 4;pj4;Fantaisie;book
+15;Percy Jackson 5;pj5;Fantaisie;book
+16;Percy Jackson 6;pj6;Fantaisie;book
+17;Percy Jackson 7;pj7;Fantaisie;book
+18;Percy Jackson 8;pj8;Fantaisie;book
+19;Percy Jackson 9;pj9;Fantaisie;book
+20;Percy Jackson 10;pj10;Fantaisie;book
+21;La servante ecarlate 1;se1;Science-fiction;book
+22;La servante ecarlate 2;se2;Science-fiction;book
+23;Le marchand de sable;lk1;Polar;book
+24;Misericorde;edv1;Polar;book
+25;Delivrance;edv2;Polar;book
+26;Profanation;edv3;Polar;book
+27;Dossier 64;edv4;Polar;book
+28;L'effet Papillon;edv5;Polar;book
+29;Promesse ;edv6;Polar;book
+30;Selfies;edv7;Polar;book
+31;Victime 2117;edv8;Polar;book
+32;Lazar;lk2;Polar;book
+33;Le pacte;lk3;Polar;book
+34;desaxe;lk4;Polar;book
+35;le chasseur de lapin;lk5;Polar;book
+36;l'hypnotiseur;lk6;Polar;book
+37;incurable;lk7;Polar;book
+38;Stalker;lk8;Polar;book
+39;Nightmares;lk9;Polar;book
+40;Les corps de verre;lk10;Polar;book
+41;Moby dick 1;NULL;Classique;book
+42;Moby dick 2;NULL;Classique;book
+43;Moby dick 3;NULL;Classique;book
+44;Moby dick 4;NULL;Classique;book
+45;Moby dick 5;NULL;Classique;book
+46;Moby dick 6;NULL;Classique;book
+47;Moby dick 7;NULL;Classique;book
+48;Moby dick 8;NULL;Classique;book
+49;Moby dick 9;NULL;Classique;book
+50;Moby dick 10;NULL;Classique;book
+51;Le grand Catsby 1;NULL;Classique;book
+52;Le grand Catsby 2;NULL;Classique;book
+53;Le grand Catsby 3;NULL;Classique;book
+54;Le grand Catsby 4;NULL;Classique;book
+55;Le grand Catsby 5;NULL;Classique;book
+56;Le grand Catsby 6;NULL;Classique;book
+57;Le grand Catsby 7;NULL;Classique;book
+58;Le grand Catsby 8;NULL;Classique;book
+59;Le grand Catsby 9;NULL;Classique;book
+60;Le grand Catsby 10;NULL;Classique;book
+61;Charlie;NULL;Horreur;book
+62;Misery;sk2;Horreur;book
+63;The shinning;sk3;Horreur;book
+64;Ça 1;sk4;Horreur;book
+65;Ça 2;NULL;Horreur;book
+66;Dreamcatcher;NULL;Horreur;book
+67;Pet Semetary;sk7;Horreur;book
+68;Carrie;sk8;Horreur;book
+69;Mist;sk9;Horreur;book
+70;Kujo;sk10;Horreur;book
+71;The dome 1;NULL;Horreur;book
+72;The dome 2;NULL;Horreur;book
+73;Le horla 1;NULL;Horreur;book
+74;Le horla 2;NULL;Horreur;book
+75;Le horla 3;NULL;Horreur;book
+76;Le horla 4;NULL;Horreur;book
+77;Le horla 5;NULL;Horreur;book
+78;Lucky luke 1;NULL;BD;book
+79;Lucky luke 2;NULL;BD;book
+80;Lucky luke 3;NULL;BD;book
+81;Lucky luke 4;NULL;BD;book
+82;Lucky luke 5;NULL;BD;book
+83;Lucky luke 6;NULL;BD;book
+84;Lucky luke 7;NULL;BD;book
+85;Lucky luke 8;NULL;BD;book
+86;Lucky luke 9;NULL;BD;book
+87;Lucky luke 10;NULL;BD;book
+88;The count of montecristo;NULL;Classique;book
+89;To kill a mockingbird;NULL;Classique;book
+90;A game of throne 1;NULL;Overrated;book
+91;A game of throne 2;NULL;Overrated;book
+92;A game of throne 3;NULL;Overrated;book
+93;A game of throne 4;NULL;Overrated;book
+94;A game of throne 5;NULL;Overrated;book
+95;A game of throne 6;NULL;Overrated;book
+96;A game of throne 7;NULL;Overrated;book
+97;A game of throne 8;NULL;Overrated;book
+98;Candide;NULL;Classique;book
+99;Le petit prince;NULL;Classique;book
+100;The girl with the dragon tatoo;NULL;Classique;book
+101;national geographic 1;ng1;Decouvertes;magazine
+102;national geographic 2;ng2;Decouvertes;magazine
+103;national geographic 3;ng3;Decouvertes;magazine
+104;national geographic 4;ng4;Decouvertes;magazine
+105;national geographic 5;ng5;Decouvertes;magazine
+106;national geographic 6;ng6;Decouvertes;magazine
+107;national geographic 7;ng7;Decouvertes;magazine
+108;national geographic 8;ng8;Decouvertes;magazine
+109;national geographic 9;ng9;Decouvertes;magazine
+110;national geographic 10;ng10;Decouvertes;magazine
+111;national geographic 11;ng11;Decouvertes;magazine
+112;national geographic 12;ng12;Decouvertes;magazine
+113;national geographic 13;ng13;Decouvertes;magazine
+114;national geographic 14;ng14;Decouvertes;magazine
+115;national geographic 15;ng15;Decouvertes;magazine
+116;national geographic 16;ng16;Decouvertes;magazine
+117;national geographic 17;ng17;Decouvertes;magazine
+118;national geographic 18;ng18;Decouvertes;magazine
+119;national geographic 19;ng19;Decouvertes;magazine
+120;national geographic 20;ng20;Decouvertes;magazine
+121;Marie Claire 1;mc1;Mode;magazine
+122;Marie Claire 2;mc2;Mode;magazine
+123;Marie Claire 3;mc3;Mode;magazine
+124;Marie Claire 4;mc4;Mode;magazine
+125;Marie Claire 5;mc5;Mode;magazine
+126;Marie Claire 6;mc6;Mode;magazine
+127;Marie Claire 7;mc7;Mode;magazine
+128;Marie Claire 8;mc8;Mode;magazine
+129;Marie Claire 9;mc9;Mode;magazine
+130;Marie Claire 10;mc10;Mode;magazine
+131;Vogue 1;v1;Mode;magazine
+132;Vogue 2;v2;Mode;magazine
+133;Vogue 3;v3;Mode;magazine
+134;Vogue 4;v4;Mode;magazine
+135;Vogue 5;v5;Mode;magazine
+136;Vogue 6;v6;Mode;magazine
+137;Vogue 7;v7;Mode;magazine
+138;Vogue 8;v8;Mode;magazine
+139;Vogue 9;v9;Mode;magazine
+140;Vogue 10;v10;Mode;magazine
+141;Nature 1;n1;Science;magazine
+142;Nature 2;n2;Science;magazine
+143;Nature 3;n3;Science;magazine
+144;Nature 4;n4;Science;magazine
+145;Nature 5;n5;Science;magazine
+146;Nature 6;n6;Science;magazine
+147;Nature 7;n7;Science;magazine
+148;Nature 8;n8;Science;magazine
+149;Nature 9;n9;Science;magazine
+150;Nature 10;n10;Science;magazine
+151;Nature 11;n11;Science;magazine
+152;Nature 12;n12;Science;magazine
+153;Nature 13;n13;Science;magazine
+154;Nature 14;n14;Science;magazine
+155;Nature 15;n15;Science;magazine
+156;Cooking Light 1;cl1;Cuisine;magazine
+157;Cooking Light 2;cl2;Cuisine;magazine
+158;Cooking Light 3;cl3;Cuisine;magazine
+159;Cooking Light 4;cl4;Cuisine;magazine
+160;Cooking Light 5;cl5;Cuisine;magazine
+161;Cooking Light 6;cl6;Cuisine;magazine
+162;Cooking Light 7;cl7;Cuisine;magazine
+163;Cooking Light 8;cl8;Cuisine;magazine
+164;Cooking Light 9;cl9;Cuisine;magazine
+165;Cooking Light 10;cl10;Cuisine;magazine
+166;Cooking Light 11;cl11;Cuisine;magazine
+167;Cooking Light 12;cl12;Cuisine;magazine
+168;Cooking Light 13;cl13;Cuisine;magazine
+169;Cooking Light 14;cl14;Cuisine;magazine
+170;Cooking Light 15;cl15;Cuisine;magazine
+171;Cooking Light 16;cl16;Cuisine;magazine
+172;Cooking Light 17;cl17;Cuisine;magazine
+173;Cooking Light 18;cl18;Cuisine;magazine
+174;Cooking Light 19;cl19;Cuisine;magazine
+175;Cooking Light 20;cl20;Cuisine;magazine
+176;Canadian Art 1;ca1;Art;magazine
+177;Canadian Art 2;ca2;Art;magazine
+178;Canadian Art 3;ca3;Art;magazine
+179;Canadian Art 4;ca4;Art;magazine
+180;Canadian Art 5;ca5;Art;magazine
+181;Canadian Art 6;ca6;Art;magazine
+182;Canadian Art 7;ca7;Art;magazine
+183;Canadian Art 8;ca8;Art;magazine
+184;Canadian Art 9;ca9;Art;magazine
+185;Canadian Art 10;ca10;Art;magazine
+186;Witch mag 1;wm1;Ado;magazine
+187;Witch mag 2;wm2;Ado;magazine
+188;Witch mag 3;wm3;Ado;magazine
+189;Witch mag 4;wm4;Ado;magazine
+190;Witch mag 5;wm5;Ado;magazine
+191;Debrouillards 1;d1;Ado;magazine
+192;Debrouillards 2;d2;Ado;magazine
+193;Debrouillards 3;d3;Ado;magazine
+194;Debrouillards 4;d4;Ado;magazine
+195;Debrouillards 5;d5;Ado;magazine
+196;Debrouillards 6;d6;Ado;magazine
+197;Debrouillards 7;d7;Ado;magazine
+198;Debrouillards 8;d8;Ado;magazine
+199;Debrouillards 9;d9;Ado;magazine
+200;Debrouillards 10;d10;Ado;magazine

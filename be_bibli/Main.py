@@ -1,18 +1,32 @@
 import mysql.connector
 
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="tomato",
+    database="library"
+)
+
+mycursor = mydb.cursor()
+
+
+def research(query, book, magazine):
+    command = "SELECT t.name, t.genre, t.image_id FROM texts t WHERE t.name like '%" + query + "%'"
+    if book == 0:
+        command += "AND t.type = 'magazine'"
+    if magazine == 0:
+        command += "AND t.type = 'book'"
+    mycursor.execute(command)
+    result = mycursor.fetchall()
+    return result
+
+
 if __name__ == '__main__':
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="tomato"
-    )
+    # INITIALISATION OF TABLES (FIRST METHOD)
+    # after running this code for the first time, uncomment this line:
+    #mycursor.execute("DROP DATABASE Library")
 
-    mycursor = mydb.cursor()
-    #INITIALISATION OF TABLES (FIRST METHOD)
-    #after running this code for the first time, uncomment this line:
-    mycursor.execute("DROP DATABASE Library")
-
-    #create the database
+    # create the database
     mycursor.execute("CREATE DATABASE Library")
     print("created Database Library!")
 
@@ -25,22 +39,24 @@ if __name__ == '__main__':
 
     mycursor = mydb.cursor()
 
-    #create the table for the adresses
+    # create the table for the adresses
     mycursor.execute('''CREATE TABLE Adresses (
+                     id INTEGER AUTO_INCREMENT PRIMARY KEY,
                      number VARCHAR(4),
                      street VARCHAR(255),
-                     postal_code CHAR(6) NOT NULL,
-                     PRIMARY KEY (number, street))''')
+                     postal_code CHAR(6) NOT NULL)''')
     print("created table Adresses")
-
+    # missing email and password in the datas
     mycursor.execute('''CREATE TABLE Users (
                      id INTEGER AUTO_INCREMENT PRIMARY KEY,
                      first_name VARCHAR(255) NOT NULL,
                      last_name VARCHAR(255) NOT NULL,
                      age INTEGER NOT NULL,
-                     number CHAR(4) NOT NULL,
-                     street VARCHAR(250) NOT NULL,
-                     FOREIGN KEY(number, street) REFERENCES Adresses(number, street)
+                     adress_id INTEGER NOT NULL,
+                     email VARCHAR(255) NOT NULL, 
+                     password VARCHAR(20) NOT NULL,
+                     admin BOOL NOT NULL,
+                     FOREIGN KEY(adress_id) REFERENCES Adresses(id)
                      ON UPDATE CASCADE
                      ON DELETE RESTRICT)''')
     print("created table Users")
@@ -59,6 +75,7 @@ if __name__ == '__main__':
                      id INTEGER AUTO_INCREMENT PRIMARY KEY,
                      name VARCHAR(255) NOT NULL,
                      image_id VARCHAR(255),
+                     genre VARCHAR(50) NOT NULL,
                      type VARCHAR(50) NOT NULL)''')
     print("created table Texts")
 
@@ -105,8 +122,8 @@ if __name__ == '__main__':
                      ON UPDATE CASCADE
                      ON DELETE CASCADE)''')
     print("created table Magasines")
-    #TRIGGERS (SECOND METHOD)
-    #someone needs to be at least 10 to rent a book and cant be older than 117 years old
+    # TRIGGERS (SECOND METHOD)
+    # someone needs to be at least 10 to rent a book and cant be older than 117 years old
     mycursor.execute('''CREATE TRIGGER ageLimits
                         BEFORE INSERT ON Users
                         FOR EACH ROW
@@ -135,16 +152,16 @@ if __name__ == '__main__':
                        END IF;
                     END''')
 
+    # FILLING DATABASE (THIRD METHOD)
 
-    #FILLING DATABASE (THIRD METHOD)
-
-    #fills adresses
+    # fills adresses
+    # use this method to read a file that has columns delimited by ; and rows delimited by a new line
     mycursor.execute('''LOAD DATA LOCAL INFILE "data/adresses.txt" INTO TABLE adresses
         COLUMNS TERMINATED BY ";"
        LINES TERMINATED BY "\r\n" ''')
     print("Filled Adresses")
 
-    #fills users
+    # fills users
     mycursor.execute('''LOAD DATA LOCAL INFILE "data/users.txt" INTO TABLE users
         COLUMNS TERMINATED BY ";"
        LINES TERMINATED BY "\r\n" ''')
@@ -161,7 +178,7 @@ if __name__ == '__main__':
             COLUMNS TERMINATED BY ";"
            LINES TERMINATED BY "\r\n" ''')
     print("Filled Texts")
+
     mydb.commit()
     mycursor.close()
     mydb.close()
-
