@@ -18,8 +18,10 @@ def profile(user_id):
 def recherche():
     form = researchForm()
     if form.is_submitted():
-        result = research(request.form.getlist('research')[0])
-        print(result)
+        formData = request.form.getlist('research')
+        bookSelected = request.form.getlist('bookCheck')
+        magazineSelected = request.form.getlist('magazineCheck')
+        result = research(formData[0], len(bookSelected), len(magazineSelected))
         return render_template('Resultats-recherche.html', result=result)
     return render_template('Recherche.html', form=form)
 
@@ -35,7 +37,7 @@ def se_connecter():
 
 @app.route('/resultats-recherche')
 def resultats_recherche():
-    return render_template('Resultats-recherche.css.html')
+    return render_template('Resultats-recherche.html')
 
 @app.route('/abonnement')
 def abonnement():

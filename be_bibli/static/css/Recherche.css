@@ -10,8 +10,18 @@
 form {
     display: flex;
     width: 50%;
+    flex-direction: column;
+}
+
+.research-zone {
+    display:flex;
 }
 
 .search-bar {
     width:  100%;
+}
+
+.checkboxes {
+    display: flex;
+    justify-content: space-around;
 }

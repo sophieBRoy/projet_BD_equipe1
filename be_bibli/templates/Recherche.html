@@ -22,8 +22,20 @@
             <div class="content">
                 <p class="title">Recherche simple</p>
                 <form method="post" action="">
-                    {{ form.research(class_='search-bar') }}
-                    {{form.submit(class_="submit-button")}}
+                    <div class="checkboxes">
+                            <p>
+                            {{ form.bookCheck.label }}
+                            {{ form.bookCheck }}
+                            </p>
+                            <p>
+                            {{ form.magazineCheck.label }}
+                            {{ form.magazineCheck }}
+                        </p>
+                    </div>
+                    <div class="research-zone">
+                        {{ form.research(class_='search-bar') }}
+                        {{ form.submit(class_="submit-button") }}
+                    </div>
                 </form>
                 <p> Pour une recherche avancée, <a href="{{ url_for('recherche_avancee') }}"> Cliquer ici</a></p>
             </div>

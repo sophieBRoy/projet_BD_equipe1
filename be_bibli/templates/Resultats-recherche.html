@@ -19,16 +19,15 @@
       </div>
         </div>
         <div class="content-container">
-            <div class="content">
-               {% for value1,value2,value3 in result %}
-                <div class="book">
-                    <img src="../static/ressources/images/imagesLivres/{{value3}}.jpg" alt="image livre" width="200">
-                    <p>{{value1}}</p>
-                    <p>{{value2}}</p>
-                </div>
-                {% endfor %}
+                <div class="content">
+                   {% for bookName,bookType,bookImageId in result %}
+                    <div class="book">
+                        <img src="../static/ressources/images/imagesLivres/{{bookImageId}}.jpg" alt="image livre" width="200">
+                        <p>{{bookName}}-{{bookType}}</p>
+                    </div>
+                    {% endfor %}
+            </div>
         </div>
         <div class="footer"></div>
-<P>PAGE QUI CONTIENT LE RÉSULTAT DE LA RECHERCHE</P>
 </body>
 </html>
