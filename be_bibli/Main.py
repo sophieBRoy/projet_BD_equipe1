@@ -28,12 +28,12 @@ def advancedResearch(title, author, typeList):
     command = "SELECT b.id, b.name, b.genre, b.image_id FROM books b WHERE b.name like '%" + title + "%' AND b.author_name like '%" + author + "%'"
     command += "AND b.genre IN ('"
 
-    for x in range(0, 6):
+    for x in range(0, 7):
         if typeList[x] == True:
             command +=  types[x] + "','"
      #si aucune donnée a été sélectionnée on prend tous
     if command[-2:] != ",'":
-        for x in range(0, 6):
+        for x in range(0, 7):
             command += types[x] + "','"
     command = command[:-2]
     command += ")"
