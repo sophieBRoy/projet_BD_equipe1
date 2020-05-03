@@ -34,6 +34,12 @@ def getMagazine(id):
     result = mycursor.fetchall()
     return result
 
+def getUser(email, password):
+    command = "SELECT * FROM Users u WHERE u.email ='" + email + "' AND u.password='" + password + "'"
+    mycursor.execute(command)
+    result = mycursor.fetchall()
+    return result
+
 
 if __name__ == '__main__':
     # INITIALISATION OF TABLES (FIRST METHOD)

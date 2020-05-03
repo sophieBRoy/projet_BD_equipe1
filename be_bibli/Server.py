@@ -1,18 +1,16 @@
 from flask import Flask, render_template, request
 from Research_form import researchForm
-from Main import research, getBook, getMagazine
+from Main import research, getBook, getMagazine, getUser
 
 
 app = Flask(__name__)
+user = getUser('james@gmail.com', 'james')
+print(user)
 app.config['SECRET_KEY'] = "password"
 
 @app.route('/')
 def accueil():
     return render_template('Accueil.html')
-
-@app.route('/profile/<int:user_id>')
-def profile(user_id):
-    return 'this is user' + str(user_id)
 
 @app.route("/Recherche",methods=['GET', 'POST'])
 def recherche():
