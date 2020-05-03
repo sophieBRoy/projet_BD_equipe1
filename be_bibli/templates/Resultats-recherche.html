@@ -23,8 +23,8 @@
                    {% for bookId, bookName,bookType,bookImageId in result %}
                     <a class="result-container" href="/location/{{bookId}}">
                         <div class="book">
-                            <img src="../static/ressources/images/imagesLivres/{{bookImageId}}.jpg" alt="image livre" width="200">
-                            <p>{{bookName}}-{{bookType}}</p>
+                            <img src="../static/ressources/images/imagesLivres/{{bookImageId}}.jpg" alt="image livre" width="200" height="300">
+                            <p>{{bookName}} <br> {{bookType}}</p>
                         </div>
                     </a>
                     {% endfor %}

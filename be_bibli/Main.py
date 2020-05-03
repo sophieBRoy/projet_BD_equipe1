@@ -12,15 +12,37 @@ mycursor = mydb.cursor()
 
 def research(query, book, magazine):
     result = []
-    if book == 1:
+    if book == 1 or (book == 0 and magazine == 0):
         command = "SELECT b.id, b.name, b.genre, b.image_id FROM books b WHERE b.name like '%" + query + "%'"
         mycursor.execute(command)
         result += mycursor.fetchall()
-    if magazine == 1:
+    if magazine == 1 or (book == 0 and magazine == 0):
         command = "SELECT m.id, m.name, m.genre, m.image_id FROM magazines m WHERE m.name like '%" + query + "%'"
         mycursor.execute(command)
         result += mycursor.fetchall()
     return result
+
+def advancedResearch(title, author, typeList):
+    result = []
+    types = ["Fantaisie", "Science-fiction", "Polar", "Classique", "Horreur", "BD", "Overrated"]
+    command = "SELECT b.id, b.name, b.genre, b.image_id FROM books b WHERE b.name like '%" + title + "%' AND b.author_name like '%" + author + "%'"
+    command += "AND b.genre IN ('"
+
+    for x in range(0, 6):
+        if typeList[x] == True:
+            command +=  types[x] + "','"
+     #si aucune donnée a été sélectionnée on prend tous
+    if command[-2:] != ",'":
+        for x in range(0, 6):
+            command += types[x] + "','"
+    command = command[:-2]
+    command += ")"
+    print(command)
+    mycursor.execute(command)
+    result = mycursor.fetchall()
+
+    return result
+
 
 def getBook(id):
     command = "SELECT * FROM Books b WHERE b.id ='" + str(id) + "'"
