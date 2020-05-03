@@ -1,100 +1,100 @@
-1;Fyodor;Dostoevsky;fd1;1821-11-11;1881-02-09;Russe
-2;Dante;Alighieri;da1;1265-01-01;1321-10-13;Italien
-3;Leo;Tolstoy;lt1;1828-10-09;1910-11-20;Russe
-4;Victor;Hugo;vh1;1802-02-26;1885-05-22;Français
-5;William;Shakespeare;ws1;1564-04-26;1616-04-23;Anglais
-6;Johann;Wolfgang von Goethe;jw1;1749-09-28;1832-03-22;Allemand
-7;Miguel;De Cervante;mc1;1547-09-29;1616-04-22;Espagnol
-8;Italo;Calvino;ic1;1923-10-15;1985-09-19;Italien
-9;Charles;Baudelaire;cb1;1821-04-09;1867-09-31;Français
-10;Marcel;Proust;mp1;1871-07-10;1922-11-18;Français
-11;Giovanni;Boccacio;gb1;1313-06-16;1375-12-21;Italien
-12;Alexander;Pushkin;ap1;1799-05-26;1837-01-29;Russe
-13;Franz;Kafka;fk1;1883-07-03;1924-06-03;Allemand
-14;Anton;Chekhov;ac1;1860-01-29;1904-06-15;Russe
-15;Gabriel Garcia;Marquez;gm1;1927-03-06;2014-04-17;Mexicain
-16;Umberto;Eco;ue1;1932-01-05;2016-02-19;Italien
-17;J.R.R;Tolkien;jt1;1892-01-03;1973-09-02;Anglais
-18;William;Faulkner;wf1;1897-09-25;1962-06-06;Americain
-19;Arthur;Rimbaud;ar1;1854-10-20;1891-11-10;Français
-20;Ivan;Turgenev;it1;1818-11-09;1883-10-03;Russe
-21;Charles;Dickens;cd1;1812-02-07;1870-06-09;Anglais
-22;Maxim;Gorky;mg1;1869-03-16;1939-06-18;Russe
-23;George;Orwell;go1;1903-06-25;1950-01-21;Anglais
-24;Edgar Allan;Poe;ep1;1809-01-19;1849-10-07;Americain
-25;Julio;Cortazar;jc1;1914-09-26;1984-02-12;Argentin
-26;Oscar;Wilde;ow1;1854-10-16;1900-11-30;Irlandais
-27;Jean;De La Fontaine;jd1;1621-10-08;1695-04-13;Français
-28;Rainer Maria;Rilke;rr1;1875-12-04;1926-12-29;Autrichien
-29;Hans Christian;Andersen;ha1;1805-04-02;1875-10-04;Danois
-30;Thomas;Mann;tm1;1875-06-06;1955-09-12;Allemand
-31;Alexandre;Dumas;ad1;1802-06-24;1870-12-05;Français
-32;James;Joyce;jj1;1882-02-02;1941-01-13;Irlandais
-33;Louis-Ferdinand;Céline;lc1;1984-05-27;1961-06-01;Français
-34;Boris;Pasternak;bp1;1890-02-10;1960-05-30;Russe
-35;Federico;Garcia Lorca;fg1;1898-06-05;1936-09-19;Espagnol
-36;Pablo;Neruda;pn1;1904-06-12;1973-09-23;Chilien
-37;Najeeb;Mahfouz;nm1;1911-12-11;2006-09-30;Egyptien
-38;Nikolay;Gogol;ng1;1809-03-20;1852-02-21;Russe
-39;Honoré;De Balzac;hb1;1799-05-20;1850-09-18;Français
-40;Ernest;Hemingway;eh1;1899-07-21;1961-06-02;Americain
-41;Neil;Gaiman;ng2;1960-11-10;NULL;Anglais
-42;Jean;Racine;jr1;1639-12-22;1699-04-21;Français
-43;Albert;Camus;ac2;1913-11-07;1960-01-04;Français
-44;Jean-Paul;Sartre;js1;1905-06-21;1980-04-15;Français
-45;Chingiz;Aitmatov;ca1;1928-12-12;2008-06-10;Russe
-46;John;Steinbeck;js2;1902-02-27;1968-12-20;Americain
-47;Milan;Kundera;mk1;1929-04-01;NULL;Tchèque
-48;Jules;Vernes;jv1;1828-02-08;1905-04-24;Français
-49;Mark;Twain;mt1;1835-11-30;1910-04-21;Americain
-50;Francois;Rabelais;fr1;1483-01-01;1553-04-14;Français
-51;Yasar;Kemal;yk1;1923-10-06;2015-02-28;Turque
-52;George;Bernard Shaw;gb2;1856-06-26;1950-11-02;Irlandais
-53;Arthur Conan;Doyle;ad2;1859-05-22;1930-07-07;Anglais
-54;Jane;Austen;ja1;1775-12-16;1817-06-18;Anglais
-55;Geoffrey;Chaucer;gc1;1340-01-01;1400-10-25;Anglais
-56;Antoine;De Saint-Exupéry;as1;1900-06-29;1944-06-31;Français
-57;Erich Maria;Remarque;er1;1898-06-22;1970-10-25;Allemand
-58;J.D.;Sallinger;js3;1919-01-01;2010-01-27;Americain
-59;Virginia;Woolf;vw1;1882-01-25;1941-04-28;Anglais
-60;Louis  ;Aragon;la1;1897-10-03;1882-12-24;Français
-61;Herman;Melville;hm1;1819-08-01;1891-09-28;Americain
-62;Alphonse;Daudet;ad3;1840-05-13;1897-12-16;Français
-63;Mikhail;Sholokhov;ms1;1905-05-24;1984-02-21;Russe
-64;Stefan;Zweig;sz1;1881-11-28;1942-02-22;Autrichien
-65;José;Saramago;js4;1922-11-16;2010-06-18;Portugais
-66;Bertolt;Brecht;bb1;1998-02-10;1956-08-14;Allemand
-67;Mario Vargas;Llosa;ml1;1936-04-28;NULL;Péruvien
-68;T.S.;Elliot;te1;1988-09-26;1965-01-04;Américain
-69;Guy;De Maupassant;gm2;1850-08-05;1893-06-06;Français
-70;John;Keats;jk1;1795-10-31;1821-02-23;Anglais
-71;Sabahattin;Ali ;sa1;1907-02-25;1948-04-02;Turque
-72;Ahmet Hamdi;Tampinar;at1;1901-06-23;1962-01-24;Turque
-73;John;Fante;jf1;1909-04-08;1983-05-08;Americain
-74;Henri-Frédéric;Blanc;hb2;1954-12-22;NULL;Français
-75;Isaac;Asimov;ia1;1920-01-02;1992-04-06;Americain
-76;Scott;Fitzgerald;sf1;1896-08-24;1940-12-21;Americain
-77;J.M.;Coetzee;jc2;1940-02-09;NULL;Sud Africain
-78;Kazuo;Ishiguro;ki1;1954-11-08;NULL;Japonais
-79;Hermann;Hesse;hh1;1877-06-02;1962-08-09;Allemand
-80;Robert Louis;Stevenson;rs1;1850-11-13;1894-12-03;Écossais
-81;Salman;Rushdie;sr1;1947-06-19;NULL;Anglais
-82;Aldous;Huxley;ah1;1963-11-22;1894-06-26;Anglais
-83;Paul;Valery;pv1;1871-10-30;1945-06-20;Français
-84;Thomas;Pynchon;tp1;1939-05-08;NULL;Americain
-85;H.P.;Lovecraft;hl1;1890-07-20;1937-03-15;Americain
-86;Haruki;Murakami;hm2;1949-01-12;NULL;Japonais
-87;Nikos;Kazantzaki;nk1;1883-02-18;1957-10-26;Grec
-88;Agatha;Christie;ac3;1890-09-15;1976-01-12;Anglaise
-89;Barbara;Cartland;bc1;1901-07-09;2000-05-21;Anglaise
-90;Danielle;Steel;ds1;1947-06-14;NULL;Americaine
-91;J.K.;Rowling;jr2;1965-07-31;NULL;Anglaise
-92;Nora;Roberts;nr1;1950-10-10;NULL;Americaine
-93;Stephen;King;sk1;1947-10-21;NULL;Americain
-94;Anne;Rice;ar2;1941-10-04;NULL;Americaine
-95;Norman ;Bridwell;nb1;1928-02-15;2014-12-12;Americain
-96;Osamu;Dazai;od1;1909-06-19;1948-06-13;Japonais
-97;Chuuya;Nakahara;cn1;1907-04-29;1937-10-22;Japonais
-98;Atsushi;Nakajima;an1;1909-05-05;1942-12-04;Japonais
-99;Akutagawa ;Ryunosuke;ra1;1982-03-01;1927-07-24;Japonais
-100;Ogai;Mori;om1;1862-02-17;1922-06-08;Japonais
+﻿Fyodor Dostoevsky;fd1;1821-11-11;1881-02-09;Russe
+Dante Alighieri;da1;1265-01-01;1321-10-13;Italien
+Leo Tolstoy;lt1;1828-10-09;1910-11-20;Russe
+Victor Hugo;vh1;1802-02-26;1885-05-22;Français
+William Shakespeare;ws1;1564-04-26;1616-04-23;Anglais
+Johann Wolfgang von Goethe;jw1;1749-09-28;1832-03-22;Allemand
+Miguel De Cervante;mc1;1547-09-29;1616-04-22;Espagnol
+Italo Calvino;ic1;1923-10-15;1985-09-19;Italien
+Charles Baudelaire;cb1;1821-04-09;1867-09-31;Français
+Marcel Proust;mp1;1871-07-10;1922-11-18;Français
+Giovanni Boccacio;gb1;1313-06-16;1375-12-21;Italien
+Alexander Pushkin;ap1;1799-05-26;1837-01-29;Russe
+Franz Kafka;fk1;1883-07-03;1924-06-03;Allemand
+Anton Chekhov;ac1;1860-01-29;1904-06-15;Russe
+Gabriel Garcia Marquez;gm1;1927-03-06;2014-04-17;Mexicain
+Umberto Eco;ue1;1932-01-05;2016-02-19;Italien
+J.R.R Tolkien;jt1;1892-01-03;1973-09-02;Anglais
+William Faulkner;wf1;1897-09-25;1962-06-06;Americain
+Arthur Rimbaud;ar1;1854-10-20;1891-11-10;Français
+Ivan Turgenev;it1;1818-11-09;1883-10-03;Russe
+Charles Dickens;cd1;1812-02-07;1870-06-09;Anglais
+Maxim Gorky;mg1;1869-03-16;1939-06-18;Russe
+George Orwell;go1;1903-06-25;1950-01-21;Anglais
+Edgar Allan Poe;ep1;1809-01-19;1849-10-07;Americain
+Julio Cortazar;jc1;1914-09-26;1984-02-12;Argentin
+Oscar Wilde;ow1;1854-10-16;1900-11-30;Irlandais 
+Jean De La Fontaine;jd1;1621-10-08;1695-04-13;Français
+Rainer Maria Rilke;rr1;1875-12-04;1926-12-29;Autrichien 
+Hans Christian Andersen;ha1;1805-04-02;1875-10-04;Danois
+Thomas Mann;tm1;1875-06-06;1955-09-12;Allemand
+Alexandre Dumas;ad1;1802-06-24;1870-12-05;Français
+James Joyce;jj1;1882-02-02;1941-01-13;Irlandais 
+Louis-Ferdinand Céline;lc1;1984-05-27;1961-06-01;Français
+Boris Pasternak;bp1;1890-02-10;1960-05-30;Russe
+Federico Garcia Lorca;fg1;1898-06-05;1936-09-19;Espagnol
+Pablo Neruda;pn1;1904-06-12;1973-09-23;Chilien 
+Najeeb Mahfouz;nm1;1911-12-11;2006-09-30;Egyptien
+Nikolay Gogol;ng1;1809-03-20;1852-02-21;Russe
+Honoré De Balzac;hb1;1799-05-20;1850-09-18;Français
+Ernest Hemingway;eh1;1899-07-21;1961-06-02;Americain
+Neil Gaiman;ng2;1960-11-10;NULL;Anglais
+Jean Racine;jr1;1639-12-22;1699-04-21;Français
+Albert Camus;ac2;1913-11-07;1960-01-04;Français
+Jean-Paul Sartre;js1;1905-06-21;1980-04-15;Français
+Chingiz Aitmatov;ca1;1928-12-12;2008-06-10;Russe
+John Steinbeck;js2;1902-02-27;1968-12-20;Americain
+Milan Kundera;mk1;1929-04-01;NULL;Tchèque
+Jules Vernes;jv1;1828-02-08;1905-04-24;Français
+Mark Twain;mt1;1835-11-30;1910-04-21;Americain
+Francois Rabelais;fr1;1483-01-01;1553-04-14;Français
+Yasar Kemal;yk1;1923-10-06;2015-02-28;Turque
+George Bernard Shaw;gb2;1856-06-26;1950-11-02;Irlandais 
+Arthur Conan Doyle;ad2;1859-05-22;1930-07-07;Anglais
+Jane Austen;ja1;1775-12-16;1817-06-18;Anglais
+Geoffrey Chaucer;gc1;1340-01-01;1400-10-25;Anglais
+Antoine De Saint-Exupéry;as1;1900-06-29;1944-06-31;Français
+Erich Maria Remarque;er1;1898-06-22;1970-10-25;Allemand
+J.D. Sallinger;js1;1919-01-01;2010-01-27;Americain
+Virginia Woolf;vw1;1882-01-25;1941-04-28;Anglais
+Louis   Aragon;la1;1897-10-03;1882-12-24;Français
+Herman Melville;hm1;1819-08-01;1891-09-28;Americain
+Alphonse Daudet;ad1;1840-05-13;1897-12-16;Français
+Mikhail Sholokhov;ms1;1905-05-24;1984-02-21;Russe
+Stefan Zweig;sz1;1881-11-28;1942-02-22;Autrichien 
+José Saramago;js2;1922-11-16;2010-06-18;Portugais 
+Bertolt Brecht;bb1;1998-02-10;1956-08-14;Allemand
+Mario Vargas Llosa;ml1;1936-04-28;NULL;Péruvien 
+T.S. Elliot;te1;1988-09-26;1965-01-04;Américain 
+Guy De Maupassant;gm2;1850-08-05;1893-06-06;Français
+John Keats;jk1;1795-10-31;1821-02-23;Anglais
+Sabahattin Ali ;sa1;1907-02-25;1948-04-02;Turque
+Ahmet Hamdi Tampinar;at1;1901-06-23;1962-01-24;Turque
+John Fante;jf1;1909-04-08;1983-05-08;Americain
+Henri-Frédéric Blanc;hb2;1954-12-22;NULL;Français
+Isaac Asimov;ia1;1920-01-02;1992-04-06;Americain
+Scott Fitzgerald;sf1;1896-08-24;1940-12-21;Americain
+J.M. Coetzee;jc2;1940-02-09;NULL;Sud Africain
+Kazuo Ishiguro;ki1;1954-11-08;NULL;Japonais
+Hermann Hesse;hh1;1877-06-02;1962-08-09;Allemand
+Robert Louis Stevenson;rs1;1850-11-13;1894-12-03;Écossais
+Salman Rushdie;sr1;1947-06-19;NULL;Anglais
+Aldous Huxley;ah1;1963-11-22;1894-06-26;Anglais
+Paul Valery;pv1;1871-10-30;1945-06-20;Français
+Thomas Pynchon;tp1;1939-05-08;NULL;Americain
+H.P. Lovecraft;hl1;1890-07-20;1937-03-15;Americain
+Haruki Murakami;hm2;1949-01-12;NULL;Japonais
+Nikos Kazantzaki;nk1;1883-02-18;1957-10-26;Grec
+Agatha Christie;ac3;1890-09-15;1976-01-12;Anglaise
+Barbara Cartland;bc1;1901-07-09;2000-05-21;Anglaise
+Danielle Steel;ds1;1947-06-14;NULL;Americaine
+J.K. Rowling;jr2;1965-07-31;NULL;Anglaise
+Nora Roberts;nr1;1950-10-10;NULL;Americaine
+Stephen King;sk1;1947-10-21;NULL;Americain
+Anne Rice;ar2;1941-10-04;NULL;Americaine
+Norman  Bridwell;nb1;1928-02-15;2014-12-12;Americain
+Osamu Dazai;od1;1909-06-19;1948-06-13;Japonais
+Chuuya Nakahara;cn1;1907-04-29;1937-10-22;Japonais
+Atsushi Nakajima;an1;1909-05-05;1942-12-04;Japonais
+Akutagawa  Ryunosuke;ra1;1982-03-01;1927-07-24;Japonais
+Ogai Mori;om1;1862-02-17;1922-06-08;Japonais

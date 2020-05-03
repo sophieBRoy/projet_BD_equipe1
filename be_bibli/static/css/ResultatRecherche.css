@@ -10,3 +10,8 @@
 .book {
  margin: 10px;
 }
+
+.result-container:hover {
+    background: grey;
+    border-radius: 10px;
+}
