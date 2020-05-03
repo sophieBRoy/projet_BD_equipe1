@@ -11,11 +11,25 @@ mycursor = mydb.cursor()
 
 
 def research(query, book, magazine):
-    command = "SELECT t.name, t.genre, t.image_id FROM texts t WHERE t.name like '%" + query + "%'"
-    if book == 0:
-        command += "AND t.type = 'magazine'"
-    if magazine == 0:
-        command += "AND t.type = 'book'"
+    result = []
+    if book == 1:
+        command = "SELECT b.id, b.name, b.genre, b.image_id FROM books b WHERE b.name like '%" + query + "%'"
+        mycursor.execute(command)
+        result += mycursor.fetchall()
+    if magazine == 1:
+        command = "SELECT m.id, m.name, m.genre, m.image_id FROM magazines m WHERE m.name like '%" + query + "%'"
+        mycursor.execute(command)
+        result += mycursor.fetchall()
+    return result
+
+def getBook(id):
+    command = "SELECT * FROM Books b WHERE b.id =" + str(id)
+    mycursor.execute(command)
+    result = mycursor.fetchall()
+    return result
+
+def getMagazine(id):
+    command = "SELECT * FROM Magazines m WHERE m.id =" + id
     mycursor.execute(command)
     result = mycursor.fetchall()
     return result
@@ -24,7 +38,7 @@ def research(query, book, magazine):
 if __name__ == '__main__':
     # INITIALISATION OF TABLES (FIRST METHOD)
     # after running this code for the first time, uncomment this line:
-    #mycursor.execute("DROP DATABASE Library")
+    mycursor.execute("DROP DATABASE Library")
 
     # create the database
     mycursor.execute("CREATE DATABASE Library")
@@ -62,31 +76,21 @@ if __name__ == '__main__':
     print("created table Users")
 
     mycursor.execute('''CREATE TABLE Authors (
-                     id INTEGER AUTO_INCREMENT PRIMARY KEY,
-                     first_name VARCHAR(255) NOT NULL,
-                     last_name VARCHAR(255) NOT NULL,
+                     name VARCHAR(50) PRIMARY KEY,
                      image_id CHAR(3) UNIQUE,
                      birth DATE NOT NULL,
                      death DATE,
                      nationality VARCHAR(255) NOT NULL)''')
     print("created table Authors")
 
-    mycursor.execute('''CREATE TABLE Texts (
-                     id INTEGER AUTO_INCREMENT PRIMARY KEY,
-                     name VARCHAR(255) NOT NULL,
-                     image_id VARCHAR(255),
-                     genre VARCHAR(50) NOT NULL,
-                     type VARCHAR(50) NOT NULL)''')
-    print("created table Texts")
-
     mycursor.execute('''CREATE TABLE Books (
                      id INTEGER PRIMARY KEY,
                      publishing_date DATE NOT NULL,
-                     a_id INTEGER NOT NULL,
-                     FOREIGN KEY(a_id) REFERENCES Authors(id)
-                     ON UPDATE CASCADE
-                     ON DELETE CASCADE,
-                     FOREIGN KEY(id) REFERENCES Texts(id)
+                     author_name VARCHAR(50) NOT NULL,
+                     name VARCHAR(255) NOT NULL,
+                     image_id VARCHAR(255),
+                     genre VARCHAR(50) NOT NULL,
+                     FOREIGN KEY(author_name) REFERENCES Authors(name)
                      ON UPDATE CASCADE
                      ON DELETE CASCADE)''')
     print("created table Books")
@@ -112,16 +116,16 @@ if __name__ == '__main__':
                      ''')
     print("created table Locations")
 
-    mycursor.execute('''CREATE TABLE Magasines (
+    mycursor.execute('''CREATE TABLE Magazines (
                      id INTEGER PRIMARY KEY,
+                     name VARCHAR(255) NOT NULL,
+                     image_id VARCHAR(255),
+                     genre VARCHAR(50) NOT NULL,
                      number INTEGER NOT NULL,
                      month VARCHAR(10) NOT NULL,
                      year INTEGER NOT NULL,
-                     quantity INTEGER NOT NULL,
-                     FOREIGN KEY(id) REFERENCES Texts(id)
-                     ON UPDATE CASCADE
-                     ON DELETE CASCADE)''')
-    print("created table Magasines")
+                     quantity INTEGER NOT NULL)''')
+    print("created table Magazines")
     # TRIGGERS (SECOND METHOD)
     # someone needs to be at least 10 to rent a book and cant be older than 117 years old
     mycursor.execute('''CREATE TRIGGER ageLimits
@@ -173,11 +177,17 @@ if __name__ == '__main__':
            LINES TERMINATED BY "\r\n" ''')
     print("Filled Authors")
 
-    # fills texts
-    mycursor.execute('''LOAD DATA LOCAL INFILE "data/texts.txt" INTO TABLE texts
+    # fills books
+    mycursor.execute('''LOAD DATA LOCAL INFILE "data/books.txt" INTO TABLE books
             COLUMNS TERMINATED BY ";"
            LINES TERMINATED BY "\r\n" ''')
-    print("Filled Texts")
+    print("Filled Books")
+
+    #fill magazines
+    mycursor.execute('''LOAD DATA LOCAL INFILE "data/magazines.txt" INTO TABLE magazines
+            COLUMNS TERMINATED BY ";"
+           LINES TERMINATED BY "\r\n" ''')
+    print("Filled Magazines")
 
     mydb.commit()
     mycursor.close()

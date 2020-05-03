@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from Research_form import researchForm
-from Main import research
+from Main import research, getBook, getMagazine
 
 
 app = Flask(__name__)
@@ -29,6 +29,15 @@ def recherche():
 def nous_joindre():
     return render_template('Nous-joindre.html')
 
+@app.route("/books",methods=['GET'])
+def books():
+    result = research('', 1, 0)
+    return render_template('Resultats-recherche.html', result=result)
+
+@app.route("/magazines",methods=['GET'])
+def magazines():
+    result = research('', 0, 1)
+    return render_template('Resultats-recherche.html', result=result)
 
 #load login page
 @app.route("/se-connecter", methods=['GET'])
@@ -46,6 +55,11 @@ def abonnement():
 @app.route('/Recherche-avancee', methods=['GET'])
 def recherche_avancee():
     return render_template('Recherche-avancee.html')
+
+@app.route('/location/<bookId>', methods=['GET'])
+def location(bookId):
+    result = getBook(bookId)
+    return render_template('Location.html', result=result)
 
 #traitement de login page
 #@app.route("/login", methods=['POST'])

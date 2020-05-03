@@ -1,0 +1,100 @@
+﻿1;national geographic 1;ng1;Découvertes;1;may;2000;10
+2;national geographic 2;ng2;Découvertes;2;may;2000;10
+3;national geographic 3;ng3;Découvertes;3;may;2000;10
+4;national geographic 4;ng4;Découvertes;4;may;2000;10
+5;national geographic 5;ng5;Découvertes;5;may;2000;10
+6;national geographic 6;ng6;Découvertes;6;may;2000;10
+7;national geographic 7;ng7;Découvertes;7;may;2000;10
+8;national geographic 8;ng8;Découvertes;8;may;2000;10
+9;national geographic 9;ng9;Découvertes;9;may;2000;10
+10;national geographic 10;ng10;Découvertes;10;may;2000;10
+11;national geographic 11;ng11;Découvertes;11;may;2000;10
+12;national geographic 12;ng12;Découvertes;12;may;2000;10
+13;national geographic 13;ng13;Découvertes;13;may;2000;10
+14;national geographic 14;ng14;Découvertes;14;may;2000;10
+15;national geographic 15;ng15;Découvertes;15;may;2000;10
+16;national geographic 16;ng16;Découvertes;16;may;2000;10
+17;national geographic 17;ng17;Découvertes;17;may;2000;10
+18;national geographic 18;ng18;Découvertes;18;may;2000;10
+19;national geographic 19;ng19;Découvertes;19;may;2000;10
+20;national geographic 20;ng20;Découvertes;20;may;2000;10
+21;Marie Claire 1;mc1;Mode;1;may;2000;10
+22;Marie Claire 2;mc2;Mode;2;may;2000;10
+23;Marie Claire 3;mc3;Mode;3;may;2000;10
+24;Marie Claire 4;mc4;Mode;4;may;2000;10
+25;Marie Claire 5;mc5;Mode;5;may;2000;10
+26;Marie Claire 6;mc6;Mode;6;may;2000;10
+27;Marie Claire 7;mc7;Mode;7;may;2000;10
+28;Marie Claire 8;mc8;Mode;8;may;2000;10
+29;Marie Claire 9;mc9;Mode;9;may;2000;10
+30;Marie Claire 10;mc10;Mode;10;may;2000;10
+31;Vogue 1;v1;Mode;1;may;2000;10
+32;Vogue 2;v2;Mode;2;may;2000;10
+33;Vogue 3;v3;Mode;3;may;2000;10
+34;Vogue 4;v4;Mode;4;may;2000;10
+35;Vogue 5;v5;Mode;5;may;2000;10
+36;Vogue 6;v6;Mode;6;may;2000;10
+37;Vogue 7;v7;Mode;7;may;2000;10
+38;Vogue 8;v8;Mode;8;may;2000;10
+39;Vogue 9;v9;Mode;9;may;2000;10
+40;Vogue 10;v10;Mode;10;may;2000;10
+41;Nature 1;n1;Science ;1;may;2000;10
+42;Nature 2;n2;Science ;2;may;2000;10
+43;Nature 3;n3;Science ;3;may;2000;10
+44;Nature 4;n4;Science ;4;may;2000;10
+45;Nature 5;n5;Science ;5;may;2000;10
+46;Nature 6;n6;Science ;6;may;2000;10
+47;Nature 7;n7;Science ;7;may;2000;10
+48;Nature 8;n8;Science ;8;may;2000;10
+49;Nature 9;n9;Science ;9;may;2000;10
+50;Nature 10;n10;Science ;10;may;2000;10
+51;Nature 11;n11;Science ;11;may;2000;10
+52;Nature 12;n12;Science ;12;may;2000;10
+53;Nature 13;n13;Science ;13;may;2000;10
+54;Nature 14;n14;Science ;14;may;2000;10
+55;Nature 15;n15;Science ;15;may;2000;10
+56;Cooking Light 1;cl1;Cuisine;1;may;2000;10
+57;Cooking Light 2;cl2;Cuisine;2;may;2000;10
+58;Cooking Light 3;cl3;Cuisine;3;may;2000;10
+59;Cooking Light 4;cl4;Cuisine;4;may;2000;10
+60;Cooking Light 5;cl5;Cuisine;5;may;2000;10
+61;Cooking Light 6;cl6;Cuisine;6;may;2000;10
+62;Cooking Light 7;cl7;Cuisine;7;may;2000;10
+63;Cooking Light 8;cl8;Cuisine;8;may;2000;10
+64;Cooking Light 9;cl9;Cuisine;9;may;2000;10
+65;Cooking Light 10;cl10;Cuisine;10;may;2000;10
+66;Cooking Light 11;cl11;Cuisine;11;may;2000;10
+67;Cooking Light 12;cl12;Cuisine;12;may;2000;10
+68;Cooking Light 13;cl13;Cuisine;13;may;2000;10
+69;Cooking Light 14;cl14;Cuisine;14;may;2000;10
+70;Cooking Light 15;cl15;Cuisine;15;may;2000;10
+71;Cooking Light 16;cl16;Cuisine;16;may;2000;10
+72;Cooking Light 17;cl17;Cuisine;17;may;2000;10
+73;Cooking Light 18;cl18;Cuisine;18;may;2000;10
+74;Cooking Light 19;cl19;Cuisine;19;may;2000;10
+75;Cooking Light 20;cl20;Cuisine;20;may;2000;10
+76;Canadian Art 1;ca1;Art;1;may;2000;10
+77;Canadian Art 2;ca2;Art;2;may;2000;10
+78;Canadian Art 3;ca3;Art;3;may;2000;10
+79;Canadian Art 4;ca4;Art;4;may;2000;10
+80;Canadian Art 5;ca5;Art;5;may;2000;10
+81;Canadian Art 6;ca6;Art;6;may;2000;10
+82;Canadian Art 7;ca7;Art;7;may;2000;10
+83;Canadian Art 8;ca8;Art;8;may;2000;10
+84;Canadian Art 9;ca9;Art;9;may;2000;10
+85;Canadian Art 10;ca10;Art;10;may;2000;10
+86;Witch mag 1;wm1;Ado;1;may;2000;10
+87;Witch mag 2;wm2;Ado;2;may;2000;10
+88;Witch mag 3;wm3;Ado;3;may;2000;10
+89;Witch mag 4;wm4;Ado;4;may;2000;10
+90;Witch mag 5;wm5;Ado;5;may;2000;10
+91;Debrouillards 1;d1;Ado;1;may;2000;10
+92;Debrouillards 2;d2;Ado;2;may;2000;10
+93;Debrouillards 3;d3;Ado;3;may;2000;10
+94;Debrouillards 4;d4;Ado;4;may;2000;10
+95;Debrouillards 5;d5;Ado;5;may;2000;10
+96;Debrouillards 6;d6;Ado;6;may;2000;10
+97;Debrouillards 7;d7;Ado;7;may;2000;10
+98;Debrouillards 8;d8;Ado;8;may;2000;10
+99;Debrouillards 9;d9;Ado;9;may;2000;10
+100;Debrouillards 10;d10;Ado;10;may;2000;10

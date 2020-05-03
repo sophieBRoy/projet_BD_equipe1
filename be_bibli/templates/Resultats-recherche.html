@@ -20,11 +20,13 @@
         </div>
         <div class="content-container">
                 <div class="content">
-                   {% for bookName,bookType,bookImageId in result %}
-                    <div class="book">
-                        <img src="../static/ressources/images/imagesLivres/{{bookImageId}}.jpg" alt="image livre" width="200">
-                        <p>{{bookName}}-{{bookType}}</p>
-                    </div>
+                   {% for bookId, bookName,bookType,bookImageId in result %}
+                    <a class="result-container" href="/location/{{bookId}}">
+                        <div class="book">
+                            <img src="../static/ressources/images/imagesLivres/{{bookImageId}}.jpg" alt="image livre" width="200">
+                            <p>{{bookName}}-{{bookType}}</p>
+                        </div>
+                    </a>
                     {% endfor %}
             </div>
         </div>
