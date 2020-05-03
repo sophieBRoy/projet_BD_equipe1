@@ -23,13 +23,13 @@ def research(query, book, magazine):
     return result
 
 def getBook(id):
-    command = "SELECT * FROM Books b WHERE b.id =" + str(id)
+    command = "SELECT * FROM Books b WHERE b.id ='" + str(id) + "'"
     mycursor.execute(command)
     result = mycursor.fetchall()
     return result
 
 def getMagazine(id):
-    command = "SELECT * FROM Magazines m WHERE m.id =" + id
+    command = "SELECT * FROM Magazines m WHERE m.id ='" + str(id) + "'"
     mycursor.execute(command)
     result = mycursor.fetchall()
     return result
@@ -84,7 +84,7 @@ if __name__ == '__main__':
     print("created table Authors")
 
     mycursor.execute('''CREATE TABLE Books (
-                     id INTEGER PRIMARY KEY,
+                     id VARCHAR(10) PRIMARY KEY,
                      publishing_date DATE NOT NULL,
                      author_name VARCHAR(50) NOT NULL,
                      name VARCHAR(255) NOT NULL,
@@ -97,7 +97,7 @@ if __name__ == '__main__':
 
     mycursor.execute('''CREATE TABLE Copies (
                      id INTEGER AUTO_INCREMENT PRIMARY KEY,
-                     b_id INTEGER NOT NULL,
+                     b_id VARCHAR(10) NOT NULL,
                      status BOOL NOT NULL,
                      FOREIGN KEY(b_id) REFERENCES Books(id)
                      ON UPDATE CASCADE
@@ -117,7 +117,7 @@ if __name__ == '__main__':
     print("created table Locations")
 
     mycursor.execute('''CREATE TABLE Magazines (
-                     id INTEGER PRIMARY KEY,
+                     id VARCHAR(10) PRIMARY KEY,
                      name VARCHAR(255) NOT NULL,
                      image_id VARCHAR(255),
                      genre VARCHAR(50) NOT NULL,

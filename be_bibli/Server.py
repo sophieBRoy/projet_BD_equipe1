@@ -58,8 +58,14 @@ def recherche_avancee():
 
 @app.route('/location/<bookId>', methods=['GET'])
 def location(bookId):
-    result = getBook(bookId)
-    return render_template('Location.html', result=result)
+    if bookId[0] == "b":
+        result = getBook(bookId)
+        return render_template('Location.html', result=result)
+    else:
+        result=getMagazine(bookId)
+        return render_template('Achat.html', result=result)
+
+
 
 #traitement de login page
 #@app.route("/login", methods=['POST'])

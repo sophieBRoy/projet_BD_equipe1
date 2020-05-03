@@ -1,13 +1,13 @@
 ﻿Fyodor Dostoevsky;fd1;1821-11-11;1881-02-09;Russe
 Dante Alighieri;da1;1265-01-01;1321-10-13;Italien
 Leo Tolstoy;lt1;1828-10-09;1910-11-20;Russe
-Victor Hugo;vh1;1802-02-26;1885-05-22;Français
+Victor Hugo;vh1;1802-02-26;1885-05-22;Francais
 William Shakespeare;ws1;1564-04-26;1616-04-23;Anglais
 Johann Wolfgang von Goethe;jw1;1749-09-28;1832-03-22;Allemand
 Miguel De Cervante;mc1;1547-09-29;1616-04-22;Espagnol
 Italo Calvino;ic1;1923-10-15;1985-09-19;Italien
-Charles Baudelaire;cb1;1821-04-09;1867-09-31;Français
-Marcel Proust;mp1;1871-07-10;1922-11-18;Français
+Charles Baudelaire;cb1;1821-04-09;1867-09-31;Francais
+Marcel Proust;mp1;1871-07-10;1922-11-18;Francais
 Giovanni Boccacio;gb1;1313-06-16;1375-12-21;Italien
 Alexander Pushkin;ap1;1799-05-26;1837-01-29;Russe
 Franz Kafka;fk1;1883-07-03;1924-06-03;Allemand
@@ -16,7 +16,7 @@ Gabriel Garcia Marquez;gm1;1927-03-06;2014-04-17;Mexicain
 Umberto Eco;ue1;1932-01-05;2016-02-19;Italien
 J.R.R Tolkien;jt1;1892-01-03;1973-09-02;Anglais
 William Faulkner;wf1;1897-09-25;1962-06-06;Americain
-Arthur Rimbaud;ar1;1854-10-20;1891-11-10;Français
+Arthur Rimbaud;ar1;1854-10-20;1891-11-10;Francais
 Ivan Turgenev;it1;1818-11-09;1883-10-03;Russe
 Charles Dickens;cd1;1812-02-07;1870-06-09;Anglais
 Maxim Gorky;mg1;1869-03-16;1939-06-18;Russe
@@ -24,54 +24,54 @@ George Orwell;go1;1903-06-25;1950-01-21;Anglais
 Edgar Allan Poe;ep1;1809-01-19;1849-10-07;Americain
 Julio Cortazar;jc1;1914-09-26;1984-02-12;Argentin
 Oscar Wilde;ow1;1854-10-16;1900-11-30;Irlandais 
-Jean De La Fontaine;jd1;1621-10-08;1695-04-13;Français
+Jean De La Fontaine;jd1;1621-10-08;1695-04-13;Francais
 Rainer Maria Rilke;rr1;1875-12-04;1926-12-29;Autrichien 
 Hans Christian Andersen;ha1;1805-04-02;1875-10-04;Danois
 Thomas Mann;tm1;1875-06-06;1955-09-12;Allemand
-Alexandre Dumas;ad1;1802-06-24;1870-12-05;Français
+Alexandre Dumas;ad1;1802-06-24;1870-12-05;Francais
 James Joyce;jj1;1882-02-02;1941-01-13;Irlandais 
-Louis-Ferdinand Céline;lc1;1984-05-27;1961-06-01;Français
+Louis-Ferdinand Céline;lc1;1984-05-27;1961-06-01;Francais
 Boris Pasternak;bp1;1890-02-10;1960-05-30;Russe
 Federico Garcia Lorca;fg1;1898-06-05;1936-09-19;Espagnol
 Pablo Neruda;pn1;1904-06-12;1973-09-23;Chilien 
 Najeeb Mahfouz;nm1;1911-12-11;2006-09-30;Egyptien
 Nikolay Gogol;ng1;1809-03-20;1852-02-21;Russe
-Honoré De Balzac;hb1;1799-05-20;1850-09-18;Français
+Honoré De Balzac;hb1;1799-05-20;1850-09-18;Francais
 Ernest Hemingway;eh1;1899-07-21;1961-06-02;Americain
 Neil Gaiman;ng2;1960-11-10;NULL;Anglais
-Jean Racine;jr1;1639-12-22;1699-04-21;Français
-Albert Camus;ac2;1913-11-07;1960-01-04;Français
-Jean-Paul Sartre;js1;1905-06-21;1980-04-15;Français
+Jean Racine;jr1;1639-12-22;1699-04-21;Francais
+Albert Camus;ac2;1913-11-07;1960-01-04;Francais
+Jean-Paul Sartre;js1;1905-06-21;1980-04-15;Francais
 Chingiz Aitmatov;ca1;1928-12-12;2008-06-10;Russe
 John Steinbeck;js2;1902-02-27;1968-12-20;Americain
 Milan Kundera;mk1;1929-04-01;NULL;Tchèque
-Jules Vernes;jv1;1828-02-08;1905-04-24;Français
+Jules Vernes;jv1;1828-02-08;1905-04-24;Francais
 Mark Twain;mt1;1835-11-30;1910-04-21;Americain
-Francois Rabelais;fr1;1483-01-01;1553-04-14;Français
+Francois Rabelais;fr1;1483-01-01;1553-04-14;Francais
 Yasar Kemal;yk1;1923-10-06;2015-02-28;Turque
 George Bernard Shaw;gb2;1856-06-26;1950-11-02;Irlandais 
 Arthur Conan Doyle;ad2;1859-05-22;1930-07-07;Anglais
 Jane Austen;ja1;1775-12-16;1817-06-18;Anglais
 Geoffrey Chaucer;gc1;1340-01-01;1400-10-25;Anglais
-Antoine De Saint-Exupéry;as1;1900-06-29;1944-06-31;Français
+Antoine De Saint-Exupéry;as1;1900-06-29;1944-06-31;Francais
 Erich Maria Remarque;er1;1898-06-22;1970-10-25;Allemand
 J.D. Sallinger;js1;1919-01-01;2010-01-27;Americain
 Virginia Woolf;vw1;1882-01-25;1941-04-28;Anglais
-Louis   Aragon;la1;1897-10-03;1882-12-24;Français
+Louis   Aragon;la1;1897-10-03;1882-12-24;Francais
 Herman Melville;hm1;1819-08-01;1891-09-28;Americain
-Alphonse Daudet;ad1;1840-05-13;1897-12-16;Français
+Alphonse Daudet;ad1;1840-05-13;1897-12-16;Francais
 Mikhail Sholokhov;ms1;1905-05-24;1984-02-21;Russe
 Stefan Zweig;sz1;1881-11-28;1942-02-22;Autrichien 
 José Saramago;js2;1922-11-16;2010-06-18;Portugais 
 Bertolt Brecht;bb1;1998-02-10;1956-08-14;Allemand
 Mario Vargas Llosa;ml1;1936-04-28;NULL;Péruvien 
 T.S. Elliot;te1;1988-09-26;1965-01-04;Américain 
-Guy De Maupassant;gm2;1850-08-05;1893-06-06;Français
+Guy De Maupassant;gm2;1850-08-05;1893-06-06;Francais
 John Keats;jk1;1795-10-31;1821-02-23;Anglais
 Sabahattin Ali ;sa1;1907-02-25;1948-04-02;Turque
 Ahmet Hamdi Tampinar;at1;1901-06-23;1962-01-24;Turque
 John Fante;jf1;1909-04-08;1983-05-08;Americain
-Henri-Frédéric Blanc;hb2;1954-12-22;NULL;Français
+Henri-Frédéric Blanc;hb2;1954-12-22;NULL;Francais
 Isaac Asimov;ia1;1920-01-02;1992-04-06;Americain
 Scott Fitzgerald;sf1;1896-08-24;1940-12-21;Americain
 J.M. Coetzee;jc2;1940-02-09;NULL;Sud Africain
@@ -80,7 +80,7 @@ Hermann Hesse;hh1;1877-06-02;1962-08-09;Allemand
 Robert Louis Stevenson;rs1;1850-11-13;1894-12-03;Écossais
 Salman Rushdie;sr1;1947-06-19;NULL;Anglais
 Aldous Huxley;ah1;1963-11-22;1894-06-26;Anglais
-Paul Valery;pv1;1871-10-30;1945-06-20;Français
+Paul Valery;pv1;1871-10-30;1945-06-20;Francais
 Thomas Pynchon;tp1;1939-05-08;NULL;Americain
 H.P. Lovecraft;hl1;1890-07-20;1937-03-15;Americain
 Haruki Murakami;hm2;1949-01-12;NULL;Japonais
