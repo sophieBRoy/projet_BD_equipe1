@@ -1,7 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request,redirect
 from Research_form import researchForm
+from log import LogForm
 from Main import research, getBook, getMagazine
-
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "password"
@@ -25,6 +25,18 @@ def recherche():
         return render_template('Resultats-recherche.html', result=result)
     return render_template('Recherche.html', form=form)
 
+#load login page
+@app.route("/se-connecter", methods=['GET','POST'])
+def se_connecter():
+    form = LogForm()
+    if form.is_submitted():
+        result = request.form
+        #courrielSaisie = request.form.getlist('nomUser')
+        #MdpSaisie = request.form.getlist('passUser')
+        #fonction qui traite les saisie
+        return render_template('Profil_utilisateur.html', result=result)
+    return render_template('Se-connecter.html', form=form)
+
 @app.route("/nous-joindre",methods=['GET'])
 def nous_joindre():
     return render_template('Nous-joindre.html')
@@ -39,10 +51,9 @@ def magazines():
     result = research('', 0, 1)
     return render_template('Resultats-recherche.html', result=result)
 
-#load login page
-@app.route("/se-connecter", methods=['GET'])
-def se_connecter():
-    return render_template('Se-connecter.html')
+@app.route("/Profil_utilisateur.html")
+def utilisateur():
+    return render_template('Profil_utilisateur.html')
 
 @app.route('/resultats-recherche')
 def resultats_recherche():
@@ -61,33 +72,7 @@ def location(bookId):
     result = getBook(bookId)
     return render_template('Location.html', result=result)
 
-#traitement de login page
-#@app.route("/login", methods=['POST'])
-#def login():
- #   if request.method == 'POST':
-  #      courriel = request.form['courriel']
-   #     passe = request.form['password']
-    #    conn = pymysql.connect(host='localhost', user='root', password='tomato', db='library')
-#
- #       cmd = "SELECT motpasse FROM utilisateurs WHERE courriel= %s"['courriel']
-  #      cur = conn.cursor()
-   #     cur.execute(cmd)
-    #    passeVrai = cur.fetchone()
-#
- #       if (passeVrai != None) and (passe == passeVrai[0]):
-  #          cmd = "SELECT * FROM utilisateurs WHERE courriel= %s"['courriel']
-   #         cur = conn.cursor()
-    #        cur.execute(cmd)
-     #       info = cur.fetchone()
-      #      global ProfileUtilisateur
-       #     ProfileUtilisateur["courriel"] = courriel
-        #    ProfileUtilisateur["nom"] = info[2]
-         #   #ProfileUtilisateur["avatar"] = info[3]
-          #  return render_template('Profil-utilisateur.html', profile=ProfileUtilisateur)#crée la page profil utilisateurs
-    #return render_template('login.html', message="Informations invalides!")
-
-
 
 if __name__=='__main__':
-    app.run()
+    app.run(debug=True)
 

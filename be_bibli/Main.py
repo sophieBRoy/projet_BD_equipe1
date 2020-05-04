@@ -34,6 +34,64 @@ def getMagazine(id):
     result = mycursor.fetchall()
     return result
 
+def GetUser(mail, passWord):
+    result=[]
+    # si la saisie est VIDE retourner false /testé
+    if mail.isspace() is True and passWord.isspace() is True:
+        result = "Votre saisie est vide"
+        #return result
+
+    #sinon traiter la saisie
+    else:
+        #recupérer les donnée des fonctions GetEmail et GetPassWord/TESTÉ
+        resultatmail= GetEmail(mail)
+        resultatpassword=GetPassWord(passWord)
+
+        #si les deux fonctions retourne False (c est a dire que la saisie ne concorde pas avec une des entrées de la table users) alors on retourne False/TESTÉ
+        if resultatmail[0] is False or resultatpassword is False:
+            result ="votre courriel ou mot de passe est incorrect, veuillez les saisir de nouveau"
+            #return result
+
+        #tester si les deux ID concorde/TESTÉ
+        elif resultatpassword[0] != resultatmail[0]:
+            result = ('votre mot de passe ne concorde pas avec votre courriel, veuillez saisir les identifiants de nouveau ')
+            #return result
+        else:
+            #cas ou les deux entrées concorde et récupérer le ID
+            command = ("SELECT u.id FROM Users u WHERE u.email like %s AND u.password like %s")
+            mycursor.execute(command, (mail, passWord))
+            result = mycursor.fetchone()
+
+    return result
+
+
+def GetEmail(mail):
+
+    command = ("SELECT u.id FROM Users u WHERE u.email like'%" + mail + "%'")
+    mycursor.execute(command)
+    result = mycursor.fetchone()
+    if result is None:
+        result ="Le courriel saisie n'éxiste pas"
+        return False, result
+    return result
+
+#ne doit pas afficher un message
+def GetPassWord(passWord):
+    command = ("SELECT u.id FROM Users u WHERE u.password like '%" + passWord + "%'")
+    mycursor.execute(command, passWord)
+    result = mycursor.fetchone()
+    if result is None:
+        return False
+    return result
+
+
+#l=GetEmail('sapien.gravida.non@luctusetultrices.org')
+#print(l[0])
+
+#print(GetEmail('sapien.gravida.non@luctusetultrices.org'))
+#print(GetPassWord('netus'))
+
+print(GetUser('sapien.gravida.non@luctusetultrices.org','netus'))
 
 if __name__ == '__main__':
     # INITIALISATION OF TABLES (FIRST METHOD)

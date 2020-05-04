@@ -24,14 +24,21 @@
 </div>
 <div class="content-container">
     <div class="content">
-        <form method="post">
-            <p class="title"> Connexion </p>
-            <label><b> Courriel </b></label>
-            <input class="search-bar" type="text" placeholder="Entrer le courriel" name="courriel">
-            <label><b> Mot de passe</b></label>
-            <input class="search-bar" placeholder="Entrer votre mot de passe" type="password" name="password">
-            <input class="submit-button"   type="submit" value="Identification" name="soumettre">
+        <form method="post" action=>
+            <p>
+                {{ form.nomUser.label }}
+                {{ form.nomUser(class_='search-bar') }}
+
+                {{ form.passUser.label }}
+                {{ form.passUser(class_='search-bar') }}
+
+
+                 {{ form.submit.label }}
+                 {{ form.submit(class_="submit-button") }}
+            </p>
+
         </form>
+
         <P class="no-account">Pas de compte? <a href="{{ url_for('abonnement') }}">Cliquer ici</a></P>
         {% if message %}
         <div >{{ message }}"</div>

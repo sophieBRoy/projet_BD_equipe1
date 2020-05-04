@@ -3,8 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Utilisateurs</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/GeneralStyling.css') }}">
+    <script type="text/javascript"></script>
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <body>
+<div class="top-container">
+    <div class="header" >
+        <p>Bibliothèque en ligne</p>
+    </div>
+    <div class="navigation-bar">
+        <a class="header-button" href="{{ url_for('accueil')}}"><div >Accueil</div></a>
+        <a class="header-button" href="{{ url_for('recherche')}}"><div >Recherche</div></a>
+        <a class="header-button" href="{{ url_for('se_connecter') }}"><div>Se connecter</div></a>
+        <a class="header-button" href="{{ url_for('nous_joindre') }}"><div >Nous joindre</div></a>
+     </div>
+</div>
+
+<table border="1">
+    {% for k, i in result.items() %}
+    <tr>
+        <th>
+            {{k}}
+        </th>
+        <td>
+            {{i}}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<div class="footer"></div>
 
 </body>
 </html>
