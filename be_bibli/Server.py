@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request,redirect
 from Research_form import researchForm
 from log import LogForm
-from Main import research, getBook, getMagazine
+from Main import research, getBook, getMagazine, GetUser
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "password"
@@ -22,20 +22,25 @@ def recherche():
         bookSelected = request.form.getlist('bookCheck')
         magazineSelected = request.form.getlist('magazineCheck')
         result = research(formData[0], len(bookSelected), len(magazineSelected))
+        print(result)
         return render_template('Resultats-recherche.html', result=result)
     return render_template('Recherche.html', form=form)
 
 #load login page
 @app.route("/se-connecter", methods=['GET','POST'])
 def se_connecter():
+    message=""
     form = LogForm()
     if form.is_submitted():
-        result = request.form
-        #courrielSaisie = request.form.getlist('nomUser')
-        #MdpSaisie = request.form.getlist('passUser')
+        courriel = request.form.getlist('nomUser')
+        motdePass = request.form.getlist('passUser')
         #fonction qui traite les saisie
-        return render_template('Profil_utilisateur.html', result=result)
-    return render_template('Se-connecter.html', form=form)
+        result = GetUser(courriel[0],motdePass[0])
+        if len(result) == 1:
+            return render_template('Profil_utilisateur.html', result=result)
+        else:
+            message += result
+    return render_template('Se-connecter.html', form=form, )
 
 @app.route("/nous-joindre",methods=['GET'])
 def nous_joindre():

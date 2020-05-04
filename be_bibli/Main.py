@@ -7,7 +7,7 @@ mydb = mysql.connector.connect(
     database="library"
 )
 
-mycursor = mydb.cursor()
+mycursor = mydb.cursor(buffered=True)
 
 
 def research(query, book, magazine):
@@ -85,13 +85,13 @@ def GetPassWord(passWord):
     return result
 
 
-#l=GetEmail('sapien.gravida.non@luctusetultrices.org')
+#l=GetEmail('non@eleifendnunc.ne')
 #print(l[0])
 
 #print(GetEmail('sapien.gravida.non@luctusetultrices.org'))
-#print(GetPassWord('netus'))
+#print(GetPassWord('enim'))
 
-print(GetUser('sapien.gravida.non@luctusetultrices.org','netus'))
+#print(GetUser('non@eleifendnunc.net','enim'))
 
 if __name__ == '__main__':
     # INITIALISATION OF TABLES (FIRST METHOD)
