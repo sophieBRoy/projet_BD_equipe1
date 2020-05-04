@@ -38,18 +38,21 @@ def se_connecter():
         motdePass = request.form.getlist('passUser')
         #fonction qui traite les saisie
         resultat= GetUser(courriel[0], motdePass[0])
-        resultat1.append(resultat[0])
+
         if resultat is not False:
+            resultat1.append(resultat[0])
             return redirect(url_for('utilisateur'))
         else:
+
             message += "veuillez saisir les données de nouveau"
 
     return render_template('Se-connecter.html', form=form, message=message)
 
 @app.route("/Profil_utilisateur")
 def utilisateur():
-    print(resultat1)
-    resultat=GetInfoUtilisateur(resultat1[0])
+   # print(resultat1)
+    resultat=[]
+    resultat += GetInfoUtilisateur(resultat1[0])
     print(resultat)
     return render_template('Profil_utilisateur.html', resultat=resultat)
 

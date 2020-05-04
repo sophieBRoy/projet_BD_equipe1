@@ -30,3 +30,7 @@ form {
 .title {
     margin-bottom: 0;
 }
+.dialogue
+{
+    flex-grow:0;
+}

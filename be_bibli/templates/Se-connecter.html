@@ -25,18 +25,22 @@
 <div class="content-container">
     <div class="content">
         <form method="post" action="">
-            <p>
+            <div class="dialogue">
+                <p>
+                    {{ form.nomUser.label }}
+                    {{ form.nomUser(class_="search-bar") }}
+                </p>
+                <p>
+                    {{ form.passUser.label }}
+                    {{ form.passUser(class_="search-bar") }}
 
-                {{ form.nomUser.label }}
-                {{ form.nomUser(class_="search-bar") }}
+                </p>
+                <p>
+                    {{ form.submit.label }}
+                    {{ form.submit(class_="submit-button") }}
+                </p>
 
-                {{ form.passUser.label }}
-                {{ form.passUser(class_="search-bar") }}
-
-
-                 {{ form.submit.label }}
-                 {{ form.submit(class_="submit-button") }}
-            </p>
+            </div>
 
         </form>
 

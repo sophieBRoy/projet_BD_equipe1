@@ -85,9 +85,11 @@ def GetPassWord(passWord):
 def GetInfoUtilisateur(id):
     result = []
     print(id)
-    command = ("SELECT u.first_name, u.last_name, u.age, u.adress_id, u.email, u.admin FROM Users u WHERE u.id like '%" + str(id) + "%'")
+    command = ("SELECT u.id, u.first_name, u.last_name, u.age, u.email, u.admin FROM Users u WHERE u.id like '%" + str(id) + "%'")
     mycursor.execute(command)
     result += mycursor.fetchone()
+
+
     return result
 
 print(GetInfoUtilisateur(1))

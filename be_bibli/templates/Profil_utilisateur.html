@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Utilisateurs</title>
      <link rel="stylesheet" href="{{ url_for('static', filename='css/GeneralStyling.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ResultatRecherche.css') }}">
     <script type="text/javascript"></script>
      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
@@ -20,18 +21,26 @@
      </div>
 </div>
 
-<table border="1">
-    {% for k,i in resultat%}
-    <tr>
-        <th>
-            {{k}}
-        </th>
-        <td>
-            {{i}}
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+<div class="content-container">
+    <div class="content">
+         <div class="result-container">
+             <p>Coordonnée</p>
+             <p>Votre Id:&nbsp;{{ resultat[0]}}</p>
+             <p>Prenom:&nbsp;{{ resultat[1]}}</p>
+             <p>nom de famille:&nbsp;{{ resultat[2]}}</p>
+             <p>Age:&nbsp;{{ resultat[3]}}</p>
+             <p>Courriel:&nbsp;{{resultat[4]}}</p>
+
+               {% if resultat[5] == 1 %}
+             <p>Statut:&nbsp;Administrateur</p>
+             {% else %}
+             <p> Statut:&nbsp;Abonné(e)</p>
+             {% endif %}"
+
+         </div>
+    </div>
+</div>
+
 
 <div class="footer"></div>
 
