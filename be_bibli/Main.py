@@ -49,16 +49,14 @@ def GetUser(mail, passWord):
 
         #si les deux fonctions retourne False (c est a dire que la saisie ne concorde pas avec une des entrées de la table users) alors on retourne False/TESTÉ
         if resultatmail[0] is False or resultatpassword is False:
-            result ="votre courriel ou mot de passe est incorrect, veuillez les saisir de nouveau"
-            #return result
+            result = False
 
         #tester si les deux ID concorde/TESTÉ
         elif resultatpassword[0] != resultatmail[0]:
-            result = ('votre mot de passe ne concorde pas avec votre courriel, veuillez saisir les identifiants de nouveau ')
-            #return result
+            result = False
         else:
             #cas ou les deux entrées concorde et récupérer le ID
-            command = ("SELECT u.id FROM Users u WHERE u.email like %s AND u.password like %s")
+            command = "SELECT u.id FROM Users u WHERE u.email like %s AND u.password like %s"
             mycursor.execute(command, (mail, passWord))
             result = mycursor.fetchone()
 
@@ -84,7 +82,15 @@ def GetPassWord(passWord):
         return False
     return result
 
+def GetInfoUtilisateur(id):
+    result = []
+    print(id)
+    command = ("SELECT u.first_name, u.last_name, u.age, u.adress_id, u.email, u.admin FROM Users u WHERE u.id like '%" + str(id) + "%'")
+    mycursor.execute(command)
+    result += mycursor.fetchone()
+    return result
 
+print(GetInfoUtilisateur(1))
 #l=GetEmail('non@eleifendnunc.ne')
 #print(l[0])
 

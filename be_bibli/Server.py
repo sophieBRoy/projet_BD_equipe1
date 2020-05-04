@@ -1,11 +1,13 @@
-from flask import Flask, render_template, request,redirect
+from flask import Flask, render_template, request,redirect,url_for
 from Research_form import researchForm
 from log import LogForm
-from Main import research, getBook, getMagazine, GetUser
+from Main import research, getBook, getMagazine, GetUser, GetInfoUtilisateur
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "password"
-
+courriel=""
+motdePass=""
+resultat1=[]
 @app.route('/')
 def accueil():
     return render_template('Accueil.html')
@@ -22,7 +24,7 @@ def recherche():
         bookSelected = request.form.getlist('bookCheck')
         magazineSelected = request.form.getlist('magazineCheck')
         result = research(formData[0], len(bookSelected), len(magazineSelected))
-        print(result)
+
         return render_template('Resultats-recherche.html', result=result)
     return render_template('Recherche.html', form=form)
 
@@ -35,12 +37,21 @@ def se_connecter():
         courriel = request.form.getlist('nomUser')
         motdePass = request.form.getlist('passUser')
         #fonction qui traite les saisie
-        result = GetUser(courriel[0],motdePass[0])
-        if len(result) == 1:
-            return render_template('Profil_utilisateur.html', result=result)
+        resultat= GetUser(courriel[0], motdePass[0])
+        resultat1.append(resultat[0])
+        if resultat is not False:
+            return redirect(url_for('utilisateur'))
         else:
-            message += result
-    return render_template('Se-connecter.html', form=form, )
+            message += "veuillez saisir les données de nouveau"
+
+    return render_template('Se-connecter.html', form=form, message=message)
+
+@app.route("/Profil_utilisateur")
+def utilisateur():
+    print(resultat1)
+    resultat=GetInfoUtilisateur(resultat1[0])
+    print(resultat)
+    return render_template('Profil_utilisateur.html', resultat=resultat)
 
 @app.route("/nous-joindre",methods=['GET'])
 def nous_joindre():
@@ -56,12 +67,11 @@ def magazines():
     result = research('', 0, 1)
     return render_template('Resultats-recherche.html', result=result)
 
-@app.route("/Profil_utilisateur.html")
-def utilisateur():
-    return render_template('Profil_utilisateur.html')
+
 
 @app.route('/resultats-recherche')
 def resultats_recherche():
+    
     return render_template('Resultats-recherche.html')
 
 @app.route('/abonnement')

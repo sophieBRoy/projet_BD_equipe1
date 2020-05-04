@@ -24,13 +24,14 @@
 </div>
 <div class="content-container">
     <div class="content">
-        <form method="post" action=>
+        <form method="post" action="">
             <p>
+
                 {{ form.nomUser.label }}
-                {{ form.nomUser(class_='search-bar') }}
+                {{ form.nomUser(class_="search-bar") }}
 
                 {{ form.passUser.label }}
-                {{ form.passUser(class_='search-bar') }}
+                {{ form.passUser(class_="search-bar") }}
 
 
                  {{ form.submit.label }}
@@ -40,9 +41,12 @@
         </form>
 
         <P class="no-account">Pas de compte? <a href="{{ url_for('abonnement') }}">Cliquer ici</a></P>
-        {% if message %}
-        <div >{{ message }}"</div>
-        {% endif %}
+         <div >
+             {% if message %}
+             <p>{{ message }}</p>
+
+             {% endif %}"
+         </div>
     </div>
 </div>
 <div class="footer"></div>
