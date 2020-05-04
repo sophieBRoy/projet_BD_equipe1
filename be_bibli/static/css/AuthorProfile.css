@@ -1,0 +1,17 @@
+.books {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.result-container {
+    margin: 10px;
+}
+
+.content {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}

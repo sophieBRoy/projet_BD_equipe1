@@ -62,6 +62,19 @@ def getUser(email, password):
     result = mycursor.fetchall()
     return result
 
+def getAuthor(authorName):
+    command = "SELECT a.name, a.birth, a.death, a.nationality, a.image_id FROM Authors a WHERE a.name ='" + authorName + "'"
+    print(command)
+    mycursor.execute(command)
+    result = mycursor.fetchall()
+    return result
+
+def getBooksFromAuthor(authorName):
+    command = "SELECT b.id, b.name, b.image_id FROM Books b WHERE b.author_name ='" + authorName + "'"
+    mycursor.execute(command)
+    result = mycursor.fetchall()
+    print(result)
+    return result
 
 if __name__ == '__main__':
     # INITIALISATION OF TABLES (FIRST METHOD)

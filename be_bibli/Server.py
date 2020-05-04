@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from Research_form import researchForm, advancedResearchForm
-from Main import research, advancedResearch, getBook, getMagazine, getUser
+from Main import research, advancedResearch, getBook, getMagazine, getUser, getAuthor, getBooksFromAuthor
 
 
 app = Flask(__name__)
@@ -55,12 +55,12 @@ def nous_joindre():
 @app.route("/books",methods=['GET'])
 def books():
     result = research('', 1, 0)
-    return render_template('Resultats-recherche.html', result=result, types=types)
+    return render_template('Resultats-recherche.html', result=result)
 
 @app.route("/magazines",methods=['GET'])
 def magazines():
     result = research('', 0, 1)
-    return render_template('Resultats-recherche.html', result=result, types=types)
+    return render_template('Resultats-recherche.html', result=result)
 
 #load login page
 @app.route("/se-connecter", methods=['GET'])
@@ -84,6 +84,12 @@ def location(bookId):
     else:
         result=getMagazine(bookId)
         return render_template('Achat.html', result=result)
+
+@app.route('/auteur/<authorName>', methods=['GET'])
+def author(authorName):
+    result = getAuthor(authorName)
+    booksResult = getBooksFromAuthor(authorName)
+    return render_template('AuthorProfile.html', result=result, booksResult=booksResult)
 
 if __name__=='__main__':
     app.run()
