@@ -37,9 +37,9 @@ def getMagazine(id):
 def GetUser(mail, passWord):
     result=[]
     # si la saisie est VIDE retourner false /testé
-    if mail.isspace() or passWord.isspace():
-        result = "Votre saisie est vide"
-        #return result
+
+    if mail.isspace() is True and passWord.isspace() is True:
+        return False
 
     #sinon traiter la saisie
     else:
@@ -82,14 +82,48 @@ def GetPassWord(passWord):
         return False
     return result
 
+
 def GetInfoUtilisateur(id):
     result = []
     command = ("SELECT u.id, u.first_name, u.last_name, u.age, u.email, u.admin FROM Users u WHERE u.id like '%" + str(id) + "%'")
     mycursor.execute(command)
     result += mycursor.fetchone()
-
-
     return result
+
+
+def SetUtilisateur(nom, prenom, age, adresse, courriel, motPass, admin):
+    idMaxUserTAB = []
+    idMaxAdresTAB = []
+    command = mycursor.execute("SELECT MAX(u.id) FROM Users u")
+    mycursor.execute(command)
+    idMaxUser = mycursor.fetchone()
+    idMaxUserTAB.append(idMaxUser[0])
+    print(idMaxUserTAB[0])
+    command2 = mycursor.execute("SELECT MAX(u.adress_id) FROM Users u ")
+    mycursor.execute(command2)
+    idAddresMax = mycursor.fetchone()
+    idMaxAdresTAB.append(idAddresMax[0])
+    print(idMaxAdresTAB[0])
+
+    #add_user = ("INSERT INTO Users "
+     #             "(id, first_name, last_name, age, adress_id, email, password, admin) "
+      #            "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)")
+    #mycursor.execute(add_user,(idMaxUser+1, nom, prenom, age, idAddresMax+1, courriel, motPass, admin))
+    #result = mycursor.fetchone()
+
+    #return result
+
+print(SetUtilisateur('sara', 'amara', 27, '739 jdsjfsd', 'asaraselma@gmail.com', 'jojo', 1))
+
+#print(GetInfoUtilisateur(1))
+#l=GetEmail('non@eleifendnunc.ne')
+#print(l[0])
+
+#print(GetEmail('sapien.gravida.non@luctusetultrices.org'))
+#print(GetPassWord('enim'))
+
+#print(GetUser('non@eleifendnunc.net','enim'))
+
 
 if __name__ == '__main__':
     # INITIALISATION OF TABLES (FIRST METHOD)

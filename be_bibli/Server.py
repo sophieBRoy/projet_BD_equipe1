@@ -1,13 +1,15 @@
 from flask import Flask, render_template, request,redirect,url_for
 from Research_form import researchForm
 from log import LogForm
-from Main import research, getBook, GetUser, GetInfoUtilisateur
+from abonnement import AbonnementForm
+from Main import research, getBook, getMagazine, GetUser, GetInfoUtilisateur,  SetUtilisateur
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "password"
 
 
-courriel= ""
+courriel=""
 motdePass=""
 resultat1=[]
 
@@ -28,7 +30,6 @@ def recherche():
         bookSelected = request.form.getlist('bookCheck')
         magazineSelected = request.form.getlist('magazineCheck')
         result = research(formData[0], len(bookSelected), len(magazineSelected))
-
         return render_template('Resultats-recherche.html', result=result)
     return render_template('Recherche.html', form=form)
 
@@ -37,13 +38,11 @@ def recherche():
 def se_connecter():
     global courriel
     global motdePass
-    print(courriel)
     message=""
     form = LogForm()
     if form.is_submitted():
         courriel = request.form.getlist('nomUser')
         motdePass = request.form.getlist('passUser')
-        #fonction qui traite les saisie
         resultat= GetUser(courriel[0], motdePass[0])
 
         if resultat:
@@ -57,6 +56,20 @@ def se_connecter():
     else:
         return redirect(url_for('utilisateur'))
 
+
+@app.route('/abonnement')
+def abonnement():
+    form = AbonnementForm()
+    if form.is_submitted():
+        nom = request.form.getlist('nomUtilisateurs')
+        prenom = request.form.getlist('prenomUtilisateurs')
+        age = request.form.getlist('utilisateursAge')
+        adresse = request.form.getlist('utilisateursAddresse')
+        Courriel = request.form.getlist('utilisateursCourriel')
+        motPass =request.form.getlist('utilisateursMdp')
+        #fonction qui traite les entrée
+        result = SetUtilisateur(nom[0], prenom[0], age[0], adresse[0], courriel[0], motPass[0])
+    return render_template('Abonnement.html', form=form, result=result)
 @app.route("/Profil_utilisateur")
 def utilisateur():
     print(resultat1)
@@ -86,9 +99,6 @@ def resultats_recherche():
     
     return render_template('Resultats-recherche.html')
 
-@app.route('/abonnement')
-def abonnement():
-    return render_template('Abonnement.html')
 
 @app.route('/Recherche-avancee', methods=['GET'])
 def recherche_avancee():
