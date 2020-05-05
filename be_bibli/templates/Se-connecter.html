@@ -26,17 +26,16 @@
     <div class="content">
         <form method="post" action="">
             <div class="dialogue">
-                <p>
-                    {{ form.nomUser.label }}
+                <p class="courriel">
+                    {{ form.nomUser.label }}<a class="courrielDots">:</a>
                     {{ form.nomUser(class_="search-bar") }}
                 </p>
                 <p>
-                    {{ form.passUser.label }}
+                    {{ form.passUser.label }}<a>:</a>
                     {{ form.passUser(class_="search-bar") }}
 
                 </p>
                 <p>
-                    {{ form.submit.label }}
                     {{ form.submit(class_="submit-button") }}
                 </p>
 

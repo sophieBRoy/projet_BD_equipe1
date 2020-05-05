@@ -19,7 +19,15 @@ form {
 }
 
 .search-bar {
-    width: 50%;
+    width: 300px;
+}
+
+.courrielDots {
+    margin-right: 40px;
+}
+
+.courriel {
+    align-self: flex-end;
 }
 
 .no-account {
@@ -33,4 +41,8 @@ form {
 .dialogue
 {
     flex-grow:0;
+    display: flex;
+    flex-direction: column;
+    juistify-content: center;
+    align-items: center;
 }

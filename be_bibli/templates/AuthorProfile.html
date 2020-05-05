@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/AuthorProfile.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/GeneralStyling.css') }}">
+    <title>Auteur</title>
+</head>
+<body>
+     <div class="top-container"> <!-- everything that needs to clip on top of the page goes in here --->
+        <div class="header" >
+             <p>Bibliothèque en ligne</p>
+        </div>
+        <div class="navigation-bar">
+        <a class="header-button" href="{{ url_for('accueil')}}"><div >Accueil</div></a>
+        <a class="header-button" href="{{ url_for('recherche')}}"><div >Recherche</div></a>
+        <a class="header-button" href="{{ url_for('se_connecter') }}"><div>Compte</div></a>
+        <a class="header-button" href="{{ url_for('nous_joindre') }}"><div >Nous joindre</div></a>
+     </div>
+    </div>
+    <div class="content-container">
+        <div class="content">
+            {% for authorName, authorBirth, authorDeath, authorNationality, imageId in result %}
+            <img src="../static/ressources/images/imagesAuteurs/{{imageId}}.jpg" alt="image livre" width="200">
+            <p>Nom: {{authorName}}</p>
+            <p>Naissance: {{authorBirth}}</p>
+            <p>Mort: {{authorDeath}}</p>
+            <p>Nationalité: {{authorNationality}}</p>
+            {% endfor %}
+            <p>Livres populaires de cet auteur:</p>
+                <div class="books">
+                {% for bookId, bookName, bookImageId in booksResult %}
+                <a class="result-container" href="/location/{{bookId}}">
+                    <div class="book">
+                        <img src="../static/ressources/images/imagesLivres/{{bookImageId}}.jpg" alt="image livre" width="200" height="300">
+                        <p>{{bookName}}</p>
+                    </div>
+                </a>
+                {% endfor %}
+                </div>
+        </div>
+
+    </div>
+    <div class="footer"></div>
+</body>
+</html>

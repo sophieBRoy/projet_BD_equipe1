@@ -18,17 +18,49 @@
         <a class="header-button" href="{{ url_for('nous_joindre') }}"><div >Nous joindre</div></a>
      </div>
 </div>
-<div class="content-container">
-    <div class="content">
+ <div class="content-container">
+   <div class="content">
         <p class="title">Recherche avancée</p>
-        <p>A FAIRE EVENTUELLEMENT</p>
-        <form>
-            <input class="search-bar" type="search" placeholder="Recherche" aria-label="Search">
-            <button class="submit-button" type="submit">Recherche</button>
+                        Restreindre votre recherche:
+        <form method="post" action="">
+            <div class="main-div research-zone">
+                     <p class="section-title">Titre</p>
+                     <p>{{ form.researchB(class_='search-bar') }}</p>
+            </div>
+            <div>
+                     <p class="section-title">Auteur</p>
+                     <p>{{ form.researchA(class_='search-bar') }}</p>
+            </div>
+            <div class="main-div">
+                <p class="section-title">Inclure ce(s) type(s):</p>
+                <div class="checkboxes">
+                    <p> {{form.fantaisieCheck.label}}
+                        {{form.fantaisieCheck}} </p>
+                    <p>{{form.sFCheck.label}}
+                        {{ form.sFCheck }}</p>
+                    <p>{{ form.polarCheck.label }}
+                        {{ form.polarCheck }}</p>
+                    <p>{{ form.classiqueCheck.label }}
+                        {{ form.classiqueCheck }}</p>
+                    <p>{{ form.horreurCheck.label }}
+                        {{ form.horreurCheck }}</p>
+                    <p>{{ form.bDCheck.label }}
+                        {{ form.bDCheck }}</p>
+                    <p>{{ form.overratedCheck.label }}
+                        {{ form.overratedCheck }}</p>
+                </div>
+            </div>
+            <!-- <div class="main-div">
+                <p class="section-title">Date range</p>
+            </div>
+            <div class="main-div">
+                <p class="section-title">Origine</p>
+                    <p>{{ form.researchO(class_='search-bar') }}</p>
+            </div> -->
+            <p>{{ form.submit(class_="submit-button") }}</p>
         </form>
     </div>
 </div>
 <div class="footer"></div>
 </body>
 </html>
-

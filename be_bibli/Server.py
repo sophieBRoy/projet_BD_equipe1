@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request,redirect,url_for
-from Research_form import researchForm
+from Forms import researchForm, advancedResearchForm
 from log import LogForm
 from abonnement import AbonnementForm
-from Main import research, getBook, getMagazine, GetUser, GetInfoUtilisateur,  SetUtilisateur
-
+from Main import research, advancedResearch, getBook, getAuthor, getBooksFromAuthor, GetInfoUtilisateur, \
+    SetUtilisateur, GetUser, getMagazine
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "password"
@@ -11,16 +11,13 @@ app.config['SECRET_KEY'] = "password"
 
 courriel=""
 motdePass=""
+adminPass=""
 resultat1=[]
 
 
 @app.route('/')
 def accueil():
     return render_template('Accueil.html')
-
-@app.route('/profile/<int:user_id>')
-def profile(user_id):
-    return 'this is user' + str(user_id)
 
 @app.route("/Recherche",methods=['GET', 'POST'])
 def recherche():
@@ -59,6 +56,7 @@ def se_connecter():
 
 @app.route('/abonnement')
 def abonnement():
+    result=[]
     form = AbonnementForm()
     if form.is_submitted():
         nom = request.form.getlist('nomUtilisateurs')
@@ -68,8 +66,9 @@ def abonnement():
         Courriel = request.form.getlist('utilisateursCourriel')
         motPass =request.form.getlist('utilisateursMdp')
         #fonction qui traite les entrée
-        result = SetUtilisateur(nom[0], prenom[0], age[0], adresse[0], courriel[0], motPass[0])
+        #result = SetUtilisateur(nom[0], prenom[0], age[0], adresse[0], courriel[0], motPass[0],)
     return render_template('Abonnement.html', form=form, result=result)
+
 @app.route("/Profil_utilisateur")
 def utilisateur():
     print(resultat1)
@@ -77,6 +76,25 @@ def utilisateur():
     resultat += GetInfoUtilisateur(resultat1[0])
     print(resultat)
     return render_template('Profil_utilisateur.html', resultat=resultat)
+
+@app.route('/Recherche-avancee', methods=['GET', 'POST'])
+def recherche_avancee():
+    form = advancedResearchForm()
+    if form.is_submitted():
+        book = request.form.getlist('researchB')
+        author = request.form.getlist('researchA')
+        origin = request.form.getlist('researchO')
+        #-------------------------------------------------
+        checkList = ['fantaisieCheck', 'sFCheck', 'polarCheck', 'classiqueCheck', 'horreurCheck', 'bDCheck', 'overratedCheck']
+        boolList = []
+        for i in checkList:
+            if request.form.getlist(i) != []:
+                boolList.append(True)
+            else:
+                boolList.append(False)
+        result=advancedResearch(book[0], author[0], boolList)
+        return render_template('Resultats-recherche.html', result=result)
+    return render_template('Recherche-avancee.html', form=form)
 
 @app.route("/nous-joindre",methods=['GET'])
 def nous_joindre():
@@ -94,21 +112,36 @@ def magazines():
 
 
 
+
 @app.route('/resultats-recherche')
 def resultats_recherche():
     
     return render_template('Resultats-recherche.html')
 
 
-@app.route('/Recherche-avancee', methods=['GET'])
-def recherche_avancee():
-    return render_template('Recherche-avancee.html')
-
 @app.route('/location/<bookId>', methods=['GET'])
 def location(bookId):
-    result = getBook(bookId)
-    return render_template('Location.html', result=result)
 
+    if bookId[0] == "b":
+        result = getBook(bookId)
+        return render_template('Location.html', result=result)
+    else:
+        result= getMagazine(bookId)
+        return render_template('Achat.html', result=result)
+
+@app.route('/auteur/<authorName>', methods=['GET'])
+def author(authorName):
+    result = getAuthor(authorName)
+    booksResult = getBooksFromAuthor(authorName)
+    return render_template('AuthorProfile.html', result=result, booksResult=booksResult)
+
+@app.route('/admin', methods=['GET'])
+def admin():
+    print(adminPass)
+    if not adminPass:
+        return render_template('AdminPage.html')
+    else:
+        return "Erreur: vous ne pouvez pas accéder à cette page car vous n'êtes pas administrateur :("
 
 if __name__=='__main__':
     app.run(debug=True)

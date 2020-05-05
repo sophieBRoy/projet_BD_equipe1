@@ -21,13 +21,13 @@
     </div>
     <div class="content-container">
         <div class="content">
-            {% for bookId, publishingDate, authorName,bookName, imageId, bookGenre in result %}
+            {% for magId, magName, imageId,magGenre, magNumber, magMonth, magYear, magQuantity in result %}
             <img src="../static/ressources/images/imagesLivres/{{imageId}}.jpg" alt="image livre" width="200">
-            <p>Titre: {{bookName}}</p>
-            <a href="/auteur/{{authorName}}"><p>Auteur: {{authorName}}</p></a>
-            <p>Date de publication: {{publishingDate}}</p>
-            <p>Genre: {{bookGenre}}</p>
-            <button class="submit-button">Louer</button>
+            <p>Nom: {{magName}}</p>
+            <p>Genre: {{magGenre}}</p>
+            <p>Édition de: {{magMonth}} {{magYear}}</p>
+            <p>Quantité restante: {{magQuantity}}</p>
+            <button class="submit-button">Acheter</button>
             {% endfor %}
         </div>
     </div>
