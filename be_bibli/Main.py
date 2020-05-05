@@ -37,7 +37,7 @@ def getMagazine(id):
 def GetUser(mail, passWord):
     result=[]
     # si la saisie est VIDE retourner false /testé
-    if mail.isspace() is True and passWord.isspace() is True:
+    if mail.isspace() or passWord.isspace():
         result = "Votre saisie est vide"
         #return result
 
@@ -48,7 +48,7 @@ def GetUser(mail, passWord):
         resultatpassword=GetPassWord(passWord)
 
         #si les deux fonctions retourne False (c est a dire que la saisie ne concorde pas avec une des entrées de la table users) alors on retourne False/TESTÉ
-        if resultatmail[0] is False or resultatpassword is False:
+        if not resultatmail[0] or not resultatpassword:
             result = False
 
         #tester si les deux ID concorde/TESTÉ
@@ -84,22 +84,12 @@ def GetPassWord(passWord):
 
 def GetInfoUtilisateur(id):
     result = []
-    print(id)
     command = ("SELECT u.id, u.first_name, u.last_name, u.age, u.email, u.admin FROM Users u WHERE u.id like '%" + str(id) + "%'")
     mycursor.execute(command)
     result += mycursor.fetchone()
 
 
     return result
-
-print(GetInfoUtilisateur(1))
-#l=GetEmail('non@eleifendnunc.ne')
-#print(l[0])
-
-#print(GetEmail('sapien.gravida.non@luctusetultrices.org'))
-#print(GetPassWord('enim'))
-
-#print(GetUser('non@eleifendnunc.net','enim'))
 
 if __name__ == '__main__':
     # INITIALISATION OF TABLES (FIRST METHOD)

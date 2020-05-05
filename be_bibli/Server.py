@@ -1,13 +1,17 @@
 from flask import Flask, render_template, request,redirect,url_for
 from Research_form import researchForm
 from log import LogForm
-from Main import research, getBook, getMagazine, GetUser, GetInfoUtilisateur
+from Main import research, getBook, GetUser, GetInfoUtilisateur
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "password"
-courriel=""
+
+
+courriel= ""
 motdePass=""
 resultat1=[]
+
+
 @app.route('/')
 def accueil():
     return render_template('Accueil.html')
@@ -31,6 +35,9 @@ def recherche():
 #load login page
 @app.route("/se-connecter", methods=['GET','POST'])
 def se_connecter():
+    global courriel
+    global motdePass
+    print(courriel)
     message=""
     form = LogForm()
     if form.is_submitted():
@@ -39,18 +46,20 @@ def se_connecter():
         #fonction qui traite les saisie
         resultat= GetUser(courriel[0], motdePass[0])
 
-        if resultat is not False:
+        if resultat:
             resultat1.append(resultat[0])
             return redirect(url_for('utilisateur'))
         else:
 
-            message += "veuillez saisir les données de nouveau"
-
-    return render_template('Se-connecter.html', form=form, message=message)
+            message += "Erreur dans votre courriel ou dans votre mot de passe"
+    if not courriel:
+        return render_template('Se-connecter.html', form=form, message=message)
+    else:
+        return redirect(url_for('utilisateur'))
 
 @app.route("/Profil_utilisateur")
 def utilisateur():
-   # print(resultat1)
+    print(resultat1)
     resultat=[]
     resultat += GetInfoUtilisateur(resultat1[0])
     print(resultat)
