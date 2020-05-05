@@ -82,17 +82,17 @@ def GetPassWord(passWord):
         return False
     return result
 
+
 def GetInfoUtilisateur(id):
     result = []
-    print(id)
+    #print(id)
     command = ("SELECT u.id, u.first_name, u.last_name, u.age, u.email, u.admin FROM Users u WHERE u.id like '%" + str(id) + "%'")
     mycursor.execute(command)
     result += mycursor.fetchone()
-
-
     return result
 
-print(GetInfoUtilisateur(1))
+
+#print(GetInfoUtilisateur(1))
 #l=GetEmail('non@eleifendnunc.ne')
 #print(l[0])
 
