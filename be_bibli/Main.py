@@ -7,7 +7,7 @@ mydb = mysql.connector.connect(
     database="library"
 )
 
-mycursor = mydb.cursor()
+mycursor = mydb.cursor(buffered=True)
 
 
 def research(query, book, magazine):
@@ -33,6 +33,96 @@ def getMagazine(id):
     mycursor.execute(command)
     result = mycursor.fetchall()
     return result
+
+def GetUser(mail, passWord):
+    result=[]
+    # si la saisie est VIDE retourner false /testé
+
+    if mail.isspace() is True and passWord.isspace() is True:
+        return False
+
+    #sinon traiter la saisie
+    else:
+        #recupérer les donnée des fonctions GetEmail et GetPassWord/TESTÉ
+        resultatmail= GetEmail(mail)
+        resultatpassword=GetPassWord(passWord)
+
+        #si les deux fonctions retourne False (c est a dire que la saisie ne concorde pas avec une des entrées de la table users) alors on retourne False/TESTÉ
+        if not resultatmail[0] or not resultatpassword:
+            result = False
+
+        #tester si les deux ID concorde/TESTÉ
+        elif resultatpassword[0] != resultatmail[0]:
+            result = False
+        else:
+            #cas ou les deux entrées concorde et récupérer le ID
+            command = "SELECT u.id FROM Users u WHERE u.email like %s AND u.password like %s"
+            mycursor.execute(command, (mail, passWord))
+            result = mycursor.fetchone()
+
+    return result
+
+
+def GetEmail(mail):
+
+    command = ("SELECT u.id FROM Users u WHERE u.email like'%" + mail + "%'")
+    mycursor.execute(command)
+    result = mycursor.fetchone()
+    if result is None:
+        result ="Le courriel saisie n'éxiste pas"
+        return False, result
+    return result
+
+#ne doit pas afficher un message
+def GetPassWord(passWord):
+    command = ("SELECT u.id FROM Users u WHERE u.password like '%" + passWord + "%'")
+    mycursor.execute(command, passWord)
+    result = mycursor.fetchone()
+    if result is None:
+        return False
+    return result
+
+
+def GetInfoUtilisateur(id):
+    result = []
+    command = ("SELECT u.id, u.first_name, u.last_name, u.age, u.email, u.admin FROM Users u WHERE u.id like '%" + str(id) + "%'")
+    mycursor.execute(command)
+    result += mycursor.fetchone()
+    return result
+
+
+def SetUtilisateur(nom, prenom, age, adresse, courriel, motPass, admin):
+    idMaxUserTAB = []
+    idMaxAdresTAB = []
+    command = mycursor.execute("SELECT MAX(u.id) FROM Users u")
+    mycursor.execute(command)
+    idMaxUser = mycursor.fetchone()
+    idMaxUserTAB.append(idMaxUser[0])
+    print(idMaxUserTAB[0])
+    command2 = mycursor.execute("SELECT MAX(u.adress_id) FROM Users u ")
+    mycursor.execute(command2)
+    idAddresMax = mycursor.fetchone()
+    idMaxAdresTAB.append(idAddresMax[0])
+    print(idMaxAdresTAB[0])
+
+    #add_user = ("INSERT INTO Users "
+     #             "(id, first_name, last_name, age, adress_id, email, password, admin) "
+      #            "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)")
+    #mycursor.execute(add_user,(idMaxUser+1, nom, prenom, age, idAddresMax+1, courriel, motPass, admin))
+    #result = mycursor.fetchone()
+
+    #return result
+
+print(SetUtilisateur('sara', 'amara', 27, '739 jdsjfsd', 'asaraselma@gmail.com', 'jojo', 1))
+
+#print(GetInfoUtilisateur(1))
+#l=GetEmail('non@eleifendnunc.ne')
+#print(l[0])
+
+#print(GetEmail('sapien.gravida.non@luctusetultrices.org'))
+#print(GetPassWord('enim'))
+
+#print(GetUser('non@eleifendnunc.net','enim'))
 
 
 if __name__ == '__main__':

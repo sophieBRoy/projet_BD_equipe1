@@ -1,0 +1,18 @@
+.content {
+    width: 50%;
+    flex-grow: 0.5;
+    margin-top: 100px;
+    margin-left:0px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.book {
+ margin: 10px;
+}
+
+.result-container:hover {
+    background: grey;
+    border-radius: 10px;
+}

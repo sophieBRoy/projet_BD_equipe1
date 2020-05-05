@@ -14,7 +14,7 @@
     <div class="navigation-bar">
         <a class="header-button" href="{{ url_for('accueil')}}"><div >Accueil</div></a>
         <a class="header-button" href="{{ url_for('recherche')}}"><div >Recherche</div></a>
-        <a class="header-button" href="{{ url_for('se_connecter') }}"><div>Se connecter</div></a>
+        <a class="header-button" href="{{ url_for('se_connecter') }}"><div>Compte</div></a>
         <a class="header-button" href="{{ url_for('nous_joindre') }}"><div >Nous joindre</div></a>
     </div>
 </div>
@@ -23,12 +23,37 @@
         <p class="title">Abonnement</p>
         <p>INSERT POLITIC</p>
         <form method="POST" action="">
-            <input class="search-bar" type="text" placeholder="Nom" name="nom"> &nbsp;
-            <input class="search-bar" type="text" placeholder="Prenom" name="Prenom"><br>
-            <input class="search-bar" type="text" placeholder="Courriel" name="Couriel"><br>
-            <input class="search-bar" type="text" placeholder="Adresse" name="Adresse"><br>
-            <input class="search-bar" type="text" placeholder="Cellulaire" name="Cellulaire"><br>
-            <input class="submit-button" type="submit" value="Création de compte" name="soumettre">
+                <p>
+                    {{ form.nomUtilisateurs.label }}
+                    {{ form.nomUtilisateurs(class_="search-bar") }}
+                </p>
+                <p>
+                    {{ form.prenomUtilisateurs.label }}
+                    {{ form.prenomUtilisateurs(class_="search-bar") }}
+                </p>
+
+                <p>
+                    {{ form.utilisateursAge.label }}
+                    {{ form.utilisateursAge(class_="search-bar") }}
+                </p>
+                <p>
+                    {{ form.utilisateursAddresse.label }}
+                    {{ form.utilisateursAddresse(class_="search-bar") }}
+
+                </p>
+                <p>
+                    {{ form.utilisateursCourriel.label }}
+                    {{ form.utilisateursCourriel(class_="search-bar") }}
+                </p>
+                <p>
+                    {{ form.utilisateursMdp.label }}
+                    {{ form.utilisateursMdp(class_="search-bar") }}
+                </p>
+
+                <p>
+                    {{ form.submit.label }}
+                    {{ form.submit(class_="submit-button") }}
+                </p>
         </form>
     </div>
 </div>

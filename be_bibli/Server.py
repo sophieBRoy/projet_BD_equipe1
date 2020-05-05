@@ -1,10 +1,18 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request,redirect,url_for
 from Research_form import researchForm
-from Main import research, getBook, getMagazine
+from log import LogForm
+from abonnement import AbonnementForm
+from Main import research, getBook, getMagazine, GetUser, GetInfoUtilisateur,  SetUtilisateur
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "password"
+
+
+courriel=""
+motdePass=""
+resultat1=[]
+
 
 @app.route('/')
 def accueil():
@@ -25,6 +33,51 @@ def recherche():
         return render_template('Resultats-recherche.html', result=result)
     return render_template('Recherche.html', form=form)
 
+#load login page
+@app.route("/se-connecter", methods=['GET','POST'])
+def se_connecter():
+    global courriel
+    global motdePass
+    message=""
+    form = LogForm()
+    if form.is_submitted():
+        courriel = request.form.getlist('nomUser')
+        motdePass = request.form.getlist('passUser')
+        resultat= GetUser(courriel[0], motdePass[0])
+
+        if resultat:
+            resultat1.append(resultat[0])
+            return redirect(url_for('utilisateur'))
+        else:
+
+            message += "Erreur dans votre courriel ou dans votre mot de passe"
+    if not courriel:
+        return render_template('Se-connecter.html', form=form, message=message)
+    else:
+        return redirect(url_for('utilisateur'))
+
+
+@app.route('/abonnement')
+def abonnement():
+    form = AbonnementForm()
+    if form.is_submitted():
+        nom = request.form.getlist('nomUtilisateurs')
+        prenom = request.form.getlist('prenomUtilisateurs')
+        age = request.form.getlist('utilisateursAge')
+        adresse = request.form.getlist('utilisateursAddresse')
+        Courriel = request.form.getlist('utilisateursCourriel')
+        motPass =request.form.getlist('utilisateursMdp')
+        #fonction qui traite les entrée
+        result = SetUtilisateur(nom[0], prenom[0], age[0], adresse[0], courriel[0], motPass[0])
+    return render_template('Abonnement.html', form=form, result=result)
+@app.route("/Profil_utilisateur")
+def utilisateur():
+    print(resultat1)
+    resultat=[]
+    resultat += GetInfoUtilisateur(resultat1[0])
+    print(resultat)
+    return render_template('Profil_utilisateur.html', resultat=resultat)
+
 @app.route("/nous-joindre",methods=['GET'])
 def nous_joindre():
     return render_template('Nous-joindre.html')
@@ -39,18 +92,13 @@ def magazines():
     result = research('', 0, 1)
     return render_template('Resultats-recherche.html', result=result)
 
-#load login page
-@app.route("/se-connecter", methods=['GET'])
-def se_connecter():
-    return render_template('Se-connecter.html')
+
 
 @app.route('/resultats-recherche')
 def resultats_recherche():
+    
     return render_template('Resultats-recherche.html')
 
-@app.route('/abonnement')
-def abonnement():
-    return render_template('Abonnement.html')
 
 @app.route('/Recherche-avancee', methods=['GET'])
 def recherche_avancee():
@@ -61,33 +109,7 @@ def location(bookId):
     result = getBook(bookId)
     return render_template('Location.html', result=result)
 
-#traitement de login page
-#@app.route("/login", methods=['POST'])
-#def login():
- #   if request.method == 'POST':
-  #      courriel = request.form['courriel']
-   #     passe = request.form['password']
-    #    conn = pymysql.connect(host='localhost', user='root', password='tomato', db='library')
-#
- #       cmd = "SELECT motpasse FROM utilisateurs WHERE courriel= %s"['courriel']
-  #      cur = conn.cursor()
-   #     cur.execute(cmd)
-    #    passeVrai = cur.fetchone()
-#
- #       if (passeVrai != None) and (passe == passeVrai[0]):
-  #          cmd = "SELECT * FROM utilisateurs WHERE courriel= %s"['courriel']
-   #         cur = conn.cursor()
-    #        cur.execute(cmd)
-     #       info = cur.fetchone()
-      #      global ProfileUtilisateur
-       #     ProfileUtilisateur["courriel"] = courriel
-        #    ProfileUtilisateur["nom"] = info[2]
-         #   #ProfileUtilisateur["avatar"] = info[3]
-          #  return render_template('Profil-utilisateur.html', profile=ProfileUtilisateur)#crée la page profil utilisateurs
-    #return render_template('login.html', message="Informations invalides!")
-
-
 
 if __name__=='__main__':
-    app.run()
+    app.run(debug=True)
 
