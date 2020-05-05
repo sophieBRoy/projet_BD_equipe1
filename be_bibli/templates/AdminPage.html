@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/AdminPage.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/GeneralStyling.css') }}">
+</head>
+<body>
+    <div class="top-container"> <!-- everything that needs to clip on top of the page goes in here --->
+        <div class="header" >
+             <p>Bibliothèque en ligne</p>
+        </div>
+        <div class="navigation-bar">
+        <a class="header-button" href="{{ url_for('accueil')}}"><div >Accueil</div></a>
+        <a class="header-button" href="{{ url_for('recherche')}}"><div >Recherche</div></a>
+        <a class="header-button" href="{{ url_for('se_connecter') }}"><div>Mon compte</div></a>
+        <a class="header-button" href="{{ url_for('nous_joindre') }}"><div >Nous joindre</div></a>
+     </div>
+    </div>
+    <div class="content-container">
+        <div class="content">
+            <a><p>Ajouter, modifier ou supprimer un magazine</p></a>
+            <p>Supprimer un utilisateur</p>
+            <p>Lancer une livraison</p>
+        </div>
+    </div>
+    <div class="footer"></div>
+</body>
+</html>

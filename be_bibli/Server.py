@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from Research_form import researchForm, advancedResearchForm
+from Forms import researchForm, advancedResearchForm
 from Main import research, advancedResearch, getBook, getMagazine, getUser, getAuthor, getBooksFromAuthor
 
 
@@ -8,8 +8,7 @@ app.config['SECRET_KEY'] = "password"
 
 
 user = getUser('james@gmail.com', 'james')
-currentSearch = []
-
+adminPass = user[0][7]
 
 @app.route('/')
 def accueil():
@@ -41,7 +40,6 @@ def recherche_avancee():
                 boolList.append(True)
             else:
                 boolList.append(False)
-        print(boolList)
         result=advancedResearch(book[0], author[0], boolList)
         return render_template('Resultats-recherche.html', result=result)
     return render_template('Recherche-avancee.html', form=form)
@@ -90,6 +88,14 @@ def author(authorName):
     result = getAuthor(authorName)
     booksResult = getBooksFromAuthor(authorName)
     return render_template('AuthorProfile.html', result=result, booksResult=booksResult)
+
+@app.route('/admin', methods=['GET'])
+def admin():
+    print(adminPass)
+    if adminPass == 0:
+        return render_template('AdminPage.html')
+    else:
+        return "Erreur: vous ne pouvez pas accéder à cette page car vous n'êtes pas administrateur :("
 
 if __name__=='__main__':
     app.run()
