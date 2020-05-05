@@ -2,7 +2,7 @@ from flask import Flask, render_template, request,redirect,url_for
 from Research_form import researchForm
 from log import LogForm
 from abonnement import AbonnementForm
-from Main import research, getBook, getMagazine, GetUser, GetInfoUtilisateur
+from Main import research, getBook, getMagazine, GetUser, GetInfoUtilisateur,  SetUtilisateur
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "password"
@@ -57,7 +57,8 @@ def abonnement():
         Courriel = request.form.getlist('utilisateursCourriel')
         motPass =request.form.getlist('utilisateursMdp')
         #fonction qui traite les entrée
-    return render_template('Abonnement.html', form=form)
+        result = SetUtilisateur(nom[0], prenom[0], age[0], adresse[0], courriel[0], motPass[0])
+    return render_template('Abonnement.html', form=form, result=result)
 @app.route("/Profil_utilisateur")
 def utilisateur():
    # print(resultat1)

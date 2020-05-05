@@ -38,9 +38,7 @@ def GetUser(mail, passWord):
     result=[]
     # si la saisie est VIDE retourner false /testé
     if mail.isspace() is True and passWord.isspace() is True:
-        result = "Votre saisie est vide"
-        #return result
-
+        return False
     #sinon traiter la saisie
     else:
         #recupérer les donnée des fonctions GetEmail et GetPassWord/TESTÉ
@@ -91,6 +89,29 @@ def GetInfoUtilisateur(id):
     result += mycursor.fetchone()
     return result
 
+def SetUtilisateur(nom, prenom, age, adresse, courriel, motPass, admin):
+    idMaxUserTAB = []
+    idMaxAdresTAB = []
+    command = mycursor.execute("SELECT MAX(u.id) FROM Users u")
+    mycursor.execute(command)
+    idMaxUser = mycursor.fetchone()
+    idMaxUserTAB.append(idMaxUser[0])
+    print(idMaxUserTAB[0])
+    command2 = mycursor.execute("SELECT MAX(u.adress_id) FROM Users u ")
+    mycursor.execute(command2)
+    idAddresMax = mycursor.fetchone()
+    idMaxAdresTAB.append(idAddresMax[0])
+    print(idMaxAdresTAB[0])
+
+    #add_user = ("INSERT INTO Users "
+     #             "(id, first_name, last_name, age, adress_id, email, password, admin) "
+      #            "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)")
+    #mycursor.execute(add_user,(idMaxUser+1, nom, prenom, age, idAddresMax+1, courriel, motPass, admin))
+    #result = mycursor.fetchone()
+
+    #return result
+
+print(SetUtilisateur('sara', 'amara', 27, '739 jdsjfsd', 'asaraselma@gmail.com', 'jojo', 1))
 
 #print(GetInfoUtilisateur(1))
 #l=GetEmail('non@eleifendnunc.ne')
