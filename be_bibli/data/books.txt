@@ -1,100 +1,101 @@
-﻿0;2000-02-02;William Shakespeare;Harry Potter 1;hr1;Fantaisie
-1;2000-02-03;William Shakespeare;Harry Potter 2;hr2;Fantaisie
-2;2000-02-04;William Shakespeare;Harry Potter 3;hr3;Fantaisie
-3;2000-02-05;William Shakespeare;Harry Potter 4;hr4;Fantaisie
-4;2000-02-06;William Shakespeare;Harry Potter 5;hr5;Fantaisie
-5;2000-02-07;William Shakespeare;Harry Potter 6;hr6;Fantaisie
-6;2000-02-08;William Shakespeare;Harry Potter 7;hr7;Fantaisie
-7;2000-02-09;William Shakespeare;Harry Potter 8;hr8;Fantaisie
-8;2000-02-10;William Shakespeare;Harry Potter 9;hr9;Fantaisie
-9;2000-02-11;William Shakespeare;Harry Potter 10;hr10;Fantaisie
-10;2000-02-12;William Shakespeare;Percy Jackson 1;pj1;Fantaisie
-11;2000-02-13;William Shakespeare;Percy Jackson 2;pj2;Fantaisie
-12;2000-02-14;William Shakespeare;Percy Jackson 3;pj3;Fantaisie
-13;2000-02-15;William Shakespeare;Percy Jackson 4;pj4;Fantaisie
-14;2000-02-16;William Shakespeare;Percy Jackson 5;pj5;Fantaisie
-15;2000-02-17;William Shakespeare;Percy Jackson 6;pj6;Fantaisie
-16;2000-02-18;William Shakespeare;Percy Jackson 7;pj7;Fantaisie
-17;2000-02-19;William Shakespeare;Percy Jackson 8;pj8;Fantaisie
-18;2000-02-20;William Shakespeare;Percy Jackson 9;pj9;Fantaisie
-19;2000-02-21;William Shakespeare;Percy Jackson 10;pj10;Fantaisie
-20;2000-02-22;William Shakespeare;La servante écarlate 1;se1;Science-fiction
-21;2000-02-23;William Shakespeare;La servante écarlate 2;se2;Science-fiction
-22;2000-02-24;William Shakespeare;Le marchand de sable;lk1;Polar
-23;2000-02-25;William Shakespeare;Miséricorde;edv1;Polar
-24;2000-02-26;William Shakespeare;Délivrance;edv2;Polar
-25;2000-02-27;William Shakespeare;Profanation;edv3;Polar
-26;2000-02-28;William Shakespeare;Dossier 64;edv4;Polar
-27;2000-02-29;William Shakespeare;L'effet Papillon;edv5;Polar
-28;2000-03-01;William Shakespeare;Promesse ;edv6;Polar
-29;2000-03-02;William Shakespeare;Selfies;edv7;Polar
-30;2000-03-03;William Shakespeare;Victime 2117;edv8;Polar
-31;2000-03-04;William Shakespeare;Lazar;lk2;Polar
-32;2000-03-05;William Shakespeare;Le pacte;lk3;Polar
-33;2000-03-06;William Shakespeare;désaxé;lk4;Polar
-34;2000-03-07;William Shakespeare;le chasseur de lapin;lk5;Polar
-35;2000-03-08;William Shakespeare;l'hypnotiseur;lk6;Polar
-36;2000-03-09;William Shakespeare;incurable;lk7;Polar
-37;2000-03-10;William Shakespeare;Stalker;lk8;Polar
-38;2000-03-11;William Shakespeare;Nightmares;lk9;Polar
-39;2000-03-12;William Shakespeare;Les corps de verre;lk10;Polar
-40;2000-03-13;William Shakespeare;Moby dick 1;NULL;Classique
-41;2000-03-14;William Shakespeare;Moby dick 2;NULL;Classique
-42;2000-03-15;William Shakespeare;Moby dick 3;NULL;Classique
-43;2000-03-16;William Shakespeare;Moby dick 4;NULL;Classique
-44;2000-03-17;William Shakespeare;Moby dick 5;NULL;Classique
-45;2000-03-18;William Shakespeare;Moby dick 6;NULL;Classique
-46;2000-03-19;William Shakespeare;Moby dick 7;NULL;Classique
-47;2000-03-20;William Shakespeare;Moby dick 8;NULL;Classique
-48;2000-03-21;William Shakespeare;Moby dick 9;NULL;Classique
-49;2000-03-22;William Shakespeare;Moby dick 10;NULL;Classique
-50;2000-03-23;William Shakespeare;Le grand Catsby 1;NULL;Classique
-51;2000-03-24;William Shakespeare;Le grand Catsby 2;NULL;Classique
-52;2000-03-25;William Shakespeare;Le grand Catsby 3;NULL;Classique
-53;2000-03-26;William Shakespeare;Le grand Catsby 4;NULL;Classique
-54;2000-03-27;William Shakespeare;Le grand Catsby 5;NULL;Classique
-55;2000-03-28;William Shakespeare;Le grand Catsby 6;NULL;Classique
-56;2000-03-29;William Shakespeare;Le grand Catsby 7;NULL;Classique
-57;2000-03-30;William Shakespeare;Le grand Catsby 8;NULL;Classique
-58;2000-03-31;William Shakespeare;Le grand Catsby 9;NULL;Classique
-59;2000-04-01;William Shakespeare;Le grand Catsby 10;NULL;Classique
-60;2000-04-02;William Shakespeare;Charlie;NULL;Horreur
-61;2000-04-03;William Shakespeare;Misery;sk2;Horreur
-62;2000-04-04;William Shakespeare;The shinning;sk3;Horreur
-63;2000-04-05;William Shakespeare;Ça 1;sk4;Horreur
-64;2000-04-06;William Shakespeare;Ça 2;NULL;Horreur
-65;2000-04-07;William Shakespeare;Dreamcatcher;NULL;Horreur
-66;2000-04-08;William Shakespeare;Pet Semetary;sk7;Horreur
-67;2000-04-09;William Shakespeare;Carrie;sk8;Horreur
-68;2000-04-10;William Shakespeare;Mist;sk9;Horreur
-69;2000-04-11;William Shakespeare;Kujo;sk10;Horreur
-70;2000-04-12;William Shakespeare;The dome 1;NULL;Horreur
-71;2000-04-13;William Shakespeare;The dome 2;NULL;Horreur
-72;2000-04-14;William Shakespeare;Le horla 1;NULL;Horreur
-73;2000-04-15;William Shakespeare;Le horla 2;NULL;Horreur
-74;2000-04-16;William Shakespeare;Le horla 3;NULL;Horreur
-75;2000-04-17;William Shakespeare;Le horla 4;NULL;Horreur
-76;2000-04-18;William Shakespeare;Le horla 5;NULL;Horreur
-77;2000-04-19;William Shakespeare;Lucky luke 1;NULL;BD
-78;2000-04-20;William Shakespeare;Lucky luke 2;NULL;BD
-79;2000-04-21;William Shakespeare;Lucky luke 3;NULL;BD
-80;2000-04-22;William Shakespeare;Lucky luke 4;NULL;BD
-81;2000-04-23;William Shakespeare;Lucky luke 5;NULL;BD
-82;2000-04-24;William Shakespeare;Lucky luke 6;NULL;BD
-83;2000-04-25;William Shakespeare;Lucky luke 7;NULL;BD
-84;2000-04-26;William Shakespeare;Lucky luke 8;NULL;BD
-85;2000-04-27;William Shakespeare;Lucky luke 9;NULL;BD
-86;2000-04-28;William Shakespeare;Lucky luke 10;NULL;BD
-87;2000-04-29;William Shakespeare;The count of montecristo;NULL;Classique
-88;2000-04-30;William Shakespeare;To kill a mockingbird;NULL;Classique
-89;2000-05-01;William Shakespeare;A game of throne 1;NULL;Overrated
-90;2000-05-02;William Shakespeare;A game of throne 2;NULL;Overrated
-91;2000-05-03;William Shakespeare;A game of throne 3;NULL;Overrated
-92;2000-05-04;William Shakespeare;A game of throne 4;NULL;Overrated
-93;2000-05-05;William Shakespeare;A game of throne 5;NULL;Overrated
-94;2000-05-06;William Shakespeare;A game of throne 6;NULL;Overrated
-95;2000-05-07;William Shakespeare;A game of throne 7;NULL;Overrated
-96;2000-05-08;William Shakespeare;A game of throne 8;NULL;Overrated
-97;2000-05-09;William Shakespeare;Candide;NULL;Classique
-98;2000-05-10;William Shakespeare;Le petit prince;NULL;Classique
-99;2000-05-11;William Shakespeare;The girl with the dragon tatoo;NULL;Classique
+﻿
+book-0;2000-02-02;Fyodor Dostoevsky;Harry Potter 1;hr1;Fantaisie
+book-1;2000-02-03;Dante Alighieri;Harry Potter 2;hr2;Fantaisie
+book-2;2000-02-04;Leo Tolstoy;Harry Potter 3;hr3;Fantaisie
+book-3;2000-02-05;Victor Hugo;Harry Potter 4;hr4;Fantaisie
+book-4;2000-02-06;William Shakespeare;Harry Potter 5;hr5;Fantaisie
+book-5;2000-02-07;Johann Wolfgang von Goethe;Harry Potter 6;hr6;Fantaisie
+book-6;2000-02-08;Miguel De Cervante;Harry Potter 7;hr7;Fantaisie
+book-7;2000-02-09;Italo Calvino;Harry Potter 8;hr8;Fantaisie
+book-8;2000-02-10;Charles Baudelaire;Harry Potter 9;hr9;Fantaisie
+book-9;2000-02-11;Marcel Proust;Harry Potter 10;hr10;Fantaisie
+book-10;2000-02-12;Giovanni Boccacio;Percy Jackson 1;pj1;Fantaisie
+book-11;2000-02-13;Alexander Pushkin;Percy Jackson 2;pj2;Fantaisie
+book-12;2000-02-14;Franz Kafka;Percy Jackson 3;pj3;Fantaisie
+book-13;2000-02-15;Anton Chekhov;Percy Jackson 4;pj4;Fantaisie
+book-14;2000-02-16;Gabriel Garcia Marquez;Percy Jackson 5;pj5;Fantaisie
+book-15;2000-02-17;Umberto Eco;Percy Jackson 6;pj6;Fantaisie
+book-16;2000-02-18;J.R.R Tolkien;Percy Jackson 7;pj7;Fantaisie
+book-17;2000-02-19;William Faulkner;Percy Jackson 8;pj8;Fantaisie
+book-18;2000-02-20;Arthur Rimbaud;Percy Jackson 9;pj9;Fantaisie
+book-19;2000-02-21;Ivan Turgenev;Percy Jackson 10;pj10;Fantaisie
+book-20;2000-02-22;Charles Dickens;La servante écarlate 1;se1;Science-fiction
+book-21;2000-02-23;Maxim Gorky;La servante écarlate 2;se2;Science-fiction
+book-22;2000-02-24;George Orwell;Le marchand de sable;lk1;Polar
+book-23;2000-02-25;Edgar Allan Poe;Miséricorde;edv1;Polar
+book-24;2000-02-26;Julio Cortazar;Délivrance;edv2;Polar
+book-25;2000-02-27;Oscar Wilde;Profanation;edv3;Polar
+book-26;2000-02-28;Jean De La Fontaine;Dossier 64;edv4;Polar
+book-27;2000-02-29;Rainer Maria Rilke;L'effet Papillon;edv5;Polar
+book-28;2000-03-01;Hans Christian Andersen;Promesse ;edv6;Polar
+book-29;2000-03-02;Thomas Mann;Selfies;edv7;Polar
+book-30;2000-03-03;Alexandre Dumas;Victime 2117;edv8;Polar
+book-31;2000-03-04;James Joyce;Lazar;lk2;Polar
+book-32;2000-03-05;Louis-Ferdinand Céline;Le pacte;lk3;Polar
+book-33;2000-03-06;Boris Pasternak;désaxé;lk4;Polar
+book-34;2000-03-07;Federico Garcia Lorca;le chasseur de lapin;lk5;Polar
+book-35;2000-03-08;Pablo Neruda;l'hypnotiseur;lk6;Polar
+book-36;2000-03-09;Najeeb Mahfouz;incurable;lk7;Polar
+book-37;2000-03-10;Nikolay Gogol;Stalker;lk8;Polar
+book-38;2000-03-11;Honore De Balzac;Nightmares;lk9;Polar
+book-39;2000-03-12;Ernest Hemingway;Les corps de verre;lk10;Polar
+book-40;2000-03-13;Neil Gaiman;Moby dick 1;NULL;Classique
+book-41;2000-03-14;Jean Racine;Moby dick 2;NULL;Classique
+book-42;2000-03-15;Albert Camus;Moby dick 3;NULL;Classique
+book-43;2000-03-16;Jean-Paul Sartre;Moby dick 4;NULL;Classique
+book-44;2000-03-17;Chingiz Aitmatov;Moby dick 5;NULL;Classique
+book-45;2000-03-18;John Steinbeck;Moby dick 6;NULL;Classique
+book-46;2000-03-19;Milan Kundera;Moby dick 7;NULL;Classique
+book-47;2000-03-20;Jules Vernes;Moby dick 8;NULL;Classique
+book-48;2000-03-21;Mark Twain;Moby dick 9;NULL;Classique
+book-49;2000-03-22;Francois Rabelais;Moby dick 10;NULL;Classique
+book-50;2000-03-23;Yasar Kemal;Le grand Catsby 1;NULL;Classique
+book-51;2000-03-24;George Bernard Shaw;Le grand Catsby 2;NULL;Classique
+book-52;2000-03-25;Arthur Conan Doyle;Le grand Catsby 3;NULL;Classique
+book-53;2000-03-26;Jane Austen;Le grand Catsby 4;NULL;Classique
+book-54;2000-03-27;Geoffrey Chaucer;Le grand Catsby 5;NULL;Classique
+book-55;2000-03-28;Antoine De Saint-Exupéry;Le grand Catsby 6;NULL;Classique
+book-56;2000-03-29;Erich Maria Remarque;Le grand Catsby 7;NULL;Classique
+book-57;2000-03-30;J.D. Sallinger;Le grand Catsby 8;NULL;Classique
+book-58;2000-03-31;Virginia Woolf;Le grand Catsby 9;NULL;Classique
+book-59;2000-04-01;Louis Aragon;Le grand Catsby 10;NULL;Classique
+book-60;2000-04-02;Herman Melville;Charlie;NULL;Horreur
+book-61;2000-04-03;Alphonse Daudet;Misery;sk2;Horreur
+book-62;2000-04-04;Mikhail Sholokhov;The shinning;sk3;Horreur
+book-63;2000-04-05;Stefan Zweig;Ça 1;sk4;Horreur
+book-64;2000-04-06;Jose Saramago;Ça 2;NULL;Horreur
+book-65;2000-04-07;Bertolt Brecht;Dreamcatcher;NULL;Horreur
+book-66;2000-04-08;Mario Vargas Llosa;Pet Semetary;sk7;Horreur
+book-67;2000-04-09;T.S. Elliot;Carrie;sk8;Horreur
+book-68;2000-04-10;Guy De Maupassant;Mist;sk9;Horreur
+book-69;2000-04-11;John Keats;Kujo;sk10;Horreur
+book-70;2000-04-12;Sabahattin Ali ;The dome 1;NULL;Horreur
+book-71;2000-04-13;Ahmet Hamdi Tampinar;The dome 2;NULL;Horreur
+book-72;2000-04-14;John Fante;Le horla 1;NULL;Horreur
+book-73;2000-04-15;Henri-Frédéric Blanc;Le horla 2;NULL;Horreur
+book-74;2000-04-16;Isaac Asimov;Le horla 3;NULL;Horreur
+book-75;2000-04-17;Scott Fitzgerald;Le horla 4;NULL;Horreur
+book-76;2000-04-18;J.M. Coetzee;Le horla 5;NULL;Horreur
+book-77;2000-04-19;Kazuo Ishiguro;Lucky luke 1;NULL;BD
+book-78;2000-04-20;Hermann Hesse;Lucky luke 2;NULL;BD
+book-79;2000-04-21;Robert Louis Stevenson;Lucky luke 3;NULL;BD
+book-80;2000-04-22;Salman Rushdie;Lucky luke 4;NULL;BD
+book-81;2000-04-23;Aldous Huxley;Lucky luke 5;NULL;BD
+book-82;2000-04-24;Paul Valery;Lucky luke 6;NULL;BD
+book-83;2000-04-25;Thomas Pynchon;Lucky luke 7;NULL;BD
+book-84;2000-04-26;H.P. Lovecraft;Lucky luke 8;NULL;BD
+book-85;2000-04-27;Haruki Murakami;Lucky luke 9;NULL;BD
+book-86;2000-04-28;Nikos Kazantzaki;Lucky luke 10;NULL;BD
+book-87;2000-04-29;Agatha Christie;The count of montecristo;NULL;Classique
+book-88;2000-04-30;Barbara Cartland;To kill a mockingbird;NULL;Classique
+book-89;2000-05-01;Danielle Steel;A game of throne 1;NULL;Overrated
+book-90;2000-05-02;J.K. Rowling;A game of throne 2;NULL;Overrated
+book-91;2000-05-03;Nora Roberts;A game of throne 3;NULL;Overrated
+book-92;2000-05-04;Stephen King;A game of throne 4;NULL;Overrated
+book-93;2000-05-05;Anne Rice;A game of throne 5;NULL;Overrated
+book-94;2000-05-06;Norman Bridwell;A game of throne 6;NULL;Overrated
+book-95;2000-05-07;Osamu Dazai;A game of throne 7;NULL;Overrated
+book-96;2000-05-08;Chuuya Nakahara;A game of throne 8;NULL;Overrated
+book-97;2000-05-09;Atsushi Nakajima;Candide;NULL;Classique
+book-98;2000-05-10;Akutagawa  Ryunosuke;Le petit prince;NULL;Classique
+book-99;2000-05-11;Ogai Mori;The girl with the dragon tatoo;NULL;Classique

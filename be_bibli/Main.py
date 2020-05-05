@@ -12,26 +12,90 @@ mycursor = mydb.cursor(buffered=True)
 
 def research(query, book, magazine):
     result = []
-    if book == 1:
-        command = "SELECT b.id, b.name, b.genre, b.image_id FROM books b WHERE b.name like '%" + query + "%'"
-        mycursor.execute(command)
-        result += mycursor.fetchall()
-    if magazine == 1:
-        command = "SELECT m.id, m.name, m.genre, m.image_id FROM magazines m WHERE m.name like '%" + query + "%'"
-        mycursor.execute(command)
-        result += mycursor.fetchall()
+
+    if (book == 0 and magazine == 0) or (book == 1 and magazine == 1):
+        mycursor.callproc('getMagsAndBooks', (query,))
+
+        for test in mycursor.stored_results():
+            result += (test.fetchall())
+    elif book == 1:
+        mycursor.callproc('getBooks', (query,))
+
+        for test in mycursor.stored_results():
+            result += (test.fetchall())
+    else:
+        mycursor.callproc('getMagazines', (query,))
+
+        for test in mycursor.stored_results():
+            result += (test.fetchall())
+
     return result
+
+
+def advancedResearch(title, author, typeList):
+    result = []
+    types = ["Fantaisie", "Science-fiction", "Polar", "Classique", "Horreur", "BD", "Overrated"]
+    command = "SELECT b.id, b.name, b.genre, b.image_id FROM books b WHERE b.name like '%" + title + "%' AND b.author_name like '%" + author + "%'"
+    command += "AND b.genre IN ('"
+
+    for x in range(0, 7):
+        if typeList[x] == True:
+            command += types[x] + "','"
+    # si aucune donnée a été sélectionnée on prend tous
+    if command[-2:] != ",'":
+        for x in range(0, 7):
+            command += types[x] + "','"
+    command = command[:-2]
+    command += ")"
+    print(command)
+    mycursor.execute(command)
+    result = mycursor.fetchall()
+
+    return result
+
 
 def getBook(id):
-    command = "SELECT * FROM Books b WHERE b.id =" + str(id)
-    mycursor.execute(command)
-    result = mycursor.fetchall()
+    result = []
+    mycursor.callproc('getBook', (id,))
+
+    for test in mycursor.stored_results():
+        result += (test.fetchall())
     return result
 
+
 def getMagazine(id):
-    command = "SELECT * FROM Magazines m WHERE m.id =" + id
-    mycursor.execute(command)
-    result = mycursor.fetchall()
+    result = []
+    mycursor.callproc('getMagazine', (id,))
+
+    for test in mycursor.stored_results():
+        result += (test.fetchall())
+    return result
+
+
+def getUser(email, password):
+    result = []
+    mycursor.callproc('getUser', (email, password))
+
+    for test in mycursor.stored_results():
+        result += (test.fetchall())
+    return result
+
+
+def getAuthor(authorName):
+    result = []
+    mycursor.callproc('getAuthor', (authorName,))
+
+    for test in mycursor.stored_results():
+        result += (test.fetchall())
+    return result
+
+
+def getBooksFromAuthor(authorName):
+    result = []
+    mycursor.callproc('getBooksFromAuthor', (authorName,))
+
+    for test in mycursor.stored_results():
+        result += (test.fetchall())
     return result
 
 def GetUser(mail, passWord):
@@ -167,14 +231,14 @@ if __name__ == '__main__':
 
     mycursor.execute('''CREATE TABLE Authors (
                      name VARCHAR(50) PRIMARY KEY,
-                     image_id CHAR(3) UNIQUE,
+                     image_id CHAR(3),
                      birth DATE NOT NULL,
                      death DATE,
                      nationality VARCHAR(255) NOT NULL)''')
     print("created table Authors")
 
     mycursor.execute('''CREATE TABLE Books (
-                     id INTEGER PRIMARY KEY,
+                     id VARCHAR(10) PRIMARY KEY,
                      publishing_date DATE NOT NULL,
                      author_name VARCHAR(50) NOT NULL,
                      name VARCHAR(255) NOT NULL,
@@ -187,7 +251,7 @@ if __name__ == '__main__':
 
     mycursor.execute('''CREATE TABLE Copies (
                      id INTEGER AUTO_INCREMENT PRIMARY KEY,
-                     b_id INTEGER NOT NULL,
+                     b_id VARCHAR(10) NOT NULL,
                      status BOOL NOT NULL,
                      FOREIGN KEY(b_id) REFERENCES Books(id)
                      ON UPDATE CASCADE
@@ -207,7 +271,7 @@ if __name__ == '__main__':
     print("created table Locations")
 
     mycursor.execute('''CREATE TABLE Magazines (
-                     id INTEGER PRIMARY KEY,
+                     id VARCHAR(10) PRIMARY KEY,
                      name VARCHAR(255) NOT NULL,
                      image_id VARCHAR(255),
                      genre VARCHAR(50) NOT NULL,
@@ -273,11 +337,75 @@ if __name__ == '__main__':
            LINES TERMINATED BY "\r\n" ''')
     print("Filled Books")
 
-    #fill magazines
+    # fill magazines
     mycursor.execute('''LOAD DATA LOCAL INFILE "data/magazines.txt" INTO TABLE magazines
             COLUMNS TERMINATED BY ";"
            LINES TERMINATED BY "\r\n" ''')
     print("Filled Magazines")
+
+    # create getBook function
+    mycursor.execute('''CREATE PROCEDURE getMagazines(IN query varchar(64))
+            BEGIN
+            SELECT m.id, m.name, m.genre, m.image_id FROM Magazines m WHERE m.name like(CONCAT('%', query, '%'));
+            END''')
+
+    print("Created getMagazines")
+
+    mycursor.execute('''CREATE PROCEDURE getMagazine(id varchar(64))
+                        BEGIN
+                        SELECT * FROM Magazines m WHERE m.id = id;
+                        END''')
+    print("Created getMagazine")
+
+    mycursor.execute('''CREATE PROCEDURE getBooks(query varchar(64))
+            BEGIN
+            SELECT b.id, b.name, b.genre, b.image_id FROM Books b WHERE b.name like(CONCAT('%', query, '%'));
+            END''')
+
+    print("Created getBooks")
+
+    mycursor.execute('''CREATE PROCEDURE getBook(id varchar(64))
+                    BEGIN
+                    SELECT * FROM Books b WHERE b.id = id;
+                    END''')
+    print("Created getBook")
+
+    mycursor.execute('''CREATE PROCEDURE getMagsAndBooks(query varchar(64))
+                BEGIN
+                CALL getBooks(query);
+                CALL getMagazines(query);
+                END''')
+
+    print("Created getMagsAndBooks")
+
+    mycursor.execute('''CREATE PROCEDURE getUser(email varchar(64), pass varchar(64))
+                BEGIN
+                SELECT * FROM Users u WHERE u.password = pass AND u.email = email;
+                END''')
+
+    print("Created getUser")
+
+    mycursor.execute('''CREATE PROCEDURE getAuthor(authorName varchar(64))
+                    BEGIN
+                    SELECT a.name, a.birth, a.death, a.nationality, a.image_id FROM Authors a WHERE a.name = authorName;
+                    END''')
+
+    print("Created getAuthor")
+
+    mycursor.execute('''CREATE PROCEDURE getBooksFromAuthor(authorName varchar(64))
+                        BEGIN
+                        SELECT b.id, b.name, b.image_id FROM Books b WHERE b.author_name = authorName;
+                        END''')
+
+    print("Created getBooksFromAuthor")
+
+    mycursor.execute('''CREATE PROCEDURE advancedSearch(title varchar(64), author varchar(64), types varchar(64))
+                          BEGIN
+                          SELECT b.id, b.name, b.genre, b.image_id FROM books b WHERE b.name like 
+                          (CONCAT('%', title, '%')) AND b.author_name like (CONCAT('%', author, '%')) AND b.genre IN (types);
+                          END''')
+
+    print("Created advancedSearch")
 
     mydb.commit()
     mycursor.close()
