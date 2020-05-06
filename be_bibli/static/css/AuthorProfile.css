@@ -7,11 +7,18 @@
 
 .result-container {
     margin: 10px;
+    padding: 20px;
 }
+
 
 .content {
     width: 80%;
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+.result-container:hover {
+    background: grey;
+    border-radius: 10px;
 }

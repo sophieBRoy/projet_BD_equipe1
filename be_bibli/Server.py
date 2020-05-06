@@ -3,7 +3,7 @@ from Forms import researchForm, advancedResearchForm
 from log import LogForm
 from abonnement import AbonnementForm
 from Main import research, advancedResearch, getBook, getAuthor, getBooksFromAuthor, GetInfoUtilisateur, \
-    SetUtilisateur, GetUser, getMagazine
+    SetUtilisateur, GetUser, getMagazine, addMagToPurchases, addBookToLocations
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "password"
@@ -13,6 +13,8 @@ courriel=""
 motdePass=""
 adminPass=""
 resultat1=[]
+lastItemId = ""
+userId = ''
 
 
 @app.route('/')
@@ -71,10 +73,9 @@ def abonnement():
 
 @app.route("/Profil_utilisateur")
 def utilisateur():
-    print(resultat1)
-    resultat=[]
-    resultat += GetInfoUtilisateur(resultat1[0])
-    print(resultat)
+    global userId
+    userId = resultat1[0]
+    resultat = GetInfoUtilisateur(resultat1[0])
     return render_template('Profil_utilisateur.html', resultat=resultat)
 
 @app.route('/Recherche-avancee', methods=['GET', 'POST'])
@@ -115,13 +116,13 @@ def magazines():
 
 @app.route('/resultats-recherche')
 def resultats_recherche():
-    
     return render_template('Resultats-recherche.html')
 
 
 @app.route('/location/<bookId>', methods=['GET'])
 def location(bookId):
-
+    global lastItemId
+    lastItemId = bookId
     if bookId[0] == "b":
         result = getBook(bookId)
         return render_template('Location.html', result=result)
@@ -142,6 +143,22 @@ def admin():
         return render_template('AdminPage.html')
     else:
         return "Erreur: vous ne pouvez pas accéder à cette page car vous n'êtes pas administrateur :("
+
+@app.route('/temp')
+def achatComplet():
+    global courriel
+    if courriel:
+        addMagToPurchases(userId, lastItemId)
+        print('hello')
+    return redirect(url_for('se_connecter'))
+
+@app.route('/temp2')
+def locationComplet():
+    global courriel
+    if courriel:
+        addBookToLocations(userId, lastItemId)
+        print('hello')
+    return redirect(url_for('se_connecter'))
 
 if __name__=='__main__':
     app.run(debug=True)

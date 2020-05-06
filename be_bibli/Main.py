@@ -102,7 +102,7 @@ def GetUser(mail, passWord):
     result=[]
     # si la saisie est VIDE retourner false /testé
 
-    if mail.isspace() is True and passWord.isspace() is True:
+    if mail.isspace() and passWord.isspace():
         return False
 
     #sinon traiter la saisie
@@ -133,7 +133,7 @@ def GetEmail(mail):
     mycursor.execute(command)
     result = mycursor.fetchone()
     if result is None:
-        result ="Le courriel saisie n'éxiste pas"
+        result ="Le courriel saisie n'existe pas"
         return False, result
     return result
 
@@ -169,13 +169,23 @@ def SetUtilisateur(nom, prenom, age, adresse, courriel, motPass, admin):
     idMaxAdresTAB.append(idAddresMax[0])
     print(idMaxAdresTAB[0])
 
-    #add_user = ("INSERT INTO Users "
-     #             "(id, first_name, last_name, age, adress_id, email, password, admin) "
-      #            "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)")
-    #mycursor.execute(add_user,(idMaxUser+1, nom, prenom, age, idAddresMax+1, courriel, motPass, admin))
-    #result = mycursor.fetchone()
+def addMagToPurchases(userId, magId):
+    mycursor.callproc('addPurchase', (userId, magId))
+    mydb.commit()
+    return 0
 
-    #return result
+def addBookToLocations(userId, bookId):
+    result = []
+    mycursor.callproc('selectCopy', (bookId, ))
+
+    for test in mycursor.stored_results():
+        result += (test.fetchall())
+    copieId= result[0][0]
+    mycursor.callproc('addLocation', (userId, copieId))
+    mydb.commit()
+
+
+
 
 print(SetUtilisateur('sara', 'amara', 27, '739 jdsjfsd', 'asaraselma@gmail.com', 'jojo', 1))
 
@@ -212,7 +222,7 @@ if __name__ == '__main__':
                      id INTEGER AUTO_INCREMENT PRIMARY KEY,
                      number VARCHAR(4),
                      street VARCHAR(255),
-                     postal_code CHAR(6) NOT NULL)''')
+                     postal_code CHAR(7) NOT NULL)''')
     print("created table Adresses")
     # missing email and password in the datas
     mycursor.execute('''CREATE TABLE Users (
@@ -280,6 +290,18 @@ if __name__ == '__main__':
                      year INTEGER NOT NULL,
                      quantity INTEGER NOT NULL)''')
     print("created table Magazines")
+
+    mycursor.execute('''CREATE TABLE Purchases (
+                    u_id INTEGER NOT NULL,
+                    m_id VARCHAR(10) NOT NULL,
+                    FOREIGN KEY(u_id) REFERENCES Users(id)
+                     ON UPDATE CASCADE
+                     ON DELETE CASCADE,
+                     FOREIGN KEY(m_id) REFERENCES Magazines(id)
+                     ON UPDATE CASCADE
+                     ON DELETE CASCADE)''')
+    print("created table Purchases")
+
     # TRIGGERS (SECOND METHOD)
     # someone needs to be at least 10 to rent a book and cant be older than 117 years old
     mycursor.execute('''CREATE TRIGGER ageLimits
@@ -336,6 +358,12 @@ if __name__ == '__main__':
             COLUMNS TERMINATED BY ";"
            LINES TERMINATED BY "\r\n" ''')
     print("Filled Books")
+
+    # fills users
+    mycursor.execute('''LOAD DATA LOCAL INFILE "data/copies.txt" INTO TABLE copies
+        COLUMNS TERMINATED BY ";"
+       LINES TERMINATED BY "\r\n" ''')
+    print("Filled Users")
 
     # fill magazines
     mycursor.execute('''LOAD DATA LOCAL INFILE "data/magazines.txt" INTO TABLE magazines
@@ -406,6 +434,51 @@ if __name__ == '__main__':
                           END''')
 
     print("Created advancedSearch")
+
+    mycursor.execute('''CREATE PROCEDURE updateQuantity(magId varchar(10), difference integer)
+                    BEGIN
+                        UPDATE Magazines
+                        SET quantity = quantity + difference
+                        WHERE id = magId;
+                        END''')
+    print("Created updateQuantity")
+
+    mycursor.execute('''CREATE PROCEDURE addPurchase(userId integer, magId varchar(10))
+                    BEGIN
+                    CALL updateQuantity(magId, -1);
+                    INSERT INTO Purchases(u_id, m_id)
+                    VALUES(userId, magId);
+                    END''')
+    print("Created addPurchase")
+
+    mycursor.execute('''CREATE PROCEDURE setStatusLocation(bookId varchar(10))
+                        BEGIN
+                        UPDATE Copies
+                        SET status = 0
+                        WHERE b_id = bookId AND status = 1
+                        LIMIT 1;
+                        END''')
+    print("Created setStatusLocation")
+
+    mycursor.execute('''CREATE PROCEDURE selectCopy(bookId varchar(10))
+                            BEGIN
+                            SELECT c.id FROM Copies c
+                            WHERE c.b_id = bookId AND status = 1
+                            LIMIT 1;
+                            CALL setStatusLocation(bookId);
+                            END''')
+    print("Created selectCopy")
+
+    mycursor.execute('''CREATE PROCEDURE addLocation(userId integer, copieId integer)
+                    BEGIN
+                    INSERT INTO Locations(u_id, c_id)
+                    VALUES(userId, copieId);
+                    END''')
+    print("Created addLocation")
+
+
+
+
 
     mydb.commit()
     mycursor.close()

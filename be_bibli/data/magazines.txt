@@ -1,4 +1,5 @@
-﻿mag1;national geographic 1;ng1;Decouvertes;1;mai;2000;10
+﻿
+mag1;national geographic 1;ng1;Decouvertes;1;mai;2000;10
 mag2;national geographic 2;ng2;Decouvertes;2;mai;2000;10
 mag3;national geographic 3;ng3;Decouvertes;3;mai;2000;10
 mag4;national geographic 4;ng4;Decouvertes;4;mai;2000;10

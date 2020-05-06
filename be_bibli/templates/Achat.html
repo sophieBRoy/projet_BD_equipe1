@@ -27,7 +27,7 @@
             <p>Genre: {{magGenre}}</p>
             <p>Édition de: {{magMonth}} {{magYear}}</p>
             <p>Quantité restante: {{magQuantity}}</p>
-            <button class="submit-button">Acheter</button>
+            <a href="{{ url_for('achatComplet') }}"><button class="submit-button">Acheter</button></a>
             {% endfor %}
         </div>
     </div>
