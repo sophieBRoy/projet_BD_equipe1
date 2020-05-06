@@ -74,15 +74,15 @@ def abonnement():
         #print(email[0].isspace())
         password = request.form.getlist('utilisateursMdp')
         #fonction qui traite les entrée
-        result = SetUtilisateur( nom[0],prenom[0], age[0], numero[0], rue[0], code[0],  email[0], password[0])
+        result = SetUtilisateur(nom[0], prenom[0], age[0], numero[0], rue[0], code[0],  email[0], password[0])
         print(result)
         if result is True:
-            return redirect(url_for('utilisateur'))
+            return redirect(url_for('accueil'))
         else:
             message += "il y'a des champs vides, veuillez remplir tous les champs"
             return render_template('Abonnement.html', form=form, message=message)
 
-    return render_template('Abonnement.html',form=form)
+    return render_template('Abonnement.html', form = form)
 
 
 
