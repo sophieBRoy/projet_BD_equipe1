@@ -40,9 +40,15 @@
         <div class="paniers">
         <div class="panierA">
             <p class="title">Panier d'achats</p>
+            {% for magazineName in purchases %}
+            <p>{{magazineName[0]}}</p>
+            {% endfor %}
         </div>
         <div class="panierL">
             <p class="title">Panier de locations</p>
+            {% for locationName, locationId in locations %}
+            <p>{{ locationName }} - {{ locationId }}</p>
+            {% endfor %}
         </div>
         </div>
     </div>

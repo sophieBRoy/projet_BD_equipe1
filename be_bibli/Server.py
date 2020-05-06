@@ -3,7 +3,7 @@ from Forms import researchForm, advancedResearchForm
 from log import LogForm
 from abonnement import AbonnementForm
 from Main import research, advancedResearch, getBook, getAuthor, getBooksFromAuthor, GetInfoUtilisateur, \
-    SetUtilisateur, GetUser, getMagazine, addMagToPurchases, addBookToLocations
+    SetUtilisateur, GetUser, getMagazine, addMagToPurchases, addBookToLocations, getUserLocations, getUserPurchases
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "password"
@@ -76,7 +76,9 @@ def utilisateur():
     global userId
     userId = resultat1[0]
     resultat = GetInfoUtilisateur(resultat1[0])
-    return render_template('Profil_utilisateur.html', resultat=resultat)
+    locations = getUserLocations(userId)
+    purchases = getUserPurchases(userId)
+    return render_template('Profil_utilisateur.html', resultat=resultat, locations=locations, purchases=purchases)
 
 @app.route('/Recherche-avancee', methods=['GET', 'POST'])
 def recherche_avancee():
@@ -149,7 +151,6 @@ def achatComplet():
     global courriel
     if courriel:
         addMagToPurchases(userId, lastItemId)
-        print('hello')
     return redirect(url_for('se_connecter'))
 
 @app.route('/temp2')
@@ -157,7 +158,6 @@ def locationComplet():
     global courriel
     if courriel:
         addBookToLocations(userId, lastItemId)
-        print('hello')
     return redirect(url_for('se_connecter'))
 
 if __name__=='__main__':

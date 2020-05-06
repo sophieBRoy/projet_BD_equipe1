@@ -170,8 +170,11 @@ def SetUtilisateur(nom, prenom, age, adresse, courriel, motPass, admin):
     print(idMaxAdresTAB[0])
 
 def addMagToPurchases(userId, magId):
-    mycursor.callproc('addPurchase', (userId, magId))
-    mydb.commit()
+    try:
+        mycursor.callproc('addPurchase', (userId, magId))
+        mydb.commit()
+    except mydb.Error as ex:
+        return ex
     return 0
 
 def addBookToLocations(userId, bookId):
@@ -181,8 +184,27 @@ def addBookToLocations(userId, bookId):
     for test in mycursor.stored_results():
         result += (test.fetchall())
     copieId= result[0][0]
-    mycursor.callproc('addLocation', (userId, copieId))
-    mydb.commit()
+    if copieId:
+        mycursor.callproc('addLocation', (userId, copieId))
+        mydb.commit()
+    else:
+        return "il ne reste plus d'exemplaires de ce livre"
+
+def getUserLocations(userId):
+    result=[]
+    mycursor.callproc('getUserLocations', (userId,))
+
+    for test in mycursor.stored_results():
+        result += (test.fetchall())
+    return result
+
+def getUserPurchases(userId):
+    result=[]
+    mycursor.callproc('getUserPurchases', (userId,))
+
+    for test in mycursor.stored_results():
+        result += (test.fetchall())
+    return result
 
 
 
@@ -332,6 +354,16 @@ if __name__ == '__main__':
                        END IF;
                     END''')
 
+    mycursor.execute('''CREATE TRIGGER noMoreMagazines
+                    BEFORE UPDATE ON Magazines
+                    FOR EACH ROW
+                        BEGIN
+                            IF NEW.quantity < 0
+                            THEN
+                                SIGNAL SQLSTATE '45000'
+                                SET MESSAGE_TEXT = "Il ne reste plus d'exemplaires de ce magazine";
+                       END IF;
+                    END''')
     # FILLING DATABASE (THIRD METHOD)
 
     # fills adresses
@@ -475,6 +507,22 @@ if __name__ == '__main__':
                     VALUES(userId, copieId);
                     END''')
     print("Created addLocation")
+
+    mycursor.execute('''CREATE PROCEDURE getUserLocations(userId integer)
+                        BEGIN
+                        SELECT b.name, c.id FROM Books b, Copies c, Locations l
+                        WHERE l.u_id = userId AND l.c_id = c.id AND b.id = c.b_id;
+                        END''')
+    print("Created getUserLocations")
+
+    mycursor.execute('''CREATE PROCEDURE getUserPurchases(userId integer)
+                        BEGIN
+                        SELECT m.name FROM Magazines m, Purchases p
+                        WHERE p.u_id = userId AND p.m_id = m.id; 
+                        END''')
+    print("Created getUserPurchases")
+
+
 
 
 
