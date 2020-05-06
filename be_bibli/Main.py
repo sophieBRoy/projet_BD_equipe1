@@ -137,6 +137,17 @@ def GetEmail(mail):
         return False, result
     return result
 
+
+def SetUtilisateur(nom, prenom, age,numero, rue, code,  email, password):
+    commande = " INSERT INTO Adresses(number, street, postal_code) VALUES (%s, %s, %s)"
+    mycursor.execute(commande, (numero, rue, code))
+    adress_id = mycursor.lastrowid
+    mydb.commit()
+    commande2 = "INSERT INTO Users(first_name,last_name, age, adress_id, email, password, admin) VALUES (%s, %s, %s,%s,%s,%s,%s)"
+    mycursor.execute(commande2, (prenom, nom, age, adress_id, email, password, 0))
+    mydb.commit()
+    return True
+
 #ne doit pas afficher un message
 def GetPassWord(passWord):
     command = ("SELECT u.id FROM Users u WHERE u.password like '%" + passWord + "%'")
@@ -155,38 +166,6 @@ def GetInfoUtilisateur(id):
     return result
 
 
-def SetUtilisateur(nom, prenom, age, adresse, courriel, motPass, admin):
-    idMaxUserTAB = []
-    idMaxAdresTAB = []
-    command = mycursor.execute("SELECT MAX(u.id) FROM Users u")
-    mycursor.execute(command)
-    idMaxUser = mycursor.fetchone()
-    idMaxUserTAB.append(idMaxUser[0])
-    print(idMaxUserTAB[0])
-    command2 = mycursor.execute("SELECT MAX(u.adress_id) FROM Users u ")
-    mycursor.execute(command2)
-    idAddresMax = mycursor.fetchone()
-    idMaxAdresTAB.append(idAddresMax[0])
-    print(idMaxAdresTAB[0])
-
-    #add_user = ("INSERT INTO Users "
-     #             "(id, first_name, last_name, age, adress_id, email, password, admin) "
-      #            "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)")
-    #mycursor.execute(add_user,(idMaxUser+1, nom, prenom, age, idAddresMax+1, courriel, motPass, admin))
-    #result = mycursor.fetchone()
-
-    #return result
-
-#print(SetUtilisateur('sara', 'amara', 27, '739 jdsjfsd', 'asaraselma@gmail.com', 'jojo', 1))
-
-#print(GetInfoUtilisateur(1))
-#l=GetEmail('non@eleifendnunc.ne')
-#print(l[0])
-
-#print(GetEmail('sapien.gravida.non@luctusetultrices.org'))
-#print(GetPassWord('enim'))
-
-#print(GetUser('non@eleifendnunc.net','enim'))
 
 
 if __name__ == '__main__':
@@ -212,7 +191,7 @@ if __name__ == '__main__':
                      id INTEGER AUTO_INCREMENT PRIMARY KEY,
                      number VARCHAR(4),
                      street VARCHAR(255),
-                     postal_code CHAR(6) NOT NULL)''')
+                     postal_code CHAR(6)NOT NULL)''')
     print("created table Adresses")
     # missing email and password in the datas
     mycursor.execute('''CREATE TABLE Users (
@@ -406,6 +385,29 @@ if __name__ == '__main__':
                           END''')
 
     print("Created advancedSearch")
+
+    mycursor.execute('''
+   
+    CREATE PROCEDURE SetNewAdresses(IN number VARCHAR(4),IN street VARCHAR(255),IN postal_code CHAR(6))
+                        BEGIN
+                        INSERT INTO Adresses (number, street, postal_code)
+                        VALUES (@number, @street, @postal_code);
+                        
+                        END
+                       ''')
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     mydb.commit()
     mycursor.close()
