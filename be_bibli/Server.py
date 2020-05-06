@@ -41,16 +41,12 @@ def se_connecter():
         motdePass = request.form.getlist('passUser')
         resultat= GetUser(courriel[0], motdePass[0])
 
-        if resultat:
+        if resultat is not False:
             resultat1.append(resultat[0])
             return redirect(url_for('utilisateur'))
         else:
-
-            message += "Erreur dans votre courriel ou dans votre mot de passe"
-    if not courriel:
-        return render_template('Se-connecter.html', form=form, message=message)
-    else:
-        return redirect(url_for('utilisateur'))
+            message += "veuillez saisir les données de nouveau"
+    return render_template('Se-connecter.html', form=form, message=message)
 
 
 @app.route('/abonnement',  methods=['GET','POST'])

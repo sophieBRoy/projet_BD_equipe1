@@ -7,7 +7,7 @@ mydb = mysql.connector.connect(
     database="library"
 )
 
-mycursor = mydb.cursor()
+mycursor = mydb.cursor(buffered=True)
 
 
 def research(query, book, magazine):
@@ -72,13 +72,6 @@ def getMagazine(id):
     return result
 
 
-def getUser(email, password):
-    result = []
-    mycursor.callproc('getUser', (email, password))
-
-    for test in mycursor.stored_results():
-        result += (test.fetchall())
-    return result
 
 
 def getAuthor(authorName):
@@ -98,35 +91,6 @@ def getBooksFromAuthor(authorName):
         result += (test.fetchall())
     return result
 
-def GetUser(mail, passWord):
-    result=[]
-    # si la saisie est VIDE retourner false /testé
-
-    if mail.isspace() is True and passWord.isspace() is True:
-        return False
-
-    #sinon traiter la saisie
-    else:
-        #recupérer les donnée des fonctions GetEmail et GetPassWord/TESTÉ
-        resultatmail= GetEmail(mail)
-        resultatpassword=GetPassWord(passWord)
-
-        #si les deux fonctions retourne False (c est a dire que la saisie ne concorde pas avec une des entrées de la table users) alors on retourne False/TESTÉ
-        if not resultatmail[0] or not resultatpassword:
-            result = False
-
-        #tester si les deux ID concorde/TESTÉ
-        elif resultatpassword[0] != resultatmail[0]:
-            result = False
-        else:
-            #cas ou les deux entrées concorde et récupérer le ID
-            command = "SELECT u.id FROM Users u WHERE u.email like %s AND u.password like %s"
-            mycursor.execute(command, (mail, passWord))
-            result = mycursor.fetchone()
-
-    return result
-
-
 def GetEmail(mail):
 
     command = ("SELECT u.id FROM Users u WHERE u.email like'%" + mail + "%'")
@@ -136,18 +100,6 @@ def GetEmail(mail):
         result ="Le courriel saisie n'éxiste pas"
         return False, result
     return result
-
-
-def SetUtilisateur(nom, prenom, age,numero, rue, code,  email, password):
-    commande = " INSERT INTO Adresses(number, street, postal_code) VALUES (%s, %s, %s)"
-    mycursor.execute(commande, (numero, rue, code))
-    adress_id = mycursor.lastrowid
-    mydb.commit()
-    commande2 = "INSERT INTO Users(first_name,last_name, age, adress_id, email, password, admin) VALUES (%s, %s, %s,%s,%s,%s,%s)"
-    mycursor.execute(commande2, (prenom, nom, age, adress_id, email, password, 0))
-    mydb.commit()
-    return True
-
 #ne doit pas afficher un message
 def GetPassWord(passWord):
     command = ("SELECT u.id FROM Users u WHERE u.password like '%" + passWord + "%'")
@@ -157,6 +109,50 @@ def GetPassWord(passWord):
         return False
     return result
 
+def GetUser(mail, passWord):
+    result=[]
+    # si la saisie est VIDE retourner false /testé
+    if mail.isspace() is True and passWord.isspace() is True:
+        return False
+    #sinon traiter la saisie
+    else:
+        #recupérer les donnée des fonctions GetEmail et GetPassWord/TESTÉ
+        resultatmail = GetEmail(mail)
+        resultatpassword=GetPassWord(passWord)
+        #si les deux fonctions retourne False (c est a dire que la saisie ne concorde pas avec une des entrées de la table users) alors on retourne False/TESTÉ
+        if not resultatmail[0] or not resultatpassword:
+            result = False
+        #tester si les deux ID concorde/TESTÉ
+        elif resultatpassword[0] != resultatmail[0]:
+            result = False
+        else:
+            #cas ou les deux entrées concorde et récupérer le ID
+            command = "SELECT u.id FROM Users u WHERE u.email like %s AND u.password like %s"
+            mycursor.execute(command, (mail, passWord))
+            result = mycursor.fetchone()
+            print(result)
+
+    return result
+
+def getmail(numero, rue, code):
+    result5 = []
+    mycursor.callproc('SetNewAdresses', (numero, rue, code))
+    for test in mycursor.stored_results():
+        result5 += (test.fetchall())
+        mydb.commit()
+
+
+def SetUtilisateur( nom, prenom, age, numero, rue, code,  email, password):
+    commande = " INSERT INTO Adresses(number, street, postal_code) VALUES (%s, %s, %s)"
+    mycursor.execute(commande, (numero, rue, code))
+    adress_id = mycursor.lastrowid
+    mydb.commit()
+    commande2 = "INSERT INTO Users(first_name,last_name, age, adress_id, email, password, admin) VALUES (%s, %s, %s,%s,%s,%s,%s)"
+    mycursor.execute(commande2, (prenom, nom, age, adress_id, email, password, 0))
+    mydb.commit()
+    return True
+
+
 
 def GetInfoUtilisateur(id):
     result = []
@@ -164,6 +160,18 @@ def GetInfoUtilisateur(id):
     mycursor.execute(command)
     result += mycursor.fetchone()
     return result
+
+def ajoutUtilisateur(nom, prenom, age, mail, password):
+    result6 = []
+    resultat = []
+    command=("SELECT MAX(a.id) FROM Adresses a")
+    mycursor.execute(command)
+    resultat +=mycursor.fetchone()
+    print(resultat)
+    mycursor.callproc('SetNewUser', (nom, prenom, age,  mail, password, 0))
+    for test in mycursor.stored_results():
+        result6 += (test.fetchall())
+        mydb.commit()
 
 
 
@@ -185,6 +193,7 @@ if __name__ == '__main__':
     )
 
     mycursor = mydb.cursor()
+
 
     # create the table for the adresses
     mycursor.execute('''CREATE TABLE Adresses (
@@ -386,21 +395,17 @@ if __name__ == '__main__':
 
     print("Created advancedSearch")
 
-    mycursor.execute('''
-   
-    CREATE PROCEDURE SetNewAdresses(IN number VARCHAR(4),IN street VARCHAR(255),IN postal_code CHAR(6))
+    mycursor.execute('''CREATE PROCEDURE SetNewAdresses(nid INTEGER, Nnumber VARCHAR(4), Sstreet VARCHAR(255), Ppostal_code CHAR(6))
                         BEGIN
-                        INSERT INTO Adresses (number, street, postal_code)
-                        VALUES (@number, @street, @postal_code);
-                        
-                        END
-                       ''')
+                        INSERT INTO Adresses (id, number, street, postal_code)
+                        VALUES (nid, Nnumber, Sstreet, Ppostal_code);
+                        END''')
 
-
-
-
-
-
+    mycursor.execute('''CREATE PROCEDURE SetNewUser(Ufirst_name VARCHAR(255),Ulast_name VARCHAR(255),Uage INTEGER , Uemail VARCHAR(255), Upassword VARCHAR(20) ,Uadmin BOOL)
+                BEGIN
+                INSERT INTO Adresses (first_name,last_name, age, adress_id,email, admin)
+                        VALUES (Ufirst_name ,Ulast_name,Uage ,(SELECT MAX(id) FROM Adresses), Uemail , Upassword,Uadmin );
+                END''')
 
 
 
