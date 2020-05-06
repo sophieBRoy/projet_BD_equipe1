@@ -1,18 +1,31 @@
 .content {
     width: 50%;
     flex-grow: 0.5;
-    margin-top: 100px;
-    margin-left:0px;
+    margin: 30px;
     flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: start;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .book {
  margin: 10px;
 }
 
+.result-container {
+    align-self: center;
+}
+
 .result-container:hover {
     background: grey;
     border-radius: 10px;
+}
+
+.content-container {
+    flex-direction: column;
+}
+
+.paniers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }

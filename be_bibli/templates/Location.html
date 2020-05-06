@@ -27,7 +27,7 @@
             <a href="/auteur/{{authorName}}"><p>Auteur: {{authorName}}</p></a>
             <p>Date de publication: {{publishingDate}}</p>
             <p>Genre: {{bookGenre}}</p>
-            <button class="submit-button">Louer</button>
+            <a href="{{ url_for('locationComplet') }}"><button class="submit-button">Louer</button></a>
             {% endfor %}
         </div>
     </div>
