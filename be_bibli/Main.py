@@ -7,7 +7,7 @@ mydb = mysql.connector.connect(
     database="library"
 )
 
-mycursor = mydb.cursor(buffered=True)
+mycursor = mydb.cursor()
 
 
 def research(query, book, magazine):
@@ -177,7 +177,7 @@ def SetUtilisateur(nom, prenom, age, adresse, courriel, motPass, admin):
 
     #return result
 
-print(SetUtilisateur('sara', 'amara', 27, '739 jdsjfsd', 'asaraselma@gmail.com', 'jojo', 1))
+#print(SetUtilisateur('sara', 'amara', 27, '739 jdsjfsd', 'asaraselma@gmail.com', 'jojo', 1))
 
 #print(GetInfoUtilisateur(1))
 #l=GetEmail('non@eleifendnunc.ne')
