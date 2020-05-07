@@ -51,8 +51,10 @@ def se_connecter():
             resultat1.append(resultat[0])
             return redirect(url_for('utilisateur'))
         else:
+            courriel = ""
+            motdePass = ""
             message += "veuillez saisir les données de nouveau"
-    if not courriel:
+    if not courriel or not motdePass:
         return render_template('Se-connecter.html', form=form, message=message)
     else:
         return redirect(url_for('utilisateur'))
@@ -195,7 +197,18 @@ def locationComplet():
 def temp3():
     restockAllMagazines()
     message = "les magazines ont bien été restockés"
-    return render_template('AdminPage.html', message=message)
+    form = adminForm()
+    if adminPass:
+        if form.is_submitted():
+            id = request.form.getlist('id')
+            result = giveRights(id)
+            if not result:
+                return render_template('AdminPage.html', message="Le status d'administrateur a été donné", form=form)
+            else:
+                return render_template('AdminPage.html', message="Cet utilisateur a déjà les droits d'admin", form=form)
+        return render_template('AdminPage.html', message=message, form=form)
+    else:
+        return "Erreur: vous ne pouvez pas accéder à cette page car vous n'êtes pas administrateur"
 
 if __name__=='__main__':
     app.run(debug=True)
