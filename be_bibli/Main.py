@@ -1,4 +1,5 @@
 import mysql.connector
+from cryptography.fernet import Fernet
 
 mydb = mysql.connector.connect(
     host="localhost",
@@ -37,7 +38,6 @@ def advancedResearch(title, author, typeList):
     types = ["Fantaisie", "Science-fiction", "Polar", "Classique", "Horreur", "BD", "Overrated"]
     command = "SELECT b.id, b.name, b.genre, b.image_id FROM books b WHERE b.name like '%" + title + "%' AND b.author_name like '%" + author + "%'"
     command += "AND b.genre IN ('"
-
     for x in range(0, 7):
         if typeList[x] == True:
             command += types[x] + "','"
@@ -91,50 +91,52 @@ def getBooksFromAuthor(authorName):
         result += (test.fetchall())
     return result
 
-def GetEmail(mail):
-
-    command = ("SELECT u.id FROM Users u WHERE u.email like'%" + mail + "%'")
-    mycursor.execute(command)
-    result = mycursor.fetchone()
-    if result is None:
-        result ="Le courriel saisie n'éxiste pas"
-        return False, result
-    return result
-#ne doit pas afficher un message
-def GetPassWord(passWord):
-    command = ("SELECT u.id FROM Users u WHERE u.password like '%" + passWord + "%'")
-    mycursor.execute(command, passWord)
-    result = mycursor.fetchone()
-    if result is None:
-        return False
+##########################################################################
+def GetIdMail(mail):
+    result = []
+    mycursor.callproc('getIDemail', (mail,))
+    for i in mycursor.stored_results():
+        result += (i.fetchone())
     return result
 
-def GetUser(mail, passWord):
-    result=[]
+def GetIdPassWord(password):
+    result = []
+    mycursor.callproc('getIDpassword', (password,))
+    for i in mycursor.stored_results():
+        result += (i.fetchone())
+    return result
+
+def GetUserId(mail, passWord):
+    key1 = ""
+    result = []
+    with open("keys.txt", "rb") as f:
+        key1 = f.readline()
+    cipher_suite = Fernet(key1)
+    passWorddecrypte = cipher_suite.decrypt(passWord)
     # si la saisie est VIDE retourner false /testé
-    if mail.isspace() is True and passWord.isspace() is True:
+    if mail.isspace() is True and passWorddecrypte.isspace() is True:
         return False
     #sinon traiter la saisie
     else:
         #recupérer les donnée des fonctions GetEmail et GetPassWord/TESTÉ
-        resultatmail = GetEmail(mail)
-        resultatpassword=GetPassWord(passWord)
+        resultatmail= GetIdMail(mail)
+        resultatpassword=GetIdPassWord(passWorddecrypte)
         #si les deux fonctions retourne False (c est a dire que la saisie ne concorde pas avec une des entrées de la table users) alors on retourne False/TESTÉ
-        if not resultatmail[0] or not resultatpassword:
+        if not resultatmail[0] or not resultatpassword[0]:
             result = False
+
         #tester si les deux ID concorde/TESTÉ
         elif resultatpassword[0] != resultatmail[0]:
             result = False
-        else:
-            #cas ou les deux entrées concorde et récupérer le ID
-            command = "SELECT u.id FROM Users u WHERE u.email like %s AND u.password like %s"
-            mycursor.execute(command, (mail, passWord))
-            result = mycursor.fetchone()
-            print(result)
 
+        else:
+            mycursor.callproc('GetIdUser',(mail, passWorddecrypte))
+            for i in mycursor.stored_results():
+                result += i.fetchone()
     return result
 
-def getmail(numero, rue, code):
+
+def SetNewAdress(numero, rue, code):
     result5 = []
     mycursor.callproc('SetNewAdresses', (numero, rue, code))
     for test in mycursor.stored_results():
@@ -156,10 +158,11 @@ def SetUtilisateur( nom, prenom, age, numero, rue, code,  email, password):
 
 def GetInfoUtilisateur(id):
     result = []
-    command = ("SELECT u.id, u.first_name, u.last_name, u.age, u.email, u.admin FROM Users u WHERE u.id like '%" + str(id) + "%'")
-    mycursor.execute(command)
-    result += mycursor.fetchone()
+    mycursor.callproc('GetInfoUsers',(id,))
+    for i in mycursor.stored_results():
+        result += i.fetchone()
     return result
+
 
 def ajoutUtilisateur(nom, prenom, age, mail, password):
     result6 = []
@@ -172,8 +175,6 @@ def ajoutUtilisateur(nom, prenom, age, mail, password):
     for test in mycursor.stored_results():
         result6 += (test.fetchall())
         mydb.commit()
-
-
 
 
 if __name__ == '__main__':
@@ -400,20 +401,38 @@ if __name__ == '__main__':
                         INSERT INTO Adresses (id, number, street, postal_code)
                         VALUES (nid, Nnumber, Sstreet, Ppostal_code);
                         END''')
+    print("la procédure qui ajoute une adresse a été créée")
 
     mycursor.execute('''CREATE PROCEDURE SetNewUser(Ufirst_name VARCHAR(255),Ulast_name VARCHAR(255),Uage INTEGER , Uemail VARCHAR(255), Upassword VARCHAR(20) ,Uadmin BOOL)
                 BEGIN
                 INSERT INTO Adresses (first_name,last_name, age, adress_id,email, admin)
                         VALUES (Ufirst_name ,Ulast_name,Uage ,(SELECT MAX(id) FROM Adresses), Uemail , Upassword,Uadmin );
                 END''')
+    print("la procédure qui ajoute un nouvel utilisateur a été créée ")
 
+    mycursor.execute('''CREATE PROCEDURE getIDemail(email VARCHAR(255))
+                        BEGIN 
+                        SELECT u.id FROM Users u WHERE u.email like (CONCAT('%',email, '%'));
+                        END''')
+    print("la procédure qui récupère le courriel a été créée")
 
+    mycursor.execute('''CREATE PROCEDURE getIDpassword(password VARCHAR(20))
+                        BEGIN
+                        SELECT u.id FROM Users u WHERE u.password like (CONCAT('%', password, '%'));
+                        END''')
+    print("la procédure qui récupère le mot de passe a été créée")
 
+    mycursor.execute('''CREATE PROCEDURE GetIdUser(email VARCHAR(255), password VARCHAR(20))
+                        BEGIN 
+                        SELECT u.id FROM Users u WHERE u.email =email AND u.password=password;
+                        END''')
+    print('la procédure qui récupère l’ID de users')
 
-
-
-
-
+    mycursor.execute('''CREATE PROCEDURE GetInfoUsers(Uid INTEGER)
+                        BEGIN
+                        SELECT u.id, u.first_name, u.last_name , u.age , u.email, u.password, u.admin FROM Users u WHERE u.id = Uid;
+                        END''')
+    print('la procédure qui récupère les données du user a été créée')
     mydb.commit()
     mycursor.close()
     mydb.close()

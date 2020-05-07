@@ -2,8 +2,9 @@ from flask import Flask, render_template, request,redirect,url_for
 from Forms import researchForm, advancedResearchForm
 from log import LogForm
 from abonnement import AbonnementForm
-from Main import research, advancedResearch, getBook, getAuthor, getBooksFromAuthor, GetInfoUtilisateur, SetUtilisateur, GetUser, getMagazine
-
+from Main import research, advancedResearch, getBook, getAuthor, getBooksFromAuthor, GetInfoUtilisateur, SetUtilisateur,  GetUserId, getMagazine
+from cryptography.fernet import Fernet
+import os.path
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "password"
 
@@ -29,6 +30,7 @@ def recherche():
         return render_template('Resultats-recherche.html', result=result)
     return render_template('Recherche.html', form=form)
 
+
 #load login page
 @app.route("/se-connecter", methods=['GET','POST'])
 def se_connecter():
@@ -39,7 +41,13 @@ def se_connecter():
     if form.is_submitted():
         courriel = request.form.getlist('nomUser')
         motdePass = request.form.getlist('passUser')
-        resultat= GetUser(courriel[0], motdePass[0])
+        mdp = motdePass[0]
+        key = Fernet.generate_key()
+        cipher_suite = Fernet(key)
+        motdePassCrypted = cipher_suite.encrypt(bytes(mdp, encoding='utf8'))
+        with open("keys.txt", "wb") as f:
+            f.write(bytes(key))
+        resultat= GetUserId(courriel[0], motdePassCrypted)
 
         if resultat is not False:
             resultat1.append(resultat[0])
@@ -74,13 +82,10 @@ def abonnement():
     return render_template('Abonnement.html', form = form)
 
 
-
 @app.route("/Profil_utilisateur")
 def utilisateur():
-    print(resultat1)
     resultat=[]
     resultat += GetInfoUtilisateur(resultat1[0])
-    print(resultat)
     return render_template('Profil_utilisateur.html', resultat=resultat)
 
 @app.route('/Recherche-avancee', methods=['GET', 'POST'])
