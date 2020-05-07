@@ -21,6 +21,7 @@
     </div>
     <div class="content-container">
         <div class="content">
+            <p>{{ message }}</p>
             {% for magId, magName, imageId,magGenre, magNumber, magMonth, magYear, magQuantity in result %}
             <img src="../static/ressources/images/imagesLivres/{{imageId}}.jpg" alt="image livre" width="200">
             <p>Nom: {{magName}}</p>

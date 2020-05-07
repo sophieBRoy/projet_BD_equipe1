@@ -26,4 +26,9 @@ class advancedResearchForm(FlaskForm):
     artCheck = BooleanField('Art')
     adoCheck = BooleanField('Ado')
 
+class adminForm(FlaskForm):
+    id = StringField('recherche')
+    submit = SubmitField('Appliquer')
+
+
 

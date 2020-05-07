@@ -20,9 +20,15 @@
     </div>
     <div class="content-container">
         <div class="content">
-            <a><p>Ajouter, modifier ou supprimer un magazine</p></a>
-            <p>Supprimer un utilisateur</p>
-            <p>Lancer une livraison</p>
+             {% if message %}
+            <div class="message"><p>{{ message }}</p></div>
+             {% endif %}"
+            <p>Donner le status d'administrateur à un utilisateur</p>
+            <form method="post" action="">
+            <p>Id de l'utilisateur: {{ form.id(class_='search-bar') }}
+            {{ form.submit(class_="submit-button") }}</p>
+            </form>
+            <a href="{{ url_for('temp3') }}"><p>Restocker tous les magazines qui n'ont plus d'exemplaires</p></a>
         </div>
     </div>
     <div class="footer"></div>
