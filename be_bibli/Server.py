@@ -2,8 +2,10 @@ from flask import Flask, render_template, request,redirect,url_for
 from Forms import researchForm, advancedResearchForm
 from log import LogForm
 from abonnement import AbonnementForm
-from Main import research, advancedResearch, getBook, getAuthor, getBooksFromAuthor, GetInfoUtilisateur, \
+
+from Main import research, advancedResearch, getBook, getAuthor, getBooksFromAuthor, GetInfoUtilisateur,\
     SetUtilisateur, GetUser, getMagazine, addMagToPurchases, addBookToLocations, getUserLocations, getUserPurchases
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "password"
@@ -11,7 +13,7 @@ app.config['SECRET_KEY'] = "password"
 
 courriel=""
 motdePass=""
-adminPass=""
+adminPass= 0
 resultat1=[]
 lastItemId = ""
 userId = ''
@@ -43,39 +45,58 @@ def se_connecter():
         courriel = request.form.getlist('nomUser')
         motdePass = request.form.getlist('passUser')
         resultat= GetUser(courriel[0], motdePass[0])
-
         if resultat:
             resultat1.append(resultat[0])
             return redirect(url_for('utilisateur'))
         else:
-
-            message += "Erreur dans votre courriel ou dans votre mot de passe"
+            message += "veuillez saisir les données de nouveau"
     if not courriel:
         return render_template('Se-connecter.html', form=form, message=message)
     else:
         return redirect(url_for('utilisateur'))
 
 
-@app.route('/abonnement')
+@app.route('/abonnement',  methods=['GET','POST'])
 def abonnement():
-    result=[]
+    message = " "
     form = AbonnementForm()
     if form.is_submitted():
         nom = request.form.getlist('nomUtilisateurs')
+        #print(nom[0].isspace())
         prenom = request.form.getlist('prenomUtilisateurs')
+       # print(prenom[0].isspace())
         age = request.form.getlist('utilisateursAge')
-        adresse = request.form.getlist('utilisateursAddresse')
-        Courriel = request.form.getlist('utilisateursCourriel')
-        motPass =request.form.getlist('utilisateursMdp')
+        #print(str(age[0]).isspace())
+        numero= request.form.getlist('utilisateursAddresseNumero')
+        #print(str(numero[0]).isspace())
+        rue = request.form.getlist('utilisateursAddresseRue')
+        #print(rue[0].isspace())
+        code = request.form.getlist('utilisateursAddresseCode')
+        #print(code[0].isspace())
+        email = request.form.getlist('utilisateursCourriel')
+        #print(email[0].isspace())
+        password = request.form.getlist('utilisateursMdp')
         #fonction qui traite les entrée
-        #result = SetUtilisateur(nom[0], prenom[0], age[0], adresse[0], courriel[0], motPass[0],)
-    return render_template('Abonnement.html', form=form, result=result)
+        result = SetUtilisateur(nom[0], prenom[0], age[0], numero[0], rue[0], code[0],  email[0], password[0])
+        print(result)
+        if result is True:
+            return redirect(url_for('accueil'))
+        else:
+            message += "il y'a des champs vides, veuillez remplir tous les champs"
+            return render_template('Abonnement.html', form=form, message=message)
+
+    return render_template('Abonnement.html', form = form)
+
+
 
 @app.route("/Profil_utilisateur")
 def utilisateur():
     global userId
+    global adminPass
     userId = resultat1[0]
     resultat = GetInfoUtilisateur(resultat1[0])
+    adminPass = resultat[5]
+    print(adminPass)
     locations = getUserLocations(userId)
     purchases = getUserPurchases(userId)
     return render_template('Profil_utilisateur.html', resultat=resultat, locations=locations, purchases=purchases)
@@ -141,10 +162,10 @@ def author(authorName):
 @app.route('/admin', methods=['GET'])
 def admin():
     print(adminPass)
-    if not adminPass:
+    if adminPass:
         return render_template('AdminPage.html')
     else:
-        return "Erreur: vous ne pouvez pas accéder à cette page car vous n'êtes pas administrateur :("
+        return "Erreur: vous ne pouvez pas accéder à cette page car vous n'êtes pas administrateur"
 
 @app.route('/temp')
 def achatComplet():
