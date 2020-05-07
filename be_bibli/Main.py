@@ -408,11 +408,6 @@ if __name__ == '__main__':
            LINES TERMINATED BY "\r\n" ''')
     print("Filled Magazines")
 
-    mycursor.execute('''LOAD DATA LOCAL INFILE "data/locations.txt" INTO TABLE locations
-        COLUMNS TERMINATED BY ";"
-       LINES TERMINATED BY "\r\n" ''')
-    print("Filled Locations")
-
     mycursor.execute('''LOAD DATA LOCAL INFILE "data/purchases.txt" INTO TABLE purchases
         COLUMNS TERMINATED BY ";"
        LINES TERMINATED BY "\r\n" ''')
