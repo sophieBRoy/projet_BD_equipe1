@@ -292,8 +292,8 @@ if __name__ == '__main__':
     print("created table Copies")
 
     mycursor.execute('''CREATE TABLE Locations (
+                     c_id INTEGER NOT NULL PRIMARY KEY,
                      u_id INTEGER NOT NULL,
-                     c_id INTEGER NOT NULL,
                      FOREIGN KEY(u_id) REFERENCES Users(id)
                      ON UPDATE CASCADE
                      ON DELETE CASCADE,
@@ -403,6 +403,16 @@ if __name__ == '__main__':
             COLUMNS TERMINATED BY ";"
            LINES TERMINATED BY "\r\n" ''')
     print("Filled Magazines")
+
+    mycursor.execute('''LOAD DATA LOCAL INFILE "data/locations.txt" INTO TABLE locations
+        COLUMNS TERMINATED BY ";"
+       LINES TERMINATED BY "\r\n" ''')
+    print("Filled Locations")
+
+    mycursor.execute('''LOAD DATA LOCAL INFILE "data/purchases.txt" INTO TABLE purchases
+        COLUMNS TERMINATED BY ";"
+       LINES TERMINATED BY "\r\n" ''')
+    print("Filled Purchases")
 
     # create getBook function
     mycursor.execute('''CREATE PROCEDURE getMagazines(IN query varchar(64))
