@@ -4,3 +4,10 @@
     flex-direction: column;
     margin-top: 50px;
 }
+
+.message {
+    color: green;
+    border: solid #E2E2E2;
+    border-radius: 10px;
+
+}

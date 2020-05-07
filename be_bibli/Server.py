@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request,redirect,url_for
-from Forms import researchForm, advancedResearchForm
+from Forms import researchForm, advancedResearchForm, adminForm
 from log import LogForm
 from abonnement import AbonnementForm
 
 from Main import research, advancedResearch, getBook, getAuthor, getBooksFromAuthor, GetInfoUtilisateur,\
-    SetUtilisateur, GetUser, getMagazine, addMagToPurchases, addBookToLocations, getUserLocations, getUserPurchases
+    SetUtilisateur, GetUser, getMagazine, addMagToPurchases, addBookToLocations, getUserLocations, getUserPurchases, restockAllMagazines, giveRights
 
 
 app = Flask(__name__)
@@ -107,7 +107,6 @@ def recherche_avancee():
     if form.is_submitted():
         book = request.form.getlist('researchB')
         author = request.form.getlist('researchA')
-        origin = request.form.getlist('researchO')
         #-------------------------------------------------
         checkList = ['fantaisieCheck', 'sFCheck', 'polarCheck', 'classiqueCheck', 'horreurCheck', 'bDCheck', 'overratedCheck']
         boolList = []
@@ -159,11 +158,18 @@ def author(authorName):
     booksResult = getBooksFromAuthor(authorName)
     return render_template('AuthorProfile.html', result=result, booksResult=booksResult)
 
-@app.route('/admin', methods=['GET'])
+@app.route('/admin', methods=['GET', 'POST'])
 def admin():
-    print(adminPass)
+    form = adminForm()
     if adminPass:
-        return render_template('AdminPage.html')
+        if form.is_submitted():
+            id = request.form.getlist('id')
+            result = giveRights(id)
+            if not result:
+                return render_template('AdminPage.html', message="Le status d'administrateur a été donné", form=form)
+            else:
+                return render_template('AdminPage.html', message="Cet utilisateur a déjà les droits d'admin", form=form)
+        return render_template('AdminPage.html', message="", form=form)
     else:
         return "Erreur: vous ne pouvez pas accéder à cette page car vous n'êtes pas administrateur"
 
@@ -171,7 +177,9 @@ def admin():
 def achatComplet():
     global courriel
     if courriel:
-        addMagToPurchases(userId, lastItemId)
+        message = addMagToPurchases(userId, lastItemId)
+        if message:
+            return render_template('Achat.html', message=message)
     return redirect(url_for('se_connecter'))
 
 @app.route('/temp2')
@@ -180,6 +188,18 @@ def locationComplet():
     if courriel:
         addBookToLocations(userId, lastItemId)
     return redirect(url_for('se_connecter'))
+
+@app.route('/temp3')
+def temp3():
+    restockAllMagazines()
+    message = "les magazines ont bien été restockés"
+    return render_template('AdminPage.html', message=message)
+
+@app.route('/temp4')
+def temp4():
+    restockOneMagazine(id)
+    message = "les copies de ce magazine ont été ajoutées"
+    return render_template('AdminPage.html', message=message)
 
 if __name__=='__main__':
     app.run(debug=True)

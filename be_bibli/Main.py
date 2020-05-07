@@ -178,9 +178,8 @@ def addMagToPurchases(userId, magId):
     try:
         mycursor.callproc('addPurchase', (userId, magId))
         mydb.commit()
-    except mydb.Error as ex:
-        return ex
-    return 0
+    except mysql.connector.Error as err:
+        return("Something went wrong: {}".format(err))
 
 def addBookToLocations(userId, bookId):
     result = []
@@ -210,6 +209,17 @@ def getUserPurchases(userId):
     for test in mycursor.stored_results():
         result += (test.fetchall())
     return result
+
+def restockAllMagazines():
+    mycursor.callproc('restockAllMagazines')
+    mydb.commit()
+
+def giveRights(id):
+    try:
+        mycursor.callproc('giveRights', (id[0],))
+        mydb.commit()
+    except mysql.connector.Error as err:
+        return "cet utilisateur a déjà les droits"
 
 if __name__ == '__main__':
     # INITIALISATION OF TABLES (FIRST METHOD)
@@ -525,6 +535,26 @@ if __name__ == '__main__':
                         VALUES (Ufirst_name ,Ulast_name,Uage ,(SELECT MAX(id) FROM Adresses), Uemail , Upassword,Uadmin );
                 END''')
 
+    mycursor.execute('''CREATE PROCEDURE restockAllMagazines()
+                    BEGIN
+                     UPDATE Magazines
+                        SET quantity = 10
+                        WHERE quantity = 0;
+                    END''')
+
+    mycursor.execute('''CREATE PROCEDURE giveRights(userId integer)
+                    BEGIN
+                    IF (SELECT u.admin FROM Users u WHERE u.id = userId) = 0
+                    THEN
+                    UPDATE Users
+                        SET admin = 1
+                        WHERE id = userId;
+                    ELSE
+                        SIGNAL SQLSTATE '45000'
+                        SET MESSAGE_TEXT = 'Cet utilisateur a déjà les droits';
+                    
+                    END IF;
+                    END''')
 
 
 
