@@ -37,8 +37,18 @@
                     {{ form.utilisateursAge(class_="search-bar") }}
                 </p>
                 <p>
-                    {{ form.utilisateursAddresse.label }}
-                    {{ form.utilisateursAddresse(class_="search-bar") }}
+                    {{ form.utilisateursAddresseNumero.label }}
+                    {{ form.utilisateursAddresseNumero(class_="search-bar") }}
+
+                </p>
+                <p>
+                    {{ form.utilisateursAddresseRue.label }}
+                    {{ form.utilisateursAddresseRue(class_="search-bar") }}
+
+                </p>
+                <p>
+                    {{ form.utilisateursAddresseCode.label }}
+                    {{ form.utilisateursAddresseCode(class_="search-bar") }}
 
                 </p>
                 <p>
@@ -55,6 +65,11 @@
                     {{ form.submit(class_="submit-button") }}
                 </p>
         </form>
+        <div>
+            {% if message %}
+            <p>{{ message }}</p>
+            {% endif %}"
+        </div>
     </div>
 </div>
 <div class="footer"></div>

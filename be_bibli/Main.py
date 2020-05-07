@@ -71,16 +71,6 @@ def getMagazine(id):
         result += (test.fetchall())
     return result
 
-
-#def getUser(email, password):
- #   result = []
-  #  mycursor.callproc('getUser', (email, password))
-
-   # for test in mycursor.stored_results():
-    #    result += (test.fetchall())
-    #return result
-
-
 def getAuthor(authorName):
     result = []
     mycursor.callproc('getAuthor', (authorName,))
@@ -98,45 +88,15 @@ def getBooksFromAuthor(authorName):
         result += (test.fetchall())
     return result
 
-def GetUser(mail, passWord):
-    result=[]
-    # si la saisie est VIDE retourner false /testé
-
-    if mail.isspace() and passWord.isspace():
-        return False
-
-    #sinon traiter la saisie
-    else:
-        #recupérer les donnée des fonctions GetEmail et GetPassWord/TESTÉ
-        resultatmail= GetEmail(mail)
-        resultatpassword=GetPassWord(passWord)
-
-        #si les deux fonctions retourne False (c est a dire que la saisie ne concorde pas avec une des entrées de la table users) alors on retourne False/TESTÉ
-        if not resultatmail[0] or not resultatpassword:
-            result = False
-
-        #tester si les deux ID concorde/TESTÉ
-        elif resultatpassword[0] != resultatmail[0]:
-            result = False
-        else:
-            #cas ou les deux entrées concorde et récupérer le ID
-            command = "SELECT u.id FROM Users u WHERE u.email like %s AND u.password like %s"
-            mycursor.execute(command, (mail, passWord))
-            result = mycursor.fetchone()
-
-    return result
-
-
 def GetEmail(mail):
 
     command = ("SELECT u.id FROM Users u WHERE u.email like'%" + mail + "%'")
     mycursor.execute(command)
     result = mycursor.fetchone()
     if result is None:
-        result ="Le courriel saisie n'existe pas"
+        result ="Le courriel saisie n'éxiste pas"
         return False, result
     return result
-
 #ne doit pas afficher un message
 def GetPassWord(passWord):
     command = ("SELECT u.id FROM Users u WHERE u.password like '%" + passWord + "%'")
@@ -146,6 +106,54 @@ def GetPassWord(passWord):
         return False
     return result
 
+def GetUser(mail, passWord):
+    result=[]
+    # si la saisie est VIDE retourner false /testé
+    if mail.isspace() and passWord.isspace():
+        return False
+    #sinon traiter la saisie
+    else:
+        #recupérer les donnée des fonctions GetEmail et GetPassWord/TESTÉ
+        resultatmail = GetEmail(mail)
+        resultatpassword=GetPassWord(passWord)
+        #si les deux fonctions retourne False (c est a dire que la saisie ne concorde pas avec une des entrées de la table users) alors on retourne False/TESTÉ
+        if not resultatmail[0] or not resultatpassword:
+            result = False
+        #tester si les deux ID concorde/TESTÉ
+        elif resultatpassword[0] != resultatmail[0]:
+            result = False
+        else:
+            #cas ou les deux entrées concorde et récupérer le ID
+            command = "SELECT u.id FROM Users u WHERE u.email like %s AND u.password like %s"
+            mycursor.execute(command, (mail, passWord))
+            result = mycursor.fetchone()
+            print(result)
+
+    return result
+
+def getmail(numero, rue, code):
+    result5 = []
+    mycursor.callproc('SetNewAdresses', (numero, rue, code))
+    for test in mycursor.stored_results():
+        result5 += (test.fetchall())
+        mydb.commit()
+    command = ("SELECT u.id FROM Users u WHERE u.email like'%" + mail + "%'")
+    mycursor.execute(command)
+    result = mycursor.fetchone()
+    if result is None:
+        result ="Le courriel saisie n'existe pas"
+        return False, result
+    return result
+
+def SetUtilisateur( nom, prenom, age, numero, rue, code,  email, password):
+    commande = " INSERT INTO Adresses(number, street, postal_code) VALUES (%s, %s, %s)"
+    mycursor.execute(commande, (numero, rue, code))
+    adress_id = mycursor.lastrowid
+    mydb.commit()
+    commande2 = "INSERT INTO Users(first_name,last_name, age, adress_id, email, password, admin) VALUES (%s, %s, %s,%s,%s,%s,%s)"
+    mycursor.execute(commande2, (prenom, nom, age, adress_id, email, password, 0))
+    mydb.commit()
+    return True
 
 def GetInfoUtilisateur(id):
     result = []
@@ -154,20 +162,17 @@ def GetInfoUtilisateur(id):
     result += mycursor.fetchone()
     return result
 
-
-def SetUtilisateur(nom, prenom, age, adresse, courriel, motPass, admin):
-    idMaxUserTAB = []
-    idMaxAdresTAB = []
-    command = mycursor.execute("SELECT MAX(u.id) FROM Users u")
+def ajoutUtilisateur(nom, prenom, age, mail, password):
+    result6 = []
+    resultat = []
+    command=("SELECT MAX(a.id) FROM Adresses a")
     mycursor.execute(command)
-    idMaxUser = mycursor.fetchone()
-    idMaxUserTAB.append(idMaxUser[0])
-    print(idMaxUserTAB[0])
-    command2 = mycursor.execute("SELECT MAX(u.adress_id) FROM Users u ")
-    mycursor.execute(command2)
-    idAddresMax = mycursor.fetchone()
-    idMaxAdresTAB.append(idAddresMax[0])
-    print(idMaxAdresTAB[0])
+    resultat +=mycursor.fetchone()
+    print(resultat)
+    mycursor.callproc('SetNewUser', (nom, prenom, age,  mail, password, 0))
+    for test in mycursor.stored_results():
+        result6 += (test.fetchall())
+        mydb.commit()
 
 def addMagToPurchases(userId, magId):
     try:
@@ -206,21 +211,6 @@ def getUserPurchases(userId):
         result += (test.fetchall())
     return result
 
-
-
-
-print(SetUtilisateur('sara', 'amara', 27, '739 jdsjfsd', 'asaraselma@gmail.com', 'jojo', 1))
-
-#print(GetInfoUtilisateur(1))
-#l=GetEmail('non@eleifendnunc.ne')
-#print(l[0])
-
-#print(GetEmail('sapien.gravida.non@luctusetultrices.org'))
-#print(GetPassWord('enim'))
-
-#print(GetUser('non@eleifendnunc.net','enim'))
-
-
 if __name__ == '__main__':
     # INITIALISATION OF TABLES (FIRST METHOD)
     # after running this code for the first time, uncomment this line:
@@ -238,6 +228,7 @@ if __name__ == '__main__':
     )
 
     mycursor = mydb.cursor()
+
 
     # create the table for the adresses
     mycursor.execute('''CREATE TABLE Adresses (
@@ -521,6 +512,20 @@ if __name__ == '__main__':
                         WHERE p.u_id = userId AND p.m_id = m.id; 
                         END''')
     print("Created getUserPurchases")
+
+    mycursor.execute('''CREATE PROCEDURE SetNewAdresses(nid INTEGER, Nnumber VARCHAR(4), Sstreet VARCHAR(255), Ppostal_code CHAR(6))
+                        BEGIN
+                        INSERT INTO Adresses (id, number, street, postal_code)
+                        VALUES (nid, Nnumber, Sstreet, Ppostal_code);
+                        END''')
+
+    mycursor.execute('''CREATE PROCEDURE SetNewUser(Ufirst_name VARCHAR(255),Ulast_name VARCHAR(255),Uage INTEGER , Uemail VARCHAR(255), Upassword VARCHAR(20) ,Uadmin BOOL)
+                BEGIN
+                INSERT INTO Adresses (first_name,last_name, age, adress_id,email, admin)
+                        VALUES (Ufirst_name ,Ulast_name,Uage ,(SELECT MAX(id) FROM Adresses), Uemail , Upassword,Uadmin );
+                END''')
+
+
 
 
 
