@@ -2,6 +2,7 @@ from flask import Flask, render_template, request,redirect,url_for
 from Forms import researchForm, advancedResearchForm, adminForm
 from log import LogForm
 from abonnement import AbonnementForm
+import datetime
 
 from Main import research, advancedResearch, getBook, getAuthor, getBooksFromAuthor, GetInfoUtilisateur,\
     SetUtilisateur, GetUser, getMagazine, addMagToPurchases, addBookToLocations, getUserLocations, getUserPurchases, restockAllMagazines, giveRights
@@ -17,6 +18,7 @@ adminPass= 0
 resultat1=[]
 lastItemId = ""
 userId = ''
+dateNow = datetime.date.today()
 
 
 @app.route('/')
@@ -186,19 +188,13 @@ def achatComplet():
 def locationComplet():
     global courriel
     if courriel:
-        addBookToLocations(userId, lastItemId)
+        addBookToLocations(userId, lastItemId, dateNow)
     return redirect(url_for('se_connecter'))
 
 @app.route('/temp3')
 def temp3():
     restockAllMagazines()
     message = "les magazines ont bien été restockés"
-    return render_template('AdminPage.html', message=message)
-
-@app.route('/temp4')
-def temp4():
-    restockOneMagazine(id)
-    message = "les copies de ce magazine ont été ajoutées"
     return render_template('AdminPage.html', message=message)
 
 if __name__=='__main__':

@@ -1,4 +1,6 @@
 import mysql.connector
+import datetime
+from datetime import timedelta
 
 mydb = mysql.connector.connect(
     host="localhost",
@@ -181,15 +183,16 @@ def addMagToPurchases(userId, magId):
     except mysql.connector.Error as err:
         return("Something went wrong: {}".format(err))
 
-def addBookToLocations(userId, bookId):
+def addBookToLocations(userId, bookId, date):
     result = []
     mycursor.callproc('selectCopy', (bookId, ))
-
+    returndate = date + timedelta(days=14)
+    print(returndate)
     for test in mycursor.stored_results():
         result += (test.fetchall())
     copieId= result[0][0]
     if copieId:
-        mycursor.callproc('addLocation', (userId, copieId))
+        mycursor.callproc('addLocation', (userId, copieId, returndate))
         mydb.commit()
     else:
         return "il ne reste plus d'exemplaires de ce livre"
@@ -294,6 +297,7 @@ if __name__ == '__main__':
     mycursor.execute('''CREATE TABLE Locations (
                      c_id INTEGER NOT NULL PRIMARY KEY,
                      u_id INTEGER NOT NULL,
+                     return_date DATE NOT NULL,
                      FOREIGN KEY(u_id) REFERENCES Users(id)
                      ON UPDATE CASCADE
                      ON DELETE CASCADE,
@@ -512,16 +516,16 @@ if __name__ == '__main__':
                             END''')
     print("Created selectCopy")
 
-    mycursor.execute('''CREATE PROCEDURE addLocation(userId integer, copieId integer)
+    mycursor.execute('''CREATE PROCEDURE addLocation(userId integer, copieId integer, returnDate date)
                     BEGIN
-                    INSERT INTO Locations(u_id, c_id)
-                    VALUES(userId, copieId);
+                    INSERT INTO Locations(u_id, c_id, return_date)
+                    VALUES(userId, copieId, returnDate);
                     END''')
     print("Created addLocation")
 
     mycursor.execute('''CREATE PROCEDURE getUserLocations(userId integer)
                         BEGIN
-                        SELECT b.name, c.id FROM Books b, Copies c, Locations l
+                        SELECT b.name, l.return_date FROM Books b, Copies c, Locations l
                         WHERE l.u_id = userId AND l.c_id = c.id AND b.id = c.b_id;
                         END''')
     print("Created getUserLocations")
@@ -565,13 +569,6 @@ if __name__ == '__main__':
                     
                     END IF;
                     END''')
-
-
-
-
-
-
-
 
     mydb.commit()
     mycursor.close()
