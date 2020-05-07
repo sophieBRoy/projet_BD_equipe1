@@ -11,7 +11,7 @@ app.config['SECRET_KEY'] = "password"
 
 courriel=""
 motdePass=""
-adminPass=""
+adminPass= 0
 resultat1=[]
 lastItemId = ""
 userId = ''
@@ -43,7 +43,6 @@ def se_connecter():
         courriel = request.form.getlist('nomUser')
         motdePass = request.form.getlist('passUser')
         resultat= GetUser(courriel[0], motdePass[0])
-
         if resultat:
             resultat1.append(resultat[0])
             return redirect(url_for('utilisateur'))
@@ -74,8 +73,11 @@ def abonnement():
 @app.route("/Profil_utilisateur")
 def utilisateur():
     global userId
+    global adminPass
     userId = resultat1[0]
     resultat = GetInfoUtilisateur(resultat1[0])
+    adminPass = resultat[5]
+    print(adminPass)
     locations = getUserLocations(userId)
     purchases = getUserPurchases(userId)
     return render_template('Profil_utilisateur.html', resultat=resultat, locations=locations, purchases=purchases)
@@ -141,10 +143,10 @@ def author(authorName):
 @app.route('/admin', methods=['GET'])
 def admin():
     print(adminPass)
-    if not adminPass:
+    if adminPass:
         return render_template('AdminPage.html')
     else:
-        return "Erreur: vous ne pouvez pas accéder à cette page car vous n'êtes pas administrateur :("
+        return "Erreur: vous ne pouvez pas accéder à cette page car vous n'êtes pas administrateur"
 
 @app.route('/temp')
 def achatComplet():

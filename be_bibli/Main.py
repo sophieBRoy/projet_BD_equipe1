@@ -72,13 +72,13 @@ def getMagazine(id):
     return result
 
 
-def getUser(email, password):
-    result = []
-    mycursor.callproc('getUser', (email, password))
+#def getUser(email, password):
+ #   result = []
+  #  mycursor.callproc('getUser', (email, password))
 
-    for test in mycursor.stored_results():
-        result += (test.fetchall())
-    return result
+   # for test in mycursor.stored_results():
+    #    result += (test.fetchall())
+    #return result
 
 
 def getAuthor(authorName):

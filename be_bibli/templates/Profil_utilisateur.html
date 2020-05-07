@@ -33,6 +33,7 @@
 
                {% if resultat[5] == 1 %}
              <p>Statut:&nbsp;Administrateur</p>
+             <a href="{{ url_for('admin') }}"><button class="submit-button">Page administrateur</button></a>
              {% else %}
              <p> Statut:&nbsp;Abonné(e)</p>
              {% endif %}"
