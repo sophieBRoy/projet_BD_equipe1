@@ -249,7 +249,10 @@ if __name__ == '__main__':
                      number VARCHAR(4),
                      street VARCHAR(255),
                      postal_code CHAR(7) NOT NULL)''')
-    print("created table Adresses")
+    print("created table Adresse")
+
+
+
     # missing email and password in the datas
     mycursor.execute('''CREATE TABLE Users (
                      id INTEGER AUTO_INCREMENT PRIMARY KEY,
@@ -262,7 +265,8 @@ if __name__ == '__main__':
                      admin BOOL NOT NULL,
                      FOREIGN KEY(adress_id) REFERENCES Adresses(id)
                      ON UPDATE CASCADE
-                     ON DELETE RESTRICT)''')
+                     ON DELETE RESTRICT,
+                     UNIQUE INDEX (email, password) USING BTREE)''')
     print("created table Users")
 
     mycursor.execute('''CREATE TABLE Authors (
@@ -270,7 +274,8 @@ if __name__ == '__main__':
                      image_id CHAR(3),
                      birth DATE NOT NULL,
                      death DATE,
-                     nationality VARCHAR(255) NOT NULL)''')
+                     nationality VARCHAR(255) NOT NULL,
+                     UNIQUE INDEX (name(5)) USING HASH)''')
     print("created table Authors")
 
     mycursor.execute('''CREATE TABLE Books (
@@ -282,7 +287,8 @@ if __name__ == '__main__':
                      genre VARCHAR(50) NOT NULL,
                      FOREIGN KEY(author_name) REFERENCES Authors(name)
                      ON UPDATE CASCADE
-                     ON DELETE CASCADE)''')
+                     ON DELETE CASCADE,
+                     UNIQUE INDEX (id) USING HASH)''')
     print("created table Books")
 
     mycursor.execute('''CREATE TABLE Copies (
@@ -291,7 +297,8 @@ if __name__ == '__main__':
                      status BOOL NOT NULL,
                      FOREIGN KEY(b_id) REFERENCES Books(id)
                      ON UPDATE CASCADE
-                     ON DELETE CASCADE)''')
+                     ON DELETE CASCADE,
+                     INDEX (id, status) USING BTREE)''')
     print("created table Copies")
 
     mycursor.execute('''CREATE TABLE Locations (
@@ -303,7 +310,8 @@ if __name__ == '__main__':
                      ON DELETE CASCADE,
                      FOREIGN KEY(c_id) REFERENCES Copies(id)
                      ON UPDATE CASCADE
-                     ON DELETE CASCADE)
+                     ON DELETE CASCADE,
+                     INDEX (u_id) USING HASH)
                      ''')
     print("created table Locations")
 
@@ -315,7 +323,8 @@ if __name__ == '__main__':
                      number INTEGER NOT NULL,
                      month VARCHAR(10) NOT NULL,
                      year INTEGER NOT NULL,
-                     quantity INTEGER NOT NULL)''')
+                     quantity INTEGER NOT NULL,
+                     INDEX (id, quantity) USING BTREE)''')
     print("created table Magazines")
 
     mycursor.execute('''CREATE TABLE Purchases (
@@ -326,7 +335,8 @@ if __name__ == '__main__':
                      ON DELETE CASCADE,
                      FOREIGN KEY(m_id) REFERENCES Magazines(id)
                      ON UPDATE CASCADE
-                     ON DELETE CASCADE)''')
+                     ON DELETE CASCADE,
+                     UNIQUE INDEX (u_id) USING HASH)''')
     print("created table Purchases")
 
     # TRIGGERS (SECOND METHOD)
