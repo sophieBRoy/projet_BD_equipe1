@@ -3,3 +3,6 @@
     flex-grow: 0.5;
         flex-direction: column;
 }
+.search-bar {
+    width: 300px;
+}
