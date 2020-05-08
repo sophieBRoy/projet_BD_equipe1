@@ -70,9 +70,14 @@ def abonnement():
         code = request.form.getlist('utilisateursAddresseCode')
         email = request.form.getlist('utilisateursCourriel')
         password = request.form.getlist('utilisateursMdp')
-        #fonction qui traite les entrée
-        result = SetUtilisateur(nom[0], prenom[0], age[0], numero[0], rue[0], code[0],  email[0], password[0])
-        print(result)
+        mdp = password[0]
+        key = Fernet.generate_key()
+        cipher_suite = Fernet(key)
+        motdePassCrypted = cipher_suite.encrypt(bytes(mdp, encoding='utf8'))
+        with open("key2.txt", "wb") as f:
+            f.write(bytes(key))
+        result = SetUtilisateur(nom[0], prenom[0], age[0], numero[0], rue[0], code[0],  email[0],motdePassCrypted)
+
         if result is True:
             return redirect(url_for('accueil'))
         else:

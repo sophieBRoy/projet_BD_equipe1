@@ -107,7 +107,7 @@ def GetIdPassWord(password):
     return result
 
 def GetUserId(mail, passWord):
-    key1 = ""
+    key1 =""
     result = []
     with open("keys.txt", "rb") as f:
         key1 = f.readline()
@@ -144,13 +144,18 @@ def SetNewAdress(numero, rue, code):
         mydb.commit()
 
 
-def SetUtilisateur( nom, prenom, age, numero, rue, code,  email, password):
+def SetUtilisateur(nom, prenom, age, numero, rue, code,  email, password):
+    key2=""
+    with open("key2.txt", "rb") as f:
+        key1 = f.readline()
+    cipher_suite = Fernet(key1)
+    passWorddecrypte = cipher_suite.decrypt(password)
     commande = " INSERT INTO Adresses(number, street, postal_code) VALUES (%s, %s, %s)"
     mycursor.execute(commande, (numero, rue, code))
     adress_id = mycursor.lastrowid
     mydb.commit()
     commande2 = "INSERT INTO Users(first_name,last_name, age, adress_id, email, password, admin) VALUES (%s, %s, %s,%s,%s,%s,%s)"
-    mycursor.execute(commande2, (prenom, nom, age, adress_id, email, password, 0))
+    mycursor.execute(commande2, (prenom, nom, age, adress_id, email, passWorddecrypte, 0))
     mydb.commit()
     return True
 
@@ -414,13 +419,11 @@ if __name__ == '__main__':
                         BEGIN 
                         SELECT u.id FROM Users u WHERE u.email like (CONCAT('%',email, '%'));
                         END''')
-    print("la procédure qui récupère le courriel a été créée")
 
     mycursor.execute('''CREATE PROCEDURE getIDpassword(password VARCHAR(20))
                         BEGIN
                         SELECT u.id FROM Users u WHERE u.password like (CONCAT('%', password, '%'));
                         END''')
-    print("la procédure qui récupère le mot de passe a été créée")
 
     mycursor.execute('''CREATE PROCEDURE GetIdUser(email VARCHAR(255), password VARCHAR(20))
                         BEGIN 
